@@ -1,0 +1,30 @@
+{
+    "name": "website-components-template",
+    "packageManager": "yarn@4.1.0",
+    "private": true,
+    "workspaces": [
+        "src/*",
+        "builder",
+        "server",
+        "tutorial"
+    ],
+    "scripts": {
+        "build": "cd builder && yarn run build",
+        "build:dev": "cd builder && yarn run build:dev",
+        "watch:tunnel": "cd builder && yarn run watch:tunnel",
+        "watch:local": "cd builder && yarn run watch:local",
+        "build:prod": "cd builder && yarn run build:prod",
+        "build:prod-commit": "cd builder && yarn run build:prod-commit",
+        "serve": "cd builder && yarn run serve",
+        "watch": "cd builder && yarn run watch:tunnel",
+        "build:tutorial": "cd tutorial && yarn build:prod",
+        "build:tutorial:gh": "cd tutorial && yarn build:gh",
+        "deploy:gh-pages": "gh-pages -d dist",
+        "build:manifest": "cd builder && yarn run build:manifest"
+    },
+    "dependencies": {
+        "gh-pages": "^5.0.0",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    }
+}

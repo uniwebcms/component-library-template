@@ -1,0 +1,47 @@
+{
+    "name": "tutorial",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "docusaurus": "docusaurus",
+        "start": "docusaurus start",
+        "build:dev": "docusaurus build",
+        "serve:dev": "docusaurus serve --port 3000",
+        "clear": "rm -rf docs && rm -rf static/modules && docusaurus clear",
+        "build:prod": "docusaurus build --out-dir ../dist/_site",
+        "build:gh": "docusaurus build --out-dir ../dist/_site"
+    },
+    "peerDependencies": {
+        "react": "*",
+        "react-dom": "*"
+    },
+    "dependencies": {
+        "@docusaurus/core": "2.4.1",
+        "@docusaurus/preset-classic": "2.4.1",
+        "@mdx-js/react": "^1.6.22",
+        "@uniwebcms/tutorial-builder": "^1.3.15",
+        "chalk": "^4.1.2",
+        "dotenv": "^10.0.0",
+        "prism-react-renderer": "^1.3.5",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+        "@docusaurus/module-type-aliases": "2.4.1"
+    },
+    "browserslist": {
+        "production": [
+            ">0.5%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "engines": {
+        "node": ">=16.14"
+    }
+}

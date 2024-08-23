@@ -1,0 +1,17 @@
+title: 
+  en: Block
+  fr: Block
+description: 
+  en: Block
+  fr: Block
+label:
+  en: Block
+  fr: Block
+# assets:
+#   Screenshot.png:
+#     title: 
+#       en: Screenshot Description
+#       fr: Description de la capture d'écran
+
+elements:
+  title:
