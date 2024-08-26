@@ -5,8 +5,6 @@
     "scripts": {
         "docusaurus": "docusaurus",
         "start": "docusaurus start",
-        "build:dev": "docusaurus build",
-        "serve:dev": "docusaurus serve --port 3000",
         "clear": "rm -rf docs && rm -rf static/modules && docusaurus clear",
         "build:prod": "docusaurus build --out-dir ../dist/_site",
         "build:gh": "docusaurus build --out-dir ../dist/_site"

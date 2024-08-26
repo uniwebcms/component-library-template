@@ -63,22 +63,10 @@ To start a local development server and preview your tutorial website, run the f
 
 ```bash
 cd my-tutorial-website
-npm install
-npm start
-# OR
 yarn install
 yarn start
 ```
 
-#### Build and serve locally for testing
-```bash
-cd my-tutorial-website
-npm run build:dev
-npm run serve:dev
-# OR
-yarn build:dev
-yarn serve:dev
-```
 The built website will be available in the `build` under `my-tutorial-website` directory.
 
 This will start the development server, and you can view the website at `http://localhost:3000`.
@@ -89,8 +77,6 @@ To build the website for production, you have the following two options:
 #### Build and locally and commit manually
 ```bash
 cd my-tutorial-website
-npm run build:prod
-# OR
 yarn build:prod
 ```
 The built website will be available in the `dist` under the project root directory, you can them manually commit it.
@@ -98,8 +84,6 @@ The built website will be available in the `dist` under the project root directo
 #### Build using GitHub Actions workflow
 ```bash
 cd my-tutorial-website
-npm run build:gh
-# OR
 yarn build:gh
 ```
 This script should be used in a workflow executed by GitHub Actions to provide the necessary environment variables. The built website will be available in the `dist` directory under the project's root. Once the build artifact is uploaded to GitHub Pages, the website can be visited via the GitHub Pages URL.
