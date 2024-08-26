@@ -1,0 +1,6 @@
+title: 
+  en: Layout
+  fr: Mise en page
+description:
+  en: A component that renders the header, footer, and page sections in a specific layout.
+  fr: Un composant qui rend l'en-tête, le pied de page et les sections de page dans une mise en page spécifique.

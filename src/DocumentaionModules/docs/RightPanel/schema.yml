@@ -1,0 +1,29 @@
+title: 
+  en: Right Panel
+  fr: Panneau de droite
+# description:
+#   en: A section to display biographical information about a person such as a headshot, contact info, and more. Displayed in two columns.
+#   fr: Section permettant d'afficher des informations biographiques sur une personne, telles qu'un portrait, des coordonnées, etc. Elle s'affiche sur deux colonnes.
+assets:
+  # Screenshot.png:
+  #   title:
+  #     en: Biography section in a dark theme.
+  #     fr: Section Biography dans un thème sombre.
+
+elements:
+  background:
+    description:
+      en: The avatar image.
+      fr: L'image d'avatar.
+  title:
+  subtitle:
+  link:
+
+# items:
+#   separator: divider
+#   limit: one
+#   elements:
+#     title:
+#     text:
+
+  

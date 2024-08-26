@@ -1,0 +1,32 @@
+title: 
+  en: Header
+  fr: Header
+
+properties:
+  applyTo:
+    label:
+      en: Apply header to
+      fr: Appliquer l'en-tête à
+    type: string
+    default: all
+    enum:
+      - label:
+          en: First page only
+          fr: Première page seulement
+        value: first
+      - label:
+          en: All pages
+          fr: Toutes les pages
+        value: all
+    description: 
+      en: Choose whether to apply the header to the first page only or to all pages in the report.
+      fr: Choisissez si vous souhaitez appliquer l'en-tête à la première page seulement ou à toutes les pages du rapport.
+  pageNumber:
+    label:
+      en: Show page number
+      fr: Afficher le numéro de page
+    type: boolean
+    default: false
+    description: 
+      en: Choose whether to show the page number in the header.
+      fr: Choisissez si vous souhaitez afficher le numéro de page dans l'en-tête.

@@ -1,0 +1,87 @@
+.ArticleContent {
+    [contenteditable] {
+        > * {
+            max-width: 100%;
+            color: #0d435c;
+            font-family: inherit;
+            * {
+                font-family: inherit;
+            }
+        }
+        h2 {
+            font-size: 26px;
+            padding-left: 1rem;
+            border-left-width: 4px;
+            border-left-style: solid;
+            border-color: #0d8287;
+        }
+        a {
+            color: #0d8287;
+        }
+        [data-type='details'] {
+            color: #0d8287;
+        }
+        [data-type='detailsContent'] {
+            color: #0d435c;
+            ul {
+                max-width: 100%;
+            }
+            p {
+                max-width: 100%;
+                color: #0d435c;
+            }
+        }
+        li {
+            p {
+                color: #0d435c;
+            }
+        }
+        [data-node-view-wrapper] {
+            max-width: 100%;
+            button[data-type='default'] {
+                border-color: #0d8287;
+                &:hover {
+                    color: white;
+                    background-color: #0d435c;
+                    border-color: #0d435c;
+                    a {
+                        color: white;
+                    }
+                }
+            }
+            button {
+                a {
+                    &:after {
+                        display: none;
+                    }
+                    a:global(.tip) {
+                        display: none;
+                    }
+                }
+            }
+        }
+        div:global(.node-WarningBlock) {
+            [data-node-view-content] {
+                color: #000;
+            }
+        }
+        div:global(.node-card) {
+            a {
+                color: #0d435c;
+                div:global(.btn-group) {
+                    color: #0d8287;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .ArticleContent {
+        [contenteditable] {
+            h2 {
+                font-size: 36px;
+            }
+        }
+    }
+}

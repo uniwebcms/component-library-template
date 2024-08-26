@@ -1,0 +1,27 @@
+title: 
+  en: Citation
+  fr: Citation
+
+properties:
+  sort_by: 
+    label: 
+      en: Sort By
+      fr: Trier par
+    type: string
+    enum:
+      - label:
+          en: Date
+          fr: Date
+        value: date
+      - label:
+          en: Date (reverse)
+          fr: Date (inverse)
+        value: date_reverse
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+    default: none
+    description: 
+      en: Controls how the citations are sorted in the generated report.
+      fr: Contrôle comment les citations sont triées dans le rapport généré.

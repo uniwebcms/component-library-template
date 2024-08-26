@@ -1,0 +1,87 @@
+.SectionWrapper {
+    font-size: 20px;
+    line-height: 2rem;
+    color: rgb(41, 41, 41);
+    font-family: charter, Georgia, Cambria, 'Times New Roman', Times, serif;
+    margin-bottom: 24px;
+    max-width: 896px;
+    .Block {
+        max-width: 896px;
+        margin-top: 32px;
+        margin-left: auto;
+        margin-right: auto;
+        strong {
+            font-weight: 700;
+        }
+    }
+    .Alert {
+        &:empty:before {
+            content: attr(placeholder);
+            color: #aaa;
+        }
+        &:not(:empty):focus:before {
+            content: '';
+        }
+    }
+    .DotDivider {
+        color: rgba(0, 0, 0, 0.68);
+        font-size: 30px;
+        letter-spacing: 0.6em;
+        --baseline-multiplier: 0.22;
+        --x-height-multiplier: 0.342;
+    }
+    .ImageCaption {
+        &:empty:before {
+            content: attr(placeholder);
+            color: #aaa;
+        }
+        &:not(:empty):focus:before {
+            content: '';
+        }
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    ul,
+    ul li {
+        list-style: disc;
+    }
+    li {
+        margin-top: 0px !important;
+        margin-left: 1.5em !important;
+        & > p {
+            margin-top: 0px !important;
+        }
+        ul {
+            margin-top: 0px !important;
+            list-style: circle;
+            li {
+                list-style: circle;
+            }
+        }
+        ol {
+            margin-top: 0px !important;
+        }
+    }
+    ol,
+    ol li {
+        list-style: decimal;
+    }
+    blockquote {
+        position: relative;
+        margin-bottom: 25px;
+        letter-spacing: 0.02rem;
+        line-height: 1.5em;
+        &:before {
+            content: '';
+            width: 3px;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: -28px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    }
+}

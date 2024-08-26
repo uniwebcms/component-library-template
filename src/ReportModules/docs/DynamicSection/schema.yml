@@ -1,0 +1,55 @@
+title: 
+  en: Section - Dynamic
+  fr: Section - Dynamique
+
+description:
+  en: This component works just like the Section component, but it is content can be generated automatically based on the input and manual formatting. It is useful when input is a profile section that has multiple items, and each item renders the same way.
+  fr: Ce composant fonctionne exactement comme le composant Section, mais son contenu peut être généré automatiquement en fonction de l'entrée et de la mise en forme manuelle. Il est utile lorsque l'entrée est une section de profil qui contient plusieurs éléments, et chaque élément est rendu de la même manière.
+
+properties:
+  formatting:
+    label:
+      en: Formatting
+      fr: Mise en forme
+    type: string
+    default: none
+    enum:
+      - label:
+          en: None
+          fr: Aucune
+        value: none
+      - label:
+          en: Two level indentation
+          fr: Deux niveaux d'indentation
+        value: two-level-indentation
+      - label:
+          en: Two-column layout
+          fr: Mise en page à deux colonnes
+        value: two-column-layout
+      - label: 
+          en: Two-column layout (wide)
+          fr: Mise en page à deux colonnes (large)
+        value: two-column-layout-wide
+      - label:
+          en: Two-column layout (justified)
+          fr: Mise en page à deux colonnes (justifiée)
+        value: two-column-layout-justified
+      - label:
+          en: Ordered list
+          fr: Liste ordonnée
+        value: ordered-list
+      - label:
+          en: Unordered list
+          fr: Liste non ordonnée
+        value: unordered-list
+      - label: 
+          en: Left indentation
+          fr: Indentation à gauche
+        value: left-indentation
+      - label:
+          en: Group items
+          fr: Grouper les éléments
+        value: group-items
+    description: 
+      en: Choose the formatting rule for the section data.
+      fr: Choisissez la règle de mise en forme pour les données de la section.

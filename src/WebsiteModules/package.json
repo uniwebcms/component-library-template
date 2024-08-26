@@ -1,0 +1,21 @@
+{
+    "name": "website-modules",
+    "version": "0.1.0",
+    "private": true,
+    "description": "",
+    "license": "MIT",
+    "main": "index.js",
+    "peerDependencies": {
+        "react": "*",
+        "react-dom": "*"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.7.13",
+        "@tailwindcss/line-clamp": "^0.4.4",
+        "@uniwebcms/module-sdk": "^1.22.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-icons": "^4.11.0",
+        "tailwindcss": "^3.3.3"
+    }
+}
