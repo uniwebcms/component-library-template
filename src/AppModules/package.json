@@ -9,12 +9,11 @@
         "react-dom": "*"
     },
     "dependencies": {
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "@tailwindcss/typography": "^0.5.0",
         "@twind/aspect-ratio": "^0.1.4",
         "@twind/line-clamp": "^0.1.1",
         "@twind/react": "^0.0.4",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "twind": "^0.16.19"
     }
 }

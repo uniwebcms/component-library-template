@@ -10,6 +10,7 @@
         "react-dom": "*"
     },
     "dependencies": {
+        "@emotion/css": "^11.11.2",
         "@headlessui/react": "^1.7.13",
         "@tailwindcss/line-clamp": "^0.4.4",
         "@uniwebcms/module-sdk": "^1.22.1",

@@ -192,7 +192,14 @@ function loadSchema(entryDir) {
 function generateDoc(moduleName) {
     const srcDir = path.join(__dirname, `../src/${moduleName}/docs`);
     const outputDir = path.join(getOutputDirectory(), moduleName, '_site');
-    const schema = loadSchema(srcDir);
+
+    let schema = {};
+
+    if (!fs.existsSync(srcDir)) {
+        console.log(`Doc for module ${moduleName} does not exist.`);
+    } else {
+        loadSchema(srcDir);
+    }
 
     clearDirectory(outputDir);
 

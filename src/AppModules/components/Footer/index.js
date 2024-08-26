@@ -1,5 +1,5 @@
 import React from 'react';
-import { tw } from '../xtwind';
+import { tw } from '../../xtwind';
 
 export default function Footer(props) {
     // a example of footer element with some sample links
