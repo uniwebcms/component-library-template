@@ -166,6 +166,11 @@ function loadSchema(entryDir) {
     const schema = {};
 
     for (const fullPath of files) {
+        // skip the schema.yml file for the module itself, this is for the tutorial to use
+        if (fullPath.endsWith('/_self/schema.yml')) {
+            continue;
+        }
+
         const yamlContent = loadYamlContent(fullPath);
         const assets = yamlContent.assets ?? {};
 
@@ -198,7 +203,7 @@ function generateDoc(moduleName) {
     if (!fs.existsSync(srcDir)) {
         console.log(`Doc for module ${moduleName} does not exist.`);
     } else {
-        loadSchema(srcDir);
+        schema = loadSchema(srcDir);
     }
 
     clearDirectory(outputDir);
