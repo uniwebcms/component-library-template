@@ -81,6 +81,8 @@ jobs:
               run: |
                   echo "Starting build doc"
                   yarn build:doc
+              env:
+                  NODE_ENV: production
 
             - name: Build Tutorial
               if: ${{ needs.prepare.outputs.skip_tutorial == 'true' }}
