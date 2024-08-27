@@ -10,9 +10,11 @@ label:
 assets:
   Screenshot.png:
     title: 
-      en: Screenshot Description
-      fr: Description de la capture d'écran
+      en: Sample screenshot
+      fr: Exemple d'image
 
 elements:
+  pretitle:
   title:
-    type: H2
+  subtitle:
+  text:
