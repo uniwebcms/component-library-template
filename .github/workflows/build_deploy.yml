@@ -75,6 +75,7 @@ jobs:
               run: yarn build:manifest
               env:
                   PUBLIC_URL: ${{ needs.prepare.outputs.public_url }}
+                  NODE_ENV: production
 
             - name: Build Doc
               run: |
