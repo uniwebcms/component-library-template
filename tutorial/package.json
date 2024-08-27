@@ -3,7 +3,6 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "docusaurus": "docusaurus",
         "start": "docusaurus start",
         "clear": "rm -rf docs && rm -rf static/modules && docusaurus clear",
         "build:prod": "docusaurus build --out-dir ../dist/_site",

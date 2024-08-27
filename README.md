@@ -15,7 +15,7 @@ This template leverages the following technologies:
 - **Framework**: React
 - **Styling**: TailwindCSS and Twind
 - **CI/CD**: GitHub Pages Action workflow
-- **Documentation**: Docusara-powered documentation site or script-generated documentation files
+- **Tutorial**: Docusara-powered tutorial site
 - **Utility Libraries**:
   - `@uniwebcms/module-builder` v1.5.2
   - `@uniwebcms/tutorial-builder` v1.3.15
@@ -78,36 +78,33 @@ To build the target module (as defined in the `.env` file) during development, t
 
 By following these steps, you can efficiently develop and test your components with real-time feedback and integration into the Uniweb website studio.
 
-#### Building the Tutorial
+#### Building the Documentation
 
-To create a comprehensive tutorial for your components, the process involves generating a schema that contains detailed information for each component in the selected or all modules. This information is collected from the `doc` folder under each module. There are two approaches to achieve this: using the standalone sub-project `tutorial` or a post-build script.
+Documentation is used in the Uniweb's docufolio system to show the list of available components the module exposes and guides of how to setup, fill data in docufolio to make the selected component perform as expect. To create the documentation for your components, the process involves generating a schema that contains detailed information for each component in the target module (as defined in the `.env` file). This information is collected from the `doc` folder under each module.
 
-1. **Approach 1: Using the `tutorial` Sub-Project**
+##### Using the Post-Build Script
 
-   - The `tutorial` sub-project internally utilizes Docusara as the engine to generate the schema and also create the tutorial website.
-   - To execute this process, run the command:
-     ```bash
-     yarn watch:tutorial
-     ```
-   - This command builds the schema and generates the tutorial website, which is hosted locally on port `3000` by default. 
-   - The schema file is also hosted under port `3000` and can be accessed at the following format:
-     ```
-     http://localhost:3000/modules/[TARGET_MODULE]/schema.json
-     ```
-   - This URL is crucial as it is entered into Uniweb’s WebStyler's "Schema URL" field, allowing you to select components and view their tutorials in Docufolio.
-   - **Advantages**: This approach provides a well-designed tutorial website that is visually rich and interactive, making it ideal for in-depth component documentation and tutorials.
+  - The `yarn watch:doc` post-build script is the recommended method for generating the schema.
+  - This script will build the schema file and place it under the following path:
+    ```
+    build_dev/[TARGET_MODULE]/_site/
+    ```
+  - Since the schema file is generated alongside the JavaScript files, no additional hosting or tunneling is required to access the schema. This means you don’t need to worry about how Uniweb accesses the schema—the process is seamless.
+  - **Important**: The generated schema file will be placed under `build_dev/[TARGET_MODULE]/`. Ensure that you run the `yarn watch` script first to prepare the build environment.
 
-2. **Approach 2: Using the Post-Build Script**
+#### Building the Tutorial Website (Optional)
 
-   - Alternatively, you can use the `yarn watch:doc` post-build script to generate the schema.
-   - This script will build the schema file and place it under the following path:
-     ```
-     build_dev/[TARGET_MODULE]/_site/
-     ```
-   - Since the schema file is generated alongside the JavaScript files, no additional hosting or tunneling is required to access the schema. As a result, you don’t need to enter the Schema URL in Uniweb’s WebStyler.
-   - **Advantages**: This approach is more compact and lightweight, eliminating the need for the `tutorial` sub-project entirely. It’s suitable for users who prefer a simpler setup without the overhead of a full tutorial website.
+If you want to create a comprehensive tutorial website for your components, you can generate a website that contains detailed information for each component across all modules. This step is optional but can be useful for more in-depth documentation.
 
-Each approach has its own benefits, allowing you to choose based on your project needs. The first approach provides a comprehensive, visually rich tutorial site, while the second is more streamlined and straightforward, ideal for quick setups and testing.
+**Using the `tutorial` Sub-Project**
+
+  - The `tutorial` sub-project uses Docusara as the engine to generate the tutorial website.
+  - To execute this process, run the following command:
+    ```bash
+    yarn watch:tutorial
+    ```
+  - This command will generate the tutorial website, which is hosted locally on port 3000 by default. The website offers a visually rich and interactive platform to view and explore component documentation.
+
 
 ### 5. Build the Project
 
@@ -144,3 +141,51 @@ The workflow consists of four main steps:
   - The release job hosts the build files in a dedicated `gh-pages` branch, which can keep older builds. This can be useful for tracking changes over time or rolling back to a previous version if necessary.
 
 Both approaches work effectively, so the choice depends on your specific needs. If you require version tracking and potential rollbacks, the release branch may be more suitable. Otherwise, the deploy job is simpler and leverages Uniweb’s built-in backup and fallback capabilities.
+
+### Extra Reading
+
+This section introduces some advanced scripts available for more specific use cases, particularly for those who prefer to customize their development environment further.
+
+#### Advanced Scripts in the `/builder/` Folder
+
+1. **`yarn watch:local`**:
+   - This script functions similarly to `yarn watch` but is specifically designed not to work with the automatic tunneling provided by `yarn serve -tunnel`.
+   - The key difference is in the Webpack configuration: the public path is set to `localhost` along with the development port, rather than the tunnel URL.
+   - When using `yarn watch:local`, you will need to manually run the `yarn serve` script to serve the JavaScript files. The order of execution for these two scripts does not matter.
+   - These scripts are typically used in conjunction with a local Uniweb instance for faster development cycles. However, they can also be paired with alternative tunneling technologies to expose your `localhost` to a public URL, which can then be used as the dev_mode URL in a live Uniweb’s Website Studio (previewer).
+   - This setup is ideal for developers who prefer using tunneling methods other than Cloudflare for their local development environment.
+
+2. **`yarn build:manifest`**:
+   - This script is used to create the manifest file for the latest build of the Target Module, as specified in the `.env` file.
+   - The manifest file is crucial in production environments, as Uniweb requires this file to back up the remote JavaScript files and the schema file. For this reason, `yarn build:manifest` is included as one of the steps in the GitHub Actions workflow.
+   - While it is primarily used in production, this script can also be valuable in a local development environment. Running it locally allows you to debug or inspect the content of the manifest file, helping you ensure everything is configured correctly before pushing to production.
+   - **Important**: Make sure to execute this script after running a build script like `yarn watch` to ensure that the manifest reflects the most recent build.
+
+3. **`yarn build:dev`**:
+   - This script explicitly defines the build mode as development.
+   - When you run this script, the build files are generated and placed under the `build_dev` directory.
+   - It is particularly useful for previewing the build results in a development environment, allowing you to see how your components behave before pushing any changes to production.
+
+4. **`yarn build:prod`**:
+   - This script explicitly defines the build mode as production.
+   - The build files generated by this script are placed in the `dist` directory.
+   - Running `yarn build:prod` is essential when you want to preview the final production build. This allows you to verify that everything is working as expected in a production-like environment before deploying.
+   - **Note**: These scripts are ideal for scenarios where you need to inspect the differences between development and production builds, helping ensure consistency and functionality across environments.
+
+#### Advanced Scripts in the `tutorial` Subproject
+
+1. **`yarn clear`**:
+   - This script is used to clear the tutorial site's generated assets, caches, and build artifacts.
+   - It’s a useful utility for cleaning up the environment, especially before a fresh build or when troubleshooting issues related to stale files.
+
+2. **`yarn build:prod`**:
+   - This script is used to build the tutorial site in production mode manually during the local development stage.
+   - **Important**: Before running this script, ensure that two environment variables are pre-filled:
+     - `TUTORIAL_SITE_URL`: This value is directly passed to the `url` property in the `docusaurus.config` file. [Learn more about the `url` property](https://docusaurus.io/docs/docusaurus.config.js#url).
+     - `TUTORIAL_SITE_BASE_URL`: This value is directly passed to the `baseUrl` property in the `docusaurus.config` file. [Learn more about the `baseUrl` property](https://docusaurus.io/docs/docusaurus.config.js#baseUrl).
+   - A common use case for this script is when hosting the tutorial site on a public website. In such cases, set these variables to reflect the public site URL.
+
+3. **`yarn build:gh`**:
+   - This script also builds the tutorial site in production mode but is specifically designed to work with the GitHub Actions workflow.
+   - It knows which `url` and `baseUrl` to use based on the environment provided by GitHub Actions, making it the preferred choice for CI/CD pipelines.
+
