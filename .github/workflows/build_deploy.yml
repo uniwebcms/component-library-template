@@ -44,7 +44,7 @@ jobs:
                   log-variables: true
                   export-variables: true
 
-            - id: tutorial # read and export the value of the SKIP_BUILD_TUTORIAL variable
+            - id: tutorial # read and export the value of the BUILD_TUTORIAL variable
               run: echo "build_tutorial=${BUILD_TUTORIAL}" >> "$GITHUB_OUTPUT"
             - id: branch # read and export the value of the RELEASE_BRANCH variable
               run: echo "release_branch=${RELEASE_BRANCH}" >> "$GITHUB_OUTPUT"
@@ -85,7 +85,7 @@ jobs:
                   NODE_ENV: production
 
             - name: Build Tutorial
-              if: ${{ needs.prepare.outputs.skip_tutorial == 'true' }}
+              if: ${{ needs.prepare.outputs.build_tutorial == 'true' }}
               run: |
                   echo "Starting build tutorial"
                   yarn build:tutorial
