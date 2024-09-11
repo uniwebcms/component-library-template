@@ -4,15 +4,16 @@
     "private": true,
     "description": "",
     "scripts": {
+        "build:exports": "run-func preBuild.js generateExports",
         "build": "webpack",
         "watch:tunnel": "webpack --mode=development --watch --env tunnel",
         "watch:local": "webpack --mode=development --watch --env local",
         "serve": "node server.js",
         "build:manifest": "run-func postBuild.js generateManifest",
         "build:doc": "run-func postBuild.js generateDoc",
-        "watch_and_run": "node watcher.js",
         "build:dev": "webpack --mode=development",
-        "build:prod": "webpack --mode=production"
+        "build:prod": "webpack --mode=production",
+        "watch_and_run": "node watcher.js"
     },
     "author": "",
     "license": "ISC",

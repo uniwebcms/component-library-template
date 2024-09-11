@@ -17,11 +17,11 @@ if (!targetScript) {
 }
 
 // Construct the path pattern to watch
-const pathPattern = `../src/${TARGET_MODULE}/docs/**/*`;
+const pathPattern = `../src/${TARGET_MODULE}/src/components/**/meta/config.yml`;
 
 // Initialize the watcher with the constructed path pattern
 const watcher = chokidar.watch(pathPattern, {
-    persistent: true
+    persistent: true,
 });
 
 // Function to run the target script

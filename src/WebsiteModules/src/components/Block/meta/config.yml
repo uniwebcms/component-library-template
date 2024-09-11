@@ -1,0 +1,97 @@
+title: 
+  en: Block
+  fr: Block
+description: 
+  en: A block displays content that is entered from the docufolio.
+  fr: Un bloc affiche le contenu qui est saisi à partir du docufolio.
+export: true
+properties:
+  alignment: 
+    label: 
+      en: Content Alignment
+      fr: Alignement du contenu
+    type: string
+    enum:
+      - label:
+          en: Left
+          fr: Gauche
+        value: left
+      - label:
+          en: Center
+          fr: Centre
+        value: center
+      - label:
+          en: Right
+          fr: Droite
+        value: right
+    default: left
+    description: 
+      en: Controls the alignment of the content in the block.
+      fr: Contrôle l'alignement du contenu dans le bloc.
+  spacing: 
+    label: 
+      en: Spacing
+      fr: Espacement
+    type: string
+    enum:
+      - label:
+          en: Small
+          fr: Petit
+        value: small
+      - label:
+          en: Medium
+          fr: Moyen
+        value: medium
+      - label:
+          en: Large
+          fr: Grand
+        value: large
+    default: medium
+    description: 
+      en: Controls the spacing around the block.
+      fr: Contrôle l'espacement autour du bloc.
+presets:
+  centered_tight:
+    label: 
+      en: Centered Layout with tight spacing
+      fr: Mise en page centrée avec un espacement serré
+    properties:
+      alignment: center
+      spacing: small
+    image: centered_tight.png # use this information to create the images when build the doc
+    source:
+      bg_url: https://via.placeholder.com/150
+  left_loose:
+    label: 
+      en: Left Layout with loose spacing
+      fr: Mise en page à gauche avec un espacement lâche
+    properties:
+      alignment: left
+      spacing: large
+    image: left_loose.png
+  right_medium:
+    label: 
+      en: Right Layout with medium spacing
+      fr: Mise en page à droite avec un espacement moyen
+    properties:
+      alignment: right
+      spacing: medium
+    image: right_medium.png
+# assets:
+#     centered_tight.png:
+#       title:
+#         en: Example of a centered layout with tight spacing.
+#         fr: Exemple d'une mise en page centrée avec un espacement serré.
+#     left_loose.png:
+#       title:
+#         en: Example of a left layout with loose spacing.
+#         fr: Exemple d'une mise en page à gauche avec un espacement lâche.
+#     right_medium.png:
+#       title:
+#         en: Example of a right layout with medium spacing.
+#         fr: Exemple d'une mise en page à droite avec un espacement moyen.
+elements:
+  pretitle:
+  title:
+  subtitle:
+  text:

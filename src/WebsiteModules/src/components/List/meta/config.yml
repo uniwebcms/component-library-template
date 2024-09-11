@@ -1,0 +1,49 @@
+title: 
+  en: List
+  fr: List
+description:
+  en: A sample list of items with text and icons.
+  fr: Une liste d'éléments avec texte et icônes.
+export: true
+properties:
+  size:
+    label:
+      en: Size
+      fr: Taille
+    type: string
+    enum:
+      - label:
+          en: Small
+          fr: Petit
+        value: small
+      - label:
+          en: Medium
+          fr: Moyen
+        value: medium
+      - label:
+          en: Large
+          fr: Grand
+        value: large
+    default: medium
+    description:
+      en: Controls the size of text and icons in the list.
+      fr: Contrôle la taille du texte et des icônes dans la liste.
+presets:
+  small:
+    label:
+      en: Small item list
+      fr: Liste d'éléments petits
+    properties:
+      size: small
+  medium:
+    label:
+      en: Medium item list
+      fr: Liste d'éléments moyens
+    properties:
+      size: medium
+  large:
+    label:
+      en: Large item list
+      fr: Liste d'éléments grands
+    properties:
+      size: large

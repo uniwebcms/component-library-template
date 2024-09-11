@@ -1,0 +1,5 @@
+templates:
+  - name: "Plain"
+    components:
+      - name: "Block"
+        preset: "centered_tight"

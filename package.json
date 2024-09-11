@@ -10,12 +10,12 @@
     ],
     "scripts": {
         "serve": "cd builder && yarn run serve",
+        "watch:exports": "cd builder && yarn run watch_and_run 'yarn run-func preBuild.js generateExports'",
         "watch": "cd builder && yarn run watch:tunnel",
         "watch:doc": "cd builder && yarn run watch_and_run 'yarn run build:doc'",
-        "watch:tutorial": "cd tutorial && yarn start",
+        "build:exports": "cd builder && yarn run-func preBuild.js generateExports",
         "build": "cd builder && yarn run build",
         "build:doc": "cd builder && yarn run build:doc",
-        "build:tutorial": "cd tutorial && yarn build:gh",
         "build:manifest": "cd builder && yarn run build:manifest"
     },
     "dependencies": {

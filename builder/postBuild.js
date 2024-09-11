@@ -74,7 +74,9 @@ function createFileMappings(buildDir, moduleName, latestVersion, publicUrl) {
         files.forEach((file) => {
             const filePath = path.join(buildDir, file);
             if (fs.statSync(filePath).isFile()) {
-                fileMappings[file] = `${publicUrl.toLowerCase()}/${moduleName}/${latestVersion}/${file}`;
+                fileMappings[
+                    file
+                ] = `${publicUrl.toLowerCase()}/${moduleName}/${latestVersion}/${file}`;
             }
         });
     } catch (err) {
@@ -166,13 +168,8 @@ function loadSchema(entryDir) {
     const schema = {};
 
     for (const fullPath of files) {
-        // skip the schema.yml file for the module itself, this is for the tutorial to use
-        if (fullPath.endsWith('/_self/schema.yml')) {
-            continue;
-        }
-
-        const yamlContent = loadYamlContent(fullPath);
-        const assets = yamlContent.assets ?? {};
+        const { assets = {}, ...yamlContent } = loadYamlContent(fullPath);
+        // const assets = yamlContent.assets ?? {};
 
         const images = [];
 
@@ -181,7 +178,12 @@ function loadSchema(entryDir) {
 
             if (fs.existsSync(image)) {
                 const dimensions = sizeOf(image);
-                images.push({ key, ...dimensions, path: path.relative(entryDir, image) });
+                images.push({
+                    key,
+                    ...dimensions,
+                    path: path.relative(entryDir, image),
+                    title: assets[key].title,
+                });
             }
         }
 
@@ -195,28 +197,28 @@ function loadSchema(entryDir) {
 
 // Function to generate doc.json from schema.yml (used in doc generation)
 function generateDoc(moduleName) {
-    const srcDir = path.join(__dirname, `../src/${moduleName}/docs`);
+    const componentsDir = path.join(__dirname, '..', 'src', moduleName, 'src', 'components');
     const outputDir = path.join(getOutputDirectory(), moduleName, '_site');
 
     let schema = {};
 
-    if (!fs.existsSync(srcDir)) {
-        console.log(`Doc for module ${moduleName} does not exist.`);
+    if (!fs.existsSync(componentsDir)) {
+        console.log(`Components directory for module ${moduleName} does not exist.`);
     } else {
-        schema = loadSchema(srcDir);
+        schema = loadSchema(componentsDir);
     }
 
     clearDirectory(outputDir);
 
-    autoCompleteComponents(schema);
+    // autoCompleteComponents(schema);
 
     // Copy images to the public directory
     Object.keys(schema).forEach((component) => {
         const images = schema[component].images;
 
         for (const image of images) {
-            const imgSrcPath = path.resolve(srcDir, image.path);
-            const imgTgtPath = path.join(outputDir, 'assets', image.path);
+            const imgSrcPath = path.resolve(componentsDir, image.path);
+            const imgTgtPath = path.join(outputDir, 'assets', image.path.replace('/meta/', '/'));
             image.path = path.relative(outputDir, imgTgtPath);
 
             // Ensure that the path exists (including sub directories)
@@ -233,5 +235,5 @@ function generateDoc(moduleName) {
 // Export the functions for use in the script
 module.exports = {
     generateManifest: () => handleModules(generateManifest),
-    generateDoc: () => handleModules(generateDoc)
+    generateDoc: () => handleModules(generateDoc),
 };
