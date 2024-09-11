@@ -40,11 +40,7 @@ function makeEntryPath(libraryName, extension = '**/*.{js,jsx,ts,tsx}') {
 }
 
 module.exports = {
-    content: [
-        '../src/**/*.{js,jsx}',
-        makeEntryPath('@uniwebcms/module-sdk'),
-        makeEntryPath('flowbite-react'),
-    ],
+    content: ['../src/**/*.{js,jsx}', makeEntryPath('@uniwebcms/module-sdk')],
     plugins: [require('@tailwindcss/line-clamp'), makeEntryPath('@uniwebcms/module-sdk', 'plugin')],
     theme: {
         extend: {
