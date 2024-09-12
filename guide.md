@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Uniweb is a web CMS app that helps create dynamic websites. Each website is linked to a component library, which is a webpack federated module that exports components. These components render web page sections based on data entered in the CMS app.
+Uniweb is a web CMS app that helps create dynamic websites. Each website is linked to a component library, which is a webpack federated module that exports components. These components render web page sections based on data entered in the CMS app. The handling of components and dynamic data is done by the Uniweb Engine, which is the initial JavaScript code that is loaded by every Uniweb-made website.
 
 This guide will walk you through the process of creating a component library for the Uniweb platform, assuming knowledge of modern JavaScript, React, and Tailwind CSS.
 
