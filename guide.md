@@ -19,16 +19,17 @@ src/
 │   │   │   └── meta/
 │   │   │       ├── config.yml
 │   │   │       ├── default.png
-│   │   │       ├── expanded.jpg
-│   │   │       └── usage.md
+│   │   │       ├── preset1.jpg
+│   │   │       └── notes.md
 │   │   ├── ComponentB/
 │   │   │   └── ... (similar structure)
 │   │   └── ...
-│   ├── utils/
+│   ├── module.yml
 │   └── index.js
-├── module.yml
-├── scripts/
-│   └── generate-metadata.js
+├── _shared/
+│   └── SharedComponentA1/
+│   │   └── ... (similar structure)
+│   └── ...
 ├── package.json
 └── README.md
 ```
@@ -43,7 +44,7 @@ Here's an example of a basic component structure:
 
 ```jsx
 import React from 'react';
-import { SafeHtml, twMerge, Image, Link, twJoin } from '@uniwebcms/module-sdk';
+import { SafeHtml, Image, Link, twMerge, twJoin } from '@uniwebcms/module-sdk';
 
 export default function ComponentName(props) {
     const { block, page, website, input } = props;
@@ -61,8 +62,8 @@ export default function ComponentName(props) {
 Each component exported by a library should have a `meta/` directory containing:
 
 1. `config.yml`: Defines the component's parameters and presets.
-2. Screenshot images (e.g., `default.png`, `centered.png`) showing different component states.
-3. `usage.md`: Optional file for additional component documentation.
+2. Screenshot images (e.g., `default.png`, `preset1.png`) showing previews for different component presets.
+3. `notes.md`: Optional file for additional component documentation.
 
 Example `config.yml`:
 
@@ -77,7 +78,7 @@ parameters:
     default: Default Title
   # ... other parameters
 presets:
-  expanded:
+  preset1:
     label: Expanded View
     description: Shows the component in its expanded state
     properties:
@@ -91,7 +92,7 @@ presets:
 The Uniweb SDK provides helper components and utility functions to streamline development. Import and use these in your components:
 
 ```jsx
-import { SafeHtml, twMerge, Image, Link, twJoin } from '@uniwebcms/module-sdk';
+import { SafeHtml, Image, Link, twMerge, twJoin } from '@uniwebcms/module-sdk';
 ```
 
 Key SDK features:
