@@ -35,6 +35,7 @@ presets:
       fr: Liste d'éléments petits
     properties:
       size: small
+    image: small.png
   medium:
     label:
       en: Medium item list

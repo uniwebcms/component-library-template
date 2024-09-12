@@ -3,7 +3,6 @@ const path = require('path');
 const yaml = require('js-yaml');
 const dotenv = require('dotenv');
 const sizeOf = require('image-size');
-const { autoCompleteComponents } = require('@uniwebcms/tutorial-builder/helper');
 
 // Load environment variables from .env files
 dotenv.config({ path: '../.env.dev' });
@@ -163,33 +162,46 @@ function loadYamlContent(fullPath) {
 
 // Load schema from the given directory
 function loadSchema(entryDir) {
-    const files = scanDirectory(entryDir, ['.yml']);
+    const moduleFile = path.join(entryDir, 'module.yml');
+    const componentsDir = path.join(entryDir, 'src', 'components');
+
+    const componentFiles = scanDirectory(componentsDir, ['.yml']);
 
     const schema = {};
 
-    for (const fullPath of files) {
-        const { assets = {}, ...yamlContent } = loadYamlContent(fullPath);
-        // const assets = yamlContent.assets ?? {};
+    if (fs.existsSync(moduleFile)) {
+        const content = loadYamlContent(moduleFile);
+        schema._self = content;
+    }
 
-        const images = [];
+    for (const fullPath of componentFiles) {
+        const { presets = {}, ...yamlContent } = loadYamlContent(fullPath);
 
-        for (const key in assets) {
-            const image = path.join(path.dirname(fullPath), key);
+        const parsedPresets = [];
 
-            if (fs.existsSync(image)) {
-                const dimensions = sizeOf(image);
-                images.push({
-                    key,
-                    ...dimensions,
-                    path: path.relative(entryDir, image),
-                    title: assets[key].title,
+        for (const key in presets) {
+            const image = presets[key].image;
+            const file = image ? path.join(path.dirname(fullPath), image) : null;
+
+            if (!file || !fs.existsSync(file)) {
+                console.warn(`Image not found for preset ${key}, path: ${fullPath}`);
+            } else {
+                const dimensions = sizeOf(file);
+                parsedPresets.push({
+                    ...presets[key],
+                    image: {
+                        ...dimensions,
+                        path: path.relative(componentsDir, file),
+                    },
                 });
             }
         }
 
-        const [component] = getPathSegments(path.relative(entryDir, fullPath));
+        const [component] = getPathSegments(path.relative(componentsDir, fullPath));
 
-        schema[component] = { ...yamlContent, images, name: component };
+        console.log('component', component);
+
+        schema[component] = { ...yamlContent, presets: parsedPresets, name: component };
     }
 
     return schema;
@@ -197,34 +209,32 @@ function loadSchema(entryDir) {
 
 // Function to generate doc.json from schema.yml (used in doc generation)
 function generateDoc(moduleName) {
-    const componentsDir = path.join(__dirname, '..', 'src', moduleName, 'src', 'components');
+    const moduleDir = path.join(__dirname, '..', 'src', moduleName);
     const outputDir = path.join(getOutputDirectory(), moduleName, '_site');
 
-    let schema = {};
-
-    if (!fs.existsSync(componentsDir)) {
-        console.log(`Components directory for module ${moduleName} does not exist.`);
-    } else {
-        schema = loadSchema(componentsDir);
-    }
+    let schema = loadSchema(moduleDir);
 
     clearDirectory(outputDir);
 
-    // autoCompleteComponents(schema);
-
     // Copy images to the public directory
     Object.keys(schema).forEach((component) => {
-        const images = schema[component].images;
+        // skip _self, as it is not a component
+        if (component !== '_self') {
+            const presets = schema[component].presets;
 
-        for (const image of images) {
-            const imgSrcPath = path.resolve(componentsDir, image.path);
-            const imgTgtPath = path.join(outputDir, 'assets', image.path.replace('/meta/', '/'));
-            image.path = path.relative(outputDir, imgTgtPath);
-
-            // Ensure that the path exists (including sub directories)
-            fs.mkdirSync(path.dirname(imgTgtPath), { recursive: true });
-
-            fs.copyFileSync(imgSrcPath, imgTgtPath);
+            for (const preset of presets) {
+                const image = preset.image;
+                const imgSrcPath = path.resolve(moduleDir, 'src', 'components', image.path);
+                const imgTgtPath = path.join(
+                    outputDir,
+                    'assets',
+                    image.path.replace('/meta/', '/')
+                );
+                image.path = path.relative(outputDir, imgTgtPath);
+                // Ensure that the path exists (including sub directories)
+                fs.mkdirSync(path.dirname(imgTgtPath), { recursive: true });
+                fs.copyFileSync(imgSrcPath, imgTgtPath);
+            }
         }
     });
 

@@ -1,5 +1,10 @@
-templates:
-  - name: "Plain"
+name: WebsiteModules
+description: A collection of modules for building websites.
+page_templates:
+  - name: About
     components:
-      - name: "Block"
-        preset: "centered_tight"
+      - name: Block
+        preset: centered_tight
+      - name: List
+        preset: medium
+version: preset

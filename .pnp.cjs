@@ -3947,40 +3947,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["@uniwebcms/tutorial-builder", [\
-      ["npm:1.3.15", {\
-        "packageLocation": "./.yarn/cache/@uniwebcms-tutorial-builder-npm-1.3.15-10157d819f-adaa33bd03.zip/node_modules/@uniwebcms/tutorial-builder/",\
-        "packageDependencies": [\
-          ["@uniwebcms/tutorial-builder", "npm:1.3.15"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
-      ["virtual:8a1e8052a0a79842a09faf0801c0d053935f8c7d4f2e792eac0bd75b1d2972c14d731b7170ebebea35038688bffa665bf9c7aa392d96285b51f4a5d8bd2a4aeb#npm:1.3.15", {\
-        "packageLocation": "./.yarn/__virtual__/@uniwebcms-tutorial-builder-virtual-893640c3b2/0/cache/@uniwebcms-tutorial-builder-npm-1.3.15-10157d819f-adaa33bd03.zip/node_modules/@uniwebcms/tutorial-builder/",\
-        "packageDependencies": [\
-          ["@uniwebcms/tutorial-builder", "virtual:8a1e8052a0a79842a09faf0801c0d053935f8c7d4f2e792eac0bd75b1d2972c14d731b7170ebebea35038688bffa665bf9c7aa392d96285b51f4a5d8bd2a4aeb#npm:1.3.15"],\
-          ["@types/react", "npm:18.3.4"],\
-          ["@types/react-dom", null],\
-          ["chalk", "npm:4.1.2"],\
-          ["fs-extra", "npm:11.1.1"],\
-          ["glob", "npm:10.3.10"],\
-          ["image-size", "npm:1.0.2"],\
-          ["js-yaml", "npm:4.1.0"],\
-          ["photoswipe", "npm:5.3.8"],\
-          ["prop-types", "npm:15.8.1"],\
-          ["react", "npm:18.2.0"],\
-          ["react-dom", "virtual:8a1e8052a0a79842a09faf0801c0d053935f8c7d4f2e792eac0bd75b1d2972c14d731b7170ebebea35038688bffa665bf9c7aa392d96285b51f4a5d8bd2a4aeb#npm:18.2.0"],\
-          ["react-photoswipe-gallery", "virtual:893640c3b2371e374d2c6f418e4d48cba7049d7958119e88a617c95ec3c303f8ea8497e12e3fcda3179666f89944f9feac6329fe35db900e598296717a68f3eb#npm:2.2.7"]\
-        ],\
-        "packagePeers": [\
-          "@types/react-dom",\
-          "@types/react",\
-          "react-dom",\
-          "react"\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["@webassemblyjs/ast", [\
       ["npm:1.11.6", {\
         "packageLocation": "./.yarn/cache/@webassemblyjs-ast-npm-1.11.6-d3fd2bb49a-4c1303971c.zip/node_modules/@webassemblyjs/ast/",\
@@ -4857,7 +4823,6 @@ const RAW_RUNTIME_STATE =
           ["@mdx-js/react", "virtual:8a1e8052a0a79842a09faf0801c0d053935f8c7d4f2e792eac0bd75b1d2972c14d731b7170ebebea35038688bffa665bf9c7aa392d96285b51f4a5d8bd2a4aeb#npm:3.0.1"],\
           ["@types/react", "npm:18.3.4"],\
           ["@uniwebcms/module-builder", "virtual:8a1e8052a0a79842a09faf0801c0d053935f8c7d4f2e792eac0bd75b1d2972c14d731b7170ebebea35038688bffa665bf9c7aa392d96285b51f4a5d8bd2a4aeb#npm:1.5.2"],\
-          ["@uniwebcms/tutorial-builder", "virtual:8a1e8052a0a79842a09faf0801c0d053935f8c7d4f2e792eac0bd75b1d2972c14d731b7170ebebea35038688bffa665bf9c7aa392d96285b51f4a5d8bd2a4aeb#npm:1.3.15"],\
           ["babel-loader", "virtual:8a1e8052a0a79842a09faf0801c0d053935f8c7d4f2e792eac0bd75b1d2972c14d731b7170ebebea35038688bffa665bf9c7aa392d96285b51f4a5d8bd2a4aeb#npm:8.3.0"],\
           ["chokidar", "npm:3.6.0"],\
           ["cloudflared", "npm:0.4.0"],\
@@ -6181,16 +6146,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["fs-extra", [\
-      ["npm:11.1.1", {\
-        "packageLocation": "./.yarn/cache/fs-extra-npm-11.1.1-ca44602180-c4e9fabf97.zip/node_modules/fs-extra/",\
-        "packageDependencies": [\
-          ["fs-extra", "npm:11.1.1"],\
-          ["graceful-fs", "npm:4.2.11"],\
-          ["jsonfile", "npm:6.1.0"],\
-          ["universalify", "npm:2.0.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:11.2.0", {\
         "packageLocation": "./.yarn/cache/fs-extra-npm-11.2.0-6783080799-0579bf6726.zip/node_modules/fs-extra/",\
         "packageDependencies": [\
@@ -6304,18 +6259,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["glob", [\
-      ["npm:10.3.10", {\
-        "packageLocation": "./.yarn/cache/glob-npm-10.3.10-da1ef8b112-38bdb2c9ce.zip/node_modules/glob/",\
-        "packageDependencies": [\
-          ["glob", "npm:10.3.10"],\
-          ["foreground-child", "npm:3.1.1"],\
-          ["jackspeak", "npm:2.3.6"],\
-          ["minimatch", "npm:9.0.3"],\
-          ["minipass", "npm:7.0.2"],\
-          ["path-scurry", "npm:1.10.1"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:10.3.3", {\
         "packageLocation": "./.yarn/cache/glob-npm-10.3.3-2d9abea8c7-0d1a59dff5.zip/node_modules/glob/",\
         "packageDependencies": [\
@@ -6663,14 +6606,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["image-size", [\
-      ["npm:1.0.2", {\
-        "packageLocation": "./.yarn/cache/image-size-npm-1.0.2-ed5424d843-693dfb2f8b.zip/node_modules/image-size/",\
-        "packageDependencies": [\
-          ["image-size", "npm:1.0.2"],\
-          ["queue", "npm:6.0.2"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:1.1.1", {\
         "packageLocation": "./.yarn/cache/image-size-npm-1.1.1-4e6d664667-f28966dd3f.zip/node_modules/image-size/",\
         "packageDependencies": [\
@@ -6984,15 +6919,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/jackspeak-npm-2.2.2-374ca454fe-0f43b70bdd.zip/node_modules/jackspeak/",\
         "packageDependencies": [\
           ["jackspeak", "npm:2.2.2"],\
-          ["@isaacs/cliui", "npm:8.0.2"],\
-          ["@pkgjs/parseargs", "npm:0.11.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:2.3.6", {\
-        "packageLocation": "./.yarn/cache/jackspeak-npm-2.3.6-42e1233172-6e6490d676.zip/node_modules/jackspeak/",\
-        "packageDependencies": [\
-          ["jackspeak", "npm:2.3.6"],\
           ["@isaacs/cliui", "npm:8.0.2"],\
           ["@pkgjs/parseargs", "npm:0.11.0"]\
         ],\
@@ -8374,15 +8300,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["photoswipe", [\
-      ["npm:5.3.8", {\
-        "packageLocation": "./.yarn/cache/photoswipe-npm-5.3.8-f8a0f17f0b-4585aa44da.zip/node_modules/photoswipe/",\
-        "packageDependencies": [\
-          ["photoswipe", "npm:5.3.8"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["picocolors", [\
       ["npm:1.0.0", {\
         "packageLocation": "./.yarn/cache/picocolors-npm-1.0.0-d81e0b1927-a2e8092dd8.zip/node_modules/picocolors/",\
@@ -9461,18 +9378,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["prop-types", [\
-      ["npm:15.8.1", {\
-        "packageLocation": "./.yarn/cache/prop-types-npm-15.8.1-17c71ee7ee-7d959caec0.zip/node_modules/prop-types/",\
-        "packageDependencies": [\
-          ["prop-types", "npm:15.8.1"],\
-          ["loose-envify", "npm:1.4.0"],\
-          ["object-assign", "npm:4.1.1"],\
-          ["react-is", "npm:16.13.1"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["property-information", [\
       ["npm:6.5.0", {\
         "packageLocation": "./.yarn/cache/property-information-npm-6.5.0-1c8c103bec-fced94f3a0.zip/node_modules/property-information/",\
@@ -9698,45 +9603,6 @@ const RAW_RUNTIME_STATE =
         ],\
         "packagePeers": [\
           "@types/react",\
-          "react"\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["react-is", [\
-      ["npm:16.13.1", {\
-        "packageLocation": "./.yarn/cache/react-is-npm-16.13.1-a9b9382b4f-5aa564a1cd.zip/node_modules/react-is/",\
-        "packageDependencies": [\
-          ["react-is", "npm:16.13.1"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["react-photoswipe-gallery", [\
-      ["npm:2.2.7", {\
-        "packageLocation": "./.yarn/cache/react-photoswipe-gallery-npm-2.2.7-7b3f6bdf03-cbeab99646.zip/node_modules/react-photoswipe-gallery/",\
-        "packageDependencies": [\
-          ["react-photoswipe-gallery", "npm:2.2.7"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
-      ["virtual:893640c3b2371e374d2c6f418e4d48cba7049d7958119e88a617c95ec3c303f8ea8497e12e3fcda3179666f89944f9feac6329fe35db900e598296717a68f3eb#npm:2.2.7", {\
-        "packageLocation": "./.yarn/__virtual__/react-photoswipe-gallery-virtual-ffc59cbdf0/0/cache/react-photoswipe-gallery-npm-2.2.7-7b3f6bdf03-cbeab99646.zip/node_modules/react-photoswipe-gallery/",\
-        "packageDependencies": [\
-          ["react-photoswipe-gallery", "virtual:893640c3b2371e374d2c6f418e4d48cba7049d7958119e88a617c95ec3c303f8ea8497e12e3fcda3179666f89944f9feac6329fe35db900e598296717a68f3eb#npm:2.2.7"],\
-          ["@types/photoswipe", null],\
-          ["@types/prop-types", null],\
-          ["@types/react", "npm:18.3.4"],\
-          ["photoswipe", "npm:5.3.8"],\
-          ["prop-types", "npm:15.8.1"],\
-          ["react", "npm:18.2.0"]\
-        ],\
-        "packagePeers": [\
-          "@types/photoswipe",\
-          "@types/prop-types",\
-          "@types/react",\
-          "photoswipe",\
-          "prop-types",\
           "react"\
         ],\
         "linkType": "HARD"\
