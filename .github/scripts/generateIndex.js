@@ -21,7 +21,7 @@ const generateDirectoryContent = (dirPath) => {
         if (isDirectory) {
             content += `
             <li id="collapsible">
-                <div class="flex items-center gap-x-3 group"><span class="cursor-pointer text-blue-600 hover:text-blue-800">${item}</span><button id="copy" class="invisible group-hover:visible text-gray-500 hover:text-gray-700 text-sm">Copy to clipboard</button></div>
+                <div class="flex items-center gap-x-3 group"><span class="cursor-pointer text-blue-600 hover:text-blue-800">⏵ ${item}</span><button id="copy" class="text-gray-500 hover:text-gray-700 text-sm" title="Copy to clipboard">📋 Copy</button></div>
                 <div class="content ml-4 mt-2" style="display: none;">${generateDirectoryContent(
                     itemPath
                 )}</div>
