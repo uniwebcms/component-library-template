@@ -21,7 +21,7 @@ const generateDirectoryContent = (dirPath) => {
         if (isDirectory) {
             content += `
             <li id="collapsible">
-                <div class="flex items-center gap-x-3 group"><span class="cursor-pointer text-blue-600 hover:text-blue-800">⏵ ${item}</span><button id="copy" class="text-gray-500 hover:text-gray-700 text-sm" title="Copy to clipboard">📋 Copy</button></div>
+                <div class="flex items-center gap-x-3 group"><span class="cursor-pointer text-blue-600 hover:text-blue-800">${item}</span><button id="copy" class="text-gray-500 hover:text-gray-700 text-sm" title="Copy to clipboard">📋 Copy</button></div>
                 <div class="content ml-4 mt-2" style="display: none;">${generateDirectoryContent(
                     itemPath
                 )}</div>
@@ -48,8 +48,11 @@ const generateIndex = (dirPath = '.', repoName = 'Unknown Repository') => {
 
             <h1 class="text-3xl font-semibold mb-6">${repoName}</h1>
             
-            <h2 class="text-2xl font-semibold mt-10 mb-4">Contents</h2>
+            <h2 class="text-2xl font-semibold mt-10 mb-4">Available Modules</h2>
             ${generateDirectoryContent(dirPath)}
+
+            <!-- Custom alert box -->
+            <div id="customAlert" class="fixed top-5 left-5 bg-green-500 text-white p-4 rounded shadow-lg opacity-0 transition-opacity duration-300"></div>
 
             <script>
                 // Select all li elements with id "collapsible"
@@ -80,12 +83,25 @@ const generateIndex = (dirPath = '.', repoName = 'Unknown Repository') => {
             </script>
 
             <script>
+                // Function to show the custom alert
+                function showAlert(message) {
+                    const alertBox = document.getElementById('customAlert');
+                    alertBox.innerHTML = message;
+                    alertBox.classList.add('opacity-100');
+        
+                    // Hide the alert after 3 seconds
+                    setTimeout(() => {
+                        alertBox.classList.remove('opacity-100');
+                    }, 3000);
+                }
+                
                 // Function to copy text to clipboard
                 function copyTextToClipboard(text) {
                     navigator.clipboard
                         .writeText(text)
                         .then(() => {
-                            alert('Path copied to clipboard!');
+                            // Show success alert with the copied path
+                            showAlert('Path copied to clipboard!<br><strong>' + text + '</strong>');
                         })
                         .catch((err) => {
                             console.error('Failed to copy path: ', err);
@@ -109,8 +125,8 @@ const generateIndex = (dirPath = '.', repoName = 'Unknown Repository') => {
                             // Find the previous sibling element (the span element)
                             const spanText = button.previousElementSibling.innerText;
 
-                            // Merge the span text with the current URL
-                            const textToCopy = currentUrl + '/' + spanText;
+                            // Merge the span text with the current URL, ensuring no double slashes
+                            const textToCopy = currentUrl.endsWith('/') ? currentUrl + spanText : currentUrl + '/' + spanText;
 
                             // Copy the merged text to clipboard
                             copyTextToClipboard(textToCopy);
