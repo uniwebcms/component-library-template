@@ -1,5 +1,5 @@
 name: WebsiteModules
-description: A collection of modules for building websites.
+description: A collection of components for building websites.
 page_templates:
   - name: About
     components:

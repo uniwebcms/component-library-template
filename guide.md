@@ -2,13 +2,13 @@
 
 ## Introduction
 
-Uniweb is a web CMS app that helps create dynamic websites. Each website is linked to a component library, which is a webpack federated module that exports components. These components render web page sections based on data entered in the CMS app. The handling of components and dynamic data is done by the Uniweb Engine, which is the initial JavaScript code that is loaded by every Uniweb-made website.
+Uniweb is a web CMS app that helps create dynamic websites. Each website is linked to a component library, which is a webpack federated module that exports components. These components render web page sections based on data entered in the CMS app. The handling of components and dynamic data is done by the Uniweb Engine, which is the initial JavaScript code loaded by every Uniweb-made website.
 
-This guide will walk you through the process of creating a component library for the Uniweb platform, assuming knowledge of modern JavaScript, React, and Tailwind CSS.
+This guide will walk you through the process of creating one or more modules (component libraries) for the Uniweb platform, assuming knowledge of modern JavaScript, React, and Tailwind CSS.
 
 ## Project Structure
 
-A typical Uniweb component library project structure looks like this:
+A typical repository of modules for Uniweb looks like this:
 
 ```
 src/
@@ -24,8 +24,11 @@ src/
 │   │   ├── ComponentB/
 │   │   │   └── ... (similar structure)
 │   │   └── ...
+│   ├── index.js
+│   ├── index.css
 │   ├── module.yml
-│   └── index.js
+│   ├── package.json
+│   └── tailwind.config.js
 ├── _shared/
 │   └── SharedComponentA1/
 │   │   └── ... (similar structure)
@@ -38,11 +41,12 @@ src/
 
 ### Basic Component Structure
 
-Each component should be in its own directory under `src/my-module/components/`. The main component file is named `index.jsx` by convention.
+Each component in a module should be in its own directory under `src/my-module/components/`. 
 
 Here's an example of a basic component structure:
 
 ```jsx
+// File: src/my-module/components/ComponentName/index.js
 import React from 'react';
 import { SafeHtml, Image, Link, twMerge, twJoin } from '@uniwebcms/module-sdk';
 
@@ -59,7 +63,7 @@ export default function ComponentName(props) {
 
 ### Component Metadata
 
-Each component exported by a library should have a `meta/` directory containing:
+Each component exported by a library (ie, module) should have a `meta/` directory containing:
 
 1. `config.yml`: Defines the component's parameters and presets.
 2. Screenshot images (e.g., `default.png`, `preset1.png`) showing previews for different component presets.
