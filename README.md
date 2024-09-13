@@ -13,7 +13,7 @@ In this guide, we'll walk you through the process of creating your own Uniweb co
 
 ## 🚀 Setup: Start from a Template Repository
 
-To get started, we've created a handy template repository for you. All you need to do is create a new repository based on this [GitHub template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+To get started, we've created this handy template repository for you. All you need to do is create a new repository based on this template.
 
 <img src="https://docs.github.com/assets/cb-77734/mw-1440/images/help/repository/use-this-template-button.webp" width="300">
 
