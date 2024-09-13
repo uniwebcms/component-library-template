@@ -145,9 +145,11 @@ If you run into any issues during the build process, try these steps:
 
 Create a development branch, like `develop`, for your regular commits. When you're ready for a new production release, merge your changes into the `main` branch. The merge will trigger the GitHub action workflow and host the result on GitHub Pages. 
 
+You can find the URL of your available libraries by visiting the GitHub pages of your repository.
+
 Uniweb will take the files from GitHub Pages and move them to a CDN. To make this happen, create a **Web Styler** in your Uniweb so the system knows about your component library. Simply create a new **Web Styler** and set the URL of your library to `https://USER-NAME.github.io/REPO-NAME/LIBRARY-NAME/`.
 
-You can find the URL of your available libraries by visiting the GitHub pages of your repository.
+The last step is to connect the **Web Styler** that you create and use it in a website. To do that, open a website and click the Edit to open the **Webpages** editor. Then click the action menu `(…)▾` and select "Main settings...". Select your **Web Styler** under the "Web Styler" input field.
 
 **Note:** It may take a few minutes for Uniweb to detect the changes in your GitHub Pages and move the files to the CDN. Be patient and check back later if your updates are not immediately visible on your website.
 
