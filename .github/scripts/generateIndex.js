@@ -20,8 +20,8 @@ const generateDirectoryContent = (dirPath) => {
 
         if (isDirectory) {
             content += `
-            <li>
-                <div class="flex items-center gap-x-3 group"><span class="collapsible cursor-pointer text-blue-600 hover:text-blue-800">${item}</span><button id="copy" class="invisible group-hover:visible text-gray-500 hover:text-gray-700 text-sm">Copy to clipboard</button></div>
+            <li id="collapsible">
+                <div class="flex items-center gap-x-3 group"><span class="cursor-pointer text-blue-600 hover:text-blue-800">${item}</span><button id="copy" class="invisible group-hover:visible text-gray-500 hover:text-gray-700 text-sm">Copy to clipboard</button></div>
                 <div class="content ml-4 mt-2" style="display: none;">${generateDirectoryContent(
                     itemPath
                 )}</div>
@@ -52,10 +52,21 @@ const generateIndex = (dirPath = '.', repoName = 'Unknown Repository') => {
             ${generateDirectoryContent(dirPath)}
 
             <script>
-                const collapibles = document.querySelectorAll('.collapsible');
-                collapibles.forEach(collapsible => {
-                    collapsible.addEventListener('click', function() {
-                        this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none';
+                // Select all li elements with id "collapsible"
+                const collapsibleElements = document.querySelectorAll('li[id="collapsible"]');
+
+                // Loop through each collapsible element
+                collapsibleElements.forEach(collapsible => {
+                    // Select the first child div (name) and attach the click event
+                    const nameDiv = collapsible.firstElementChild;
+
+                    // Add a click event listener to the name div
+                    nameDiv.addEventListener('click', function() {
+                        // Select the next sibling div (nested items)
+                        const nestedItemsDiv = nameDiv.nextElementSibling;
+
+                        // Toggle the display style of the nested items div
+                        nestedItemsDiv.style.display = nestedItemsDiv.style.display === 'none' ? 'block' : 'none';
                     });
                 });
             </script>
