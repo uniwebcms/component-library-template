@@ -80,12 +80,9 @@ const generateIndex = (dirPath = '.', repoName = 'Unknown Repository') => {
                     button.addEventListener('click', () => {
                         // Find the previous sibling element (the span element)
                         const spanText = button.previousElementSibling.innerText;
-
-                        // Get the current website URL
-                        const currentUrl = window.location.href;
-
+                 
                         // Merge the span text with the URL
-                        const textToCopy = ${currentUrl}/${spanText};
+                        const textToCopy = ${window.location.href}/${spanText};
 
                         // Copy the merged text to clipboard
                         copyTextToClipboard(textToCopy);
