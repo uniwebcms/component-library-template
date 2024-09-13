@@ -127,8 +127,8 @@ The watch script output will give you the URL to connect your test website with 
 ```
 
 > 🗒 Remember, when connecting a website with a module, the URL must include the module name in its path because there might be several modules hosted under the same domain.
->
-> ## 🔗 Connecting the module to a website
+
+## 🔗 Connecting the module to a website
 
 Create a test website, turn on its **Dev Mode**, and set the **Component Library URL** to the URL produced in the last step. Continue developing the components in your module and reload the website to get the latest test bundle as it changes.
 
