@@ -153,6 +153,8 @@ You can find the URL of your available libraries by visiting the GitHub pages of
 
 ## 🎯 Next steps
 
+- [Component Library Development Guide](/guide.md)
+  - Learn how to develop your own React components to render the contents of a website.
 - [Content and template editing with Docufolio](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/docufolio.md)
   - Learn how to use Docufolio, a powerful content management tool integrated with Uniweb, to create and edit website content and templates.
 - [Web theme for websites and templates](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/webthemes.md)
