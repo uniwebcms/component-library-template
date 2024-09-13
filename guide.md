@@ -24,8 +24,8 @@ src/
 │   │   ├── ComponentB/
 │   │   │   └── ... (similar structure)
 │   │   └── ...
-│   ├── index.js
 │   ├── index.css
+│   ├── index.js
 │   ├── module.yml
 │   ├── package.json
 │   └── tailwind.config.js
