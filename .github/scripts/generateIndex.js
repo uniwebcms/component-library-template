@@ -68,6 +68,13 @@ const generateIndex = (dirPath = '.', repoName = 'Unknown Repository') => {
                         // Toggle the display style of the nested items div
                         nestedItemsDiv.style.display = nestedItemsDiv.style.display === 'none' ? 'block' : 'none';
                     });
+
+                    // Ensure the copy button (inside the same div) is not affected by the toggle
+                    const copyButton = collapsible.querySelector('button[id="copy"]');
+                    copyButton.addEventListener('click', function(event) {
+                        event.stopPropagation(); // Prevent the click from affecting the toggle
+                        // You can add your copy logic here
+                    });
                 });
             </script>
 
