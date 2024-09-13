@@ -41,7 +41,7 @@ function handleModules(taskFunction) {
 // Function to determine the correct output directory based on environment
 function generateExports(moduleName) {
     const modulePath = path.join(srcPath, moduleName);
-    const componentsPath = path.join(modulePath, 'src', 'components');
+    const componentsPath = path.join(modulePath, 'components');
 
     const components = fs.readdirSync(componentsPath).filter((file) => {
         const componentPath = path.join(componentsPath, file);
@@ -58,7 +58,7 @@ function generateExports(moduleName) {
     const exportStatements = components
         .map((component) => `export { default as ${component} } from './components/${component}';`)
         .join('\n');
-    fs.writeFileSync(path.join(modulePath, 'src', 'dynamicExports.js'), exportStatements);
+    fs.writeFileSync(path.join(modulePath, 'dynamicExports.js'), exportStatements);
     console.log('Dynamic exports generated successfully.');
 }
 

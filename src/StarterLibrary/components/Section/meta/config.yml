@@ -1,12 +1,12 @@
 title: 
-  en: Block
-  fr: Block
+  en: Section
+  fr: Section
 label:
-  en: Block
-  fr: Block
+  en: Section
+  fr: Section
 description: 
-  en: A block displays content that is entered from the docufolio.
-  fr: Un bloc affiche le contenu qui est saisi à partir du docufolio.
+  en: A section block displays content that is entered from the docufolio.
+  fr: Un bloc de section affiche le contenu qui est saisi à partir du docufolio.
 export: true
 properties:
   alignment: 
@@ -61,7 +61,7 @@ presets:
     properties:
       alignment: center
       spacing: small
-    image: centered_tight.png # use this information to create the images when build the doc
+    image: centered_tight.png
     source:
       bg_url: https://via.placeholder.com/150
   left_loose:
@@ -80,19 +80,6 @@ presets:
       alignment: right
       spacing: medium
     image: right_medium.png
-# assets:
-#     centered_tight.png:
-#       title:
-#         en: Example of a centered layout with tight spacing.
-#         fr: Exemple d'une mise en page centrée avec un espacement serré.
-#     left_loose.png:
-#       title:
-#         en: Example of a left layout with loose spacing.
-#         fr: Exemple d'une mise en page à gauche avec un espacement lâche.
-#     right_medium.png:
-#       title:
-#         en: Example of a right layout with medium spacing.
-#         fr: Exemple d'une mise en page à droite avec un espacement moyen.
 elements:
   pretitle:
   title:

@@ -164,7 +164,7 @@ function loadYamlContent(fullPath) {
 // Load schema from the given directory
 function loadSchema(entryDir) {
     const moduleFile = path.join(entryDir, 'module.yml');
-    const componentsDir = path.join(entryDir, 'src', 'components');
+    const componentsDir = path.join(entryDir, 'components');
 
     const componentFiles = scanDirectory(componentsDir, ['.yml']);
 
@@ -185,7 +185,7 @@ function loadSchema(entryDir) {
             const file = image ? path.join(path.dirname(fullPath), image) : null;
 
             if (!file || !fs.existsSync(file)) {
-                console.warn(`Image not found for preset ${key}, path: ${fullPath}`);
+                console.warn(`Skip preset: ${key} due to missing image info, path: ${fullPath}`);
             } else {
                 const dimensions = sizeOf(file);
                 parsedPresets.push({
@@ -199,8 +199,6 @@ function loadSchema(entryDir) {
         }
 
         const [component] = getPathSegments(path.relative(componentsDir, fullPath));
-
-        console.log('component', component);
 
         schema[component] = { ...yamlContent, presets: parsedPresets, name: component };
     }
@@ -227,7 +225,7 @@ function generateDoc(moduleName) {
 
             for (const preset of presets) {
                 const image = preset.image;
-                const imgSrcPath = path.resolve(moduleDir, 'src', 'components', image.path);
+                const imgSrcPath = path.resolve(moduleDir, 'components', image.path);
                 const imgTgtPath = path.join(
                     outputDir,
                     'assets',
