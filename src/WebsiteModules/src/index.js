@@ -13,5 +13,5 @@ export default dynamicExports;
 // export const site = {
 //     Layout: MyLayoutComponent       // take control of the site's layout
 //     props: { disableTheming: true } // eg, disable auto theming
-//     report: { ... }                 // render as a document (eg, Word/Excel/JSON)
+//     report: { ... }                 // for document rendering (eg, Word/Excel/JSON)
 // };
