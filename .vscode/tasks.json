@@ -1,0 +1,76 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Install Packages",
+            "command": "yarn",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "Start Server",
+            "command": "yarn serve -tunnel",
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": "^Tunnel: https://",
+                            "file": 1,
+                            "line": 1,
+                            "column": 1,
+                            "message": 1
+                        }
+                    ],
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": "^Tunnel: https://",
+                        "endsPattern": "^Tunnel: https://"
+                    }
+                }
+            ]
+        },
+        {
+            "label": "Watch Tasks",
+            "dependsOn": ["Watch Exports", "Watch Docs", "Watch Code"],
+            "dependsOrder": "parallel",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "Watch Exports",
+            "command": "yarn watch:exports",
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "Watch Docs",
+            "command": "yarn watch:doc",
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "Watch Code",
+            "command": "yarn watch",
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Start Dev Environment",
+            "dependsOn": [
+                "Install Packages",
+                "Start Server",
+                "Watch Tasks"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
