@@ -1,8 +1,8 @@
 # Uniweb Component Libraries
 
-👋 Welcome to the world of Uniweb component libraries! If you're looking to create dynamic, reusable web components for your Uniweb websites, you've come to the right place.
+Welcome to the world of Uniweb component libraries! If you're looking to create dynamic, reusable web components for your Uniweb websites, you've come to the right place.
 
-[Uniweb](https://uniwebcms.com) is a fantastic web CMS app that helps you create dynamic websites with ease. Each website is linked to a component library, which is essentially a [webpack federated module](https://webpack.js.org/concepts/module-federation/). Don't worry if that sounds a bit technical – in simple terms, it means your components can be shared across multiple websites, making your development process more efficient and consistent.
+[Uniweb](https://uniwebcms.com) is a powerful web CMS app that helps you create dynamic websites with ease. Each website is linked to a component library, which is essentially a [webpack federated module](https://webpack.js.org/concepts/module-federation/). Don't worry if that sounds a bit technical – in simple terms, it means your components can be shared across multiple websites, making your development process more efficient and consistent.
 
 By using component libraries with Uniweb, you'll enjoy benefits like:
 - 🔁 Reusability: Share components across multiple websites to save time and effort.
