@@ -54,28 +54,28 @@ const generateIndex = (dirPath = '.', repoName = 'Unknown Repository') => {
             <script>
                 // Select all li elements with id "collapsible"
                 const collapsibleElements = document.querySelectorAll('li[id="collapsible"]');
-
+                
                 // Loop through each collapsible element
                 collapsibleElements.forEach(collapsible => {
-                    // Select the first child div (name) and attach the click event
-                    const nameDiv = collapsible.firstElementChild;
+                    // Ensure it's a root-level li by checking if it doesn't have a parent li
+                    if (!collapsible.closest('li li')) {
+                        // If it's a root-level li, we handle the name toggle
+                        const nameDiv = collapsible.firstElementChild;
+                        const nameElement = nameDiv.querySelector('span'); // Assuming the name is inside a <span>
 
-                    // Add a click event listener to the name div
-                    nameDiv.addEventListener('click', function() {
-                        // Select the next sibling div (nested items)
-                        const nestedItemsDiv = nameDiv.nextElementSibling;
-
-                        // Toggle the display style of the nested items div
-                        nestedItemsDiv.style.display = nestedItemsDiv.style.display === 'none' ? 'block' : 'none';
-                    });
-
-                    // Ensure the copy button (inside the same div) is not affected by the toggle
-                    const copyButton = collapsible.querySelector('button[id="copy"]');
-                    copyButton.addEventListener('click', function(event) {
-                        event.stopPropagation(); // Prevent the click from affecting the toggle
-                        // You can add your copy logic here
-                    });
-                });
+                        // Add a click event listener to the name span to toggle nested items
+                        nameElement.addEventListener('click', function() {
+                            const nestedItemsDiv = nameDiv.nextElementSibling;
+                            nestedItemsDiv.style.display = nestedItemsDiv.style.display === 'none' ? 'block' : 'none';
+                        });
+                    } else {
+                        // Hide the copy button for nested li elements (non-root level)
+                        const copyButton = collapsible.querySelector('button[id="copy"]');
+                        if (copyButton) {
+                            copyButton.style.display = 'none'; // Hide the copy button for nested li elements
+                        }
+                    }
+});
             </script>
 
             <script>
@@ -100,7 +100,10 @@ const generateIndex = (dirPath = '.', repoName = 'Unknown Repository') => {
 
                     // Loop through each button and add an onclick event listener
                     buttons.forEach(button => {
-                        button.addEventListener('click', () => {
+                        button.addEventListener('click', (event) => {
+                            // Prevent the click event from bubbling up to the parent elements
+                            event.stopPropagation();
+
                             // Find the previous sibling element (the span element)
                             const spanText = button.previousElementSibling.innerText;
 
