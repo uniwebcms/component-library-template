@@ -129,7 +129,7 @@ const generateIndex = (dirPath = '.', repoName = 'Unknown Repository') => {
                             const textToCopy = currentUrl.endsWith('/') ? currentUrl + spanText : currentUrl + '/' + spanText;
 
                             // Copy the merged text to clipboard
-                            copyTextToClipboard(textToCopy);
+                            copyTextToClipboard(textToCopy + '/');
                         });
                     });
                 });
