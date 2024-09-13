@@ -3947,6 +3947,40 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@uniwebcms/tutorial-builder", [\
+      ["npm:1.3.15", {\
+        "packageLocation": "./.yarn/cache/@uniwebcms-tutorial-builder-npm-1.3.15-10157d819f-adaa33bd03.zip/node_modules/@uniwebcms/tutorial-builder/",\
+        "packageDependencies": [\
+          ["@uniwebcms/tutorial-builder", "npm:1.3.15"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:8a1e8052a0a79842a09faf0801c0d053935f8c7d4f2e792eac0bd75b1d2972c14d731b7170ebebea35038688bffa665bf9c7aa392d96285b51f4a5d8bd2a4aeb#npm:1.3.15", {\
+        "packageLocation": "./.yarn/__virtual__/@uniwebcms-tutorial-builder-virtual-893640c3b2/0/cache/@uniwebcms-tutorial-builder-npm-1.3.15-10157d819f-adaa33bd03.zip/node_modules/@uniwebcms/tutorial-builder/",\
+        "packageDependencies": [\
+          ["@uniwebcms/tutorial-builder", "virtual:8a1e8052a0a79842a09faf0801c0d053935f8c7d4f2e792eac0bd75b1d2972c14d731b7170ebebea35038688bffa665bf9c7aa392d96285b51f4a5d8bd2a4aeb#npm:1.3.15"],\
+          ["@types/react", "npm:18.3.4"],\
+          ["@types/react-dom", null],\
+          ["chalk", "npm:4.1.2"],\
+          ["fs-extra", "npm:11.2.0"],\
+          ["glob", "npm:10.4.5"],\
+          ["image-size", "npm:1.1.1"],\
+          ["js-yaml", "npm:4.1.0"],\
+          ["photoswipe", "npm:5.4.4"],\
+          ["prop-types", "npm:15.8.1"],\
+          ["react", "npm:18.2.0"],\
+          ["react-dom", "virtual:8a1e8052a0a79842a09faf0801c0d053935f8c7d4f2e792eac0bd75b1d2972c14d731b7170ebebea35038688bffa665bf9c7aa392d96285b51f4a5d8bd2a4aeb#npm:18.2.0"],\
+          ["react-photoswipe-gallery", "virtual:893640c3b2371e374d2c6f418e4d48cba7049d7958119e88a617c95ec3c303f8ea8497e12e3fcda3179666f89944f9feac6329fe35db900e598296717a68f3eb#npm:2.2.7"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@webassemblyjs/ast", [\
       ["npm:1.11.6", {\
         "packageLocation": "./.yarn/cache/@webassemblyjs-ast-npm-1.11.6-d3fd2bb49a-4c1303971c.zip/node_modules/@webassemblyjs/ast/",\
@@ -4823,6 +4857,7 @@ const RAW_RUNTIME_STATE =
           ["@mdx-js/react", "virtual:8a1e8052a0a79842a09faf0801c0d053935f8c7d4f2e792eac0bd75b1d2972c14d731b7170ebebea35038688bffa665bf9c7aa392d96285b51f4a5d8bd2a4aeb#npm:3.0.1"],\
           ["@types/react", "npm:18.3.4"],\
           ["@uniwebcms/module-builder", "virtual:8a1e8052a0a79842a09faf0801c0d053935f8c7d4f2e792eac0bd75b1d2972c14d731b7170ebebea35038688bffa665bf9c7aa392d96285b51f4a5d8bd2a4aeb#npm:1.5.2"],\
+          ["@uniwebcms/tutorial-builder", "virtual:8a1e8052a0a79842a09faf0801c0d053935f8c7d4f2e792eac0bd75b1d2972c14d731b7170ebebea35038688bffa665bf9c7aa392d96285b51f4a5d8bd2a4aeb#npm:1.3.15"],\
           ["babel-loader", "virtual:8a1e8052a0a79842a09faf0801c0d053935f8c7d4f2e792eac0bd75b1d2972c14d731b7170ebebea35038688bffa665bf9c7aa392d96285b51f4a5d8bd2a4aeb#npm:8.3.0"],\
           ["chokidar", "npm:3.6.0"],\
           ["cloudflared", "npm:0.4.0"],\
@@ -6271,6 +6306,19 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
+      ["npm:10.4.5", {\
+        "packageLocation": "./.yarn/cache/glob-npm-10.4.5-8c63175f05-698dfe1182.zip/node_modules/glob/",\
+        "packageDependencies": [\
+          ["glob", "npm:10.4.5"],\
+          ["foreground-child", "npm:3.1.1"],\
+          ["jackspeak", "npm:3.4.3"],\
+          ["minimatch", "npm:9.0.5"],\
+          ["minipass", "npm:7.1.2"],\
+          ["package-json-from-dist", "npm:1.0.0"],\
+          ["path-scurry", "npm:1.11.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:7.1.6", {\
         "packageLocation": "./.yarn/cache/glob-npm-7.1.6-1ce3a5189a-7d6ec98bc7.zip/node_modules/glob/",\
         "packageDependencies": [\
@@ -6923,6 +6971,15 @@ const RAW_RUNTIME_STATE =
           ["@pkgjs/parseargs", "npm:0.11.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.4.3", {\
+        "packageLocation": "./.yarn/cache/jackspeak-npm-3.4.3-546bfad080-96f8786eaa.zip/node_modules/jackspeak/",\
+        "packageDependencies": [\
+          ["jackspeak", "npm:3.4.3"],\
+          ["@isaacs/cliui", "npm:8.0.2"],\
+          ["@pkgjs/parseargs", "npm:0.11.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["jest-worker", [\
@@ -7181,6 +7238,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/lru-cache-npm-10.0.0-256d74bb20-590e00d6cc.zip/node_modules/lru-cache/",\
         "packageDependencies": [\
           ["lru-cache", "npm:10.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:10.4.3", {\
+        "packageLocation": "./.yarn/cache/lru-cache-npm-10.4.3-30c10b861a-e6e9026736.zip/node_modules/lru-cache/",\
+        "packageDependencies": [\
+          ["lru-cache", "npm:10.4.3"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -7843,6 +7907,14 @@ const RAW_RUNTIME_STATE =
           ["brace-expansion", "npm:2.0.1"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:9.0.5", {\
+        "packageLocation": "./.yarn/cache/minimatch-npm-9.0.5-9aa93d97fa-dd6a8927b0.zip/node_modules/minimatch/",\
+        "packageDependencies": [\
+          ["minimatch", "npm:9.0.5"],\
+          ["brace-expansion", "npm:2.0.1"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["minimist", [\
@@ -7874,6 +7946,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/minipass-npm-7.0.2-baa42a5a34-25d3afc74e.zip/node_modules/minipass/",\
         "packageDependencies": [\
           ["minipass", "npm:7.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:7.1.2", {\
+        "packageLocation": "./.yarn/cache/minipass-npm-7.1.2-3a5327d36d-c25f0ee819.zip/node_modules/minipass/",\
+        "packageDependencies": [\
+          ["minipass", "npm:7.1.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -8183,6 +8262,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["package-json-from-dist", [\
+      ["npm:1.0.0", {\
+        "packageLocation": "./.yarn/cache/package-json-from-dist-npm-1.0.0-961f0fcb3b-ac706ec856.zip/node_modules/package-json-from-dist/",\
+        "packageDependencies": [\
+          ["package-json-from-dist", "npm:1.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["pako", [\
       ["npm:1.0.11", {\
         "packageLocation": "./.yarn/cache/pako-npm-1.0.11-b8f1b69d3e-1ad07210e8.zip/node_modules/pako/",\
@@ -8277,6 +8365,15 @@ const RAW_RUNTIME_STATE =
           ["minipass", "npm:7.0.2"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:1.11.1", {\
+        "packageLocation": "./.yarn/cache/path-scurry-npm-1.11.1-aaf8c339af-5e8845c159.zip/node_modules/path-scurry/",\
+        "packageDependencies": [\
+          ["path-scurry", "npm:1.11.1"],\
+          ["lru-cache", "npm:10.4.3"],\
+          ["minipass", "npm:7.0.2"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["path-type", [\
@@ -8296,6 +8393,15 @@ const RAW_RUNTIME_STATE =
           ["@types/estree", "npm:1.0.1"],\
           ["estree-walker", "npm:3.0.3"],\
           ["is-reference", "npm:3.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["photoswipe", [\
+      ["npm:5.4.4", {\
+        "packageLocation": "./.yarn/cache/photoswipe-npm-5.4.4-f7a755162f-89a2910f01.zip/node_modules/photoswipe/",\
+        "packageDependencies": [\
+          ["photoswipe", "npm:5.4.4"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -9378,6 +9484,18 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["prop-types", [\
+      ["npm:15.8.1", {\
+        "packageLocation": "./.yarn/cache/prop-types-npm-15.8.1-17c71ee7ee-7d959caec0.zip/node_modules/prop-types/",\
+        "packageDependencies": [\
+          ["prop-types", "npm:15.8.1"],\
+          ["loose-envify", "npm:1.4.0"],\
+          ["object-assign", "npm:4.1.1"],\
+          ["react-is", "npm:16.13.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["property-information", [\
       ["npm:6.5.0", {\
         "packageLocation": "./.yarn/cache/property-information-npm-6.5.0-1c8c103bec-fced94f3a0.zip/node_modules/property-information/",\
@@ -9603,6 +9721,45 @@ const RAW_RUNTIME_STATE =
         ],\
         "packagePeers": [\
           "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-is", [\
+      ["npm:16.13.1", {\
+        "packageLocation": "./.yarn/cache/react-is-npm-16.13.1-a9b9382b4f-5aa564a1cd.zip/node_modules/react-is/",\
+        "packageDependencies": [\
+          ["react-is", "npm:16.13.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-photoswipe-gallery", [\
+      ["npm:2.2.7", {\
+        "packageLocation": "./.yarn/cache/react-photoswipe-gallery-npm-2.2.7-7b3f6bdf03-cbeab99646.zip/node_modules/react-photoswipe-gallery/",\
+        "packageDependencies": [\
+          ["react-photoswipe-gallery", "npm:2.2.7"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:893640c3b2371e374d2c6f418e4d48cba7049d7958119e88a617c95ec3c303f8ea8497e12e3fcda3179666f89944f9feac6329fe35db900e598296717a68f3eb#npm:2.2.7", {\
+        "packageLocation": "./.yarn/__virtual__/react-photoswipe-gallery-virtual-ffc59cbdf0/0/cache/react-photoswipe-gallery-npm-2.2.7-7b3f6bdf03-cbeab99646.zip/node_modules/react-photoswipe-gallery/",\
+        "packageDependencies": [\
+          ["react-photoswipe-gallery", "virtual:893640c3b2371e374d2c6f418e4d48cba7049d7958119e88a617c95ec3c303f8ea8497e12e3fcda3179666f89944f9feac6329fe35db900e598296717a68f3eb#npm:2.2.7"],\
+          ["@types/photoswipe", null],\
+          ["@types/prop-types", null],\
+          ["@types/react", "npm:18.3.4"],\
+          ["photoswipe", "npm:5.4.4"],\
+          ["prop-types", "npm:15.8.1"],\
+          ["react", "npm:18.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/photoswipe",\
+          "@types/prop-types",\
+          "@types/react",\
+          "photoswipe",\
+          "prop-types",\
           "react"\
         ],\
         "linkType": "HARD"\

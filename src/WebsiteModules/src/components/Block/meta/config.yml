@@ -1,6 +1,9 @@
 title: 
   en: Block
   fr: Block
+label:
+  en: Block
+  fr: Block
 description: 
   en: A block displays content that is entered from the docufolio.
   fr: Un bloc affiche le contenu qui est saisi à partir du docufolio.

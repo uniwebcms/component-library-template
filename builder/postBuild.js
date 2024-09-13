@@ -3,6 +3,7 @@ const path = require('path');
 const yaml = require('js-yaml');
 const dotenv = require('dotenv');
 const sizeOf = require('image-size');
+const { autoCompleteComponents } = require('@uniwebcms/tutorial-builder/helper');
 
 // Load environment variables from .env files
 dotenv.config({ path: '../.env.dev' });
@@ -213,6 +214,8 @@ function generateDoc(moduleName) {
     const outputDir = path.join(getOutputDirectory(), moduleName, '_site');
 
     let schema = loadSchema(moduleDir);
+
+    autoCompleteComponents(schema);
 
     clearDirectory(outputDir);
 

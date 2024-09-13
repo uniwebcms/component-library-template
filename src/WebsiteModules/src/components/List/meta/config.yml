@@ -1,6 +1,9 @@
 title: 
   en: List
   fr: List
+label: 
+  en: List
+  fr: List
 description:
   en: A sample list of items with text and icons.
   fr: Une liste d'éléments avec texte et icônes.
