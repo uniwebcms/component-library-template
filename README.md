@@ -127,6 +127,10 @@ The watch script output will give you the URL to connect your test website with 
 ```
 
 > 🗒 Remember, when connecting a website with a module, the URL must include the module name in its path because there might be several modules hosted under the same domain.
+>
+> ## 🔗 Connecting the module to a website
+
+Create a test website, turn on its **Dev Mode**, and set the **Component Library URL** to the URL produced in the last step. Continue developing the components in your module and reload the website to get the latest test bundle as it changes.
 
 ## 🐛 Troubleshooting
 
@@ -136,10 +140,6 @@ If you run into any issues during the build process, try these steps:
 - Remove the shared cache files created by Yarn: `yarn cache clean`.
 - Check the console output for error messages and search for solutions online.
 - If the issue persists, please [open an issue](https://github.com/uniwebcms/uniweb-module-builder/issues/new) on the GitHub repository, providing as much detail as possible about the problem.
-
-## 🔗 Connecting the module to a website
-
-Create a test website, turn on its **Dev Mode**, and set the **Component Library URL** to the URL produced in the last step. Continue developing the components in your module and reload the website to get the latest test bundle as it changes.
 
 ## 🚀 Deploying to production
 
