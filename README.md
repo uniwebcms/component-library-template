@@ -133,7 +133,7 @@ The watch script output will give you the URL to connect your test website with 
 If you run into any issues during the build process, try these steps:
 
 - Make sure you have the latest versions of Node.js and Yarn installed.
-- Delete the `node_modules` folder and run `yarn` again to reinstall all dependencies.
+- Remove the shared cache files created by Yarn: `yarn cache clean`.
 - Check the console output for error messages and search for solutions online.
 - If the issue persists, please [open an issue](https://github.com/uniwebcms/uniweb-module-builder/issues/new) on the GitHub repository, providing as much detail as possible about the problem.
 
