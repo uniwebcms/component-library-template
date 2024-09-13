@@ -128,9 +128,9 @@ The watch script output will give you the URL to connect your test website with 
 
 > 🗒 Remember, when connecting a website with a module, the URL must include the module name in its path because there might be several modules hosted under the same domain.
 
-## 🔗 Connecting the module to a website
+## 👷 Enabling Dev Mode on a Website
 
-Create a test website, turn on its **Dev Mode**, and set the **Component Library URL** to the URL produced in the last step. Continue developing the components in your module and reload the website to get the latest test bundle as it changes.
+Create a website or open an existing one, turn on its **Dev Mode** via the action menu `(…)▾` of the **Website** studio, and set the **Component Library URL** to the URL produced in the last step. Continue developing the components in your module and reload the website to get the latest test bundle as it changes.
 
 ## 🐛 Troubleshooting
 
@@ -147,11 +147,13 @@ Create a development branch, like `develop`, for your regular commits. When you'
 
 You can find the URL of your available libraries by visiting the GitHub pages of your repository.
 
+**Note:** It may take a few minutes for Uniweb to detect the changes in your GitHub Pages and move the files to the CDN. Be patient and check back later if your updates are not immediately visible on your website.
+
+## 🔗 Connecting the module to a website
+
 Uniweb will take the files from GitHub Pages and move them to a CDN. To make this happen, create a **Web Styler** in your Uniweb so the system knows about your component library. Simply create a new **Web Styler** and set the URL of your library to `https://USER-NAME.github.io/REPO-NAME/LIBRARY-NAME/`.
 
 The last step is to connect the **Web Styler** that you create and use it in a website. To do that, open a website and click the Edit to open the **Webpages** editor. Then click the action menu `(…)▾` and select "Main settings...". Select your **Web Styler** under the "Web Styler" input field.
-
-**Note:** It may take a few minutes for Uniweb to detect the changes in your GitHub Pages and move the files to the CDN. Be patient and check back later if your updates are not immediately visible on your website.
 
 ## 🎯 Next steps
 
