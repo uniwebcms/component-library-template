@@ -72,20 +72,26 @@ const generateIndex = (dirPath = '.', repoName = 'Unknown Repository') => {
                         });
                 }
 
-                // Find all buttons with id="copy"
-                const buttons = document.querySelectorAll('button[id="copy"]');
+                // Wait for the DOM to load
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Get the current URL
+                    const currentUrl = window.location.href;
 
-                // Loop through each button and add an onclick event listener
-                buttons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        // Find the previous sibling element (the span element)
-                        const spanText = button.previousElementSibling.innerText;
-                 
-                        // Merge the span text with the URL
-                        const textToCopy = ${window.location.href}/${spanText};
+                    // Find all buttons with id="copy"
+                    const buttons = document.querySelectorAll('button[id="copy"]');
 
-                        // Copy the merged text to clipboard
-                        copyTextToClipboard(textToCopy);
+                    // Loop through each button and add an onclick event listener
+                    buttons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            // Find the previous sibling element (the span element)
+                            const spanText = button.previousElementSibling.innerText;
+
+                            // Merge the span text with the current URL
+                            const textToCopy = currentUrl + '/' + spanText;
+
+                            // Copy the merged text to clipboard
+                            copyTextToClipboard(textToCopy);
+                        });
                     });
                 });
             </script>
