@@ -54,44 +54,46 @@ const generateIndex = (dirPath = '.', repoName = 'Unknown Repository') => {
             <script>
                 // Select all li elements with id "collapsible"
                 const collapsibleElements = document.querySelectorAll('li[id="collapsible"]');
-                
-                // Loop through each collapsible element
-                collapsibleElements.forEach(collapsible => {
-                    // Ensure it's a root-level li by checking if it doesn't have a parent li
-                    if (!collapsible.closest('li li')) {
-                        // If it's a root-level li, we handle the name toggle
-                        const nameDiv = collapsible.firstElementChild;
-                        const nameElement = nameDiv.querySelector('span'); // Assuming the name is inside a <span>
 
-                        // Add a click event listener to the name span to toggle nested items
-                        nameElement.addEventListener('click', function() {
-                            const nestedItemsDiv = nameDiv.nextElementSibling;
-                            nestedItemsDiv.style.display = nestedItemsDiv.style.display === 'none' ? 'block' : 'none';
-                        });
-                    } else {
+                // Loop through each collapsible element
+                collapsibleElements.forEach((collapsible) => {
+                    // Handle the name toggle
+                    const nameDiv = collapsible.firstElementChild;
+                    const nameElement = nameDiv.querySelector('span');
+
+                    // Add a click event listener to the name span to toggle nested items
+                    nameElement.addEventListener('click', function () {
+                        const nestedItemsDiv = nameDiv.nextElementSibling;
+                        nestedItemsDiv.style.display =
+                            nestedItemsDiv.style.display === 'none' ? 'block' : 'none';
+                    });
+
+                    // Ensure it's a root-level li by checking if it has no parent li
+                    if (collapsible.closest('li li')) {
                         // Hide the copy button for nested li elements (non-root level)
-                        const copyButton = collapsible.querySelector('button[id="copy"]');
+                        const copyButton = nameDiv.querySelector('button[id="copy"]');
                         if (copyButton) {
                             copyButton.style.display = 'none'; // Hide the copy button for nested li elements
                         }
                     }
-});
+                });
             </script>
 
             <script>
                 // Function to copy text to clipboard
                 function copyTextToClipboard(text) {
-                    navigator.clipboard.writeText(text)
+                    navigator.clipboard
+                        .writeText(text)
                         .then(() => {
-                            alert('path copied to clipboard!');
+                            alert('Path copied to clipboard!');
                         })
-                        .catch(err => {
+                        .catch((err) => {
                             console.error('Failed to copy path: ', err);
                         });
                 }
 
                 // Wait for the DOM to load
-                document.addEventListener('DOMContentLoaded', function() {
+                document.addEventListener('DOMContentLoaded', function () {
                     // Get the current URL
                     const currentUrl = window.location.href;
 
@@ -99,7 +101,7 @@ const generateIndex = (dirPath = '.', repoName = 'Unknown Repository') => {
                     const buttons = document.querySelectorAll('button[id="copy"]');
 
                     // Loop through each button and add an onclick event listener
-                    buttons.forEach(button => {
+                    buttons.forEach((button) => {
                         button.addEventListener('click', (event) => {
                             // Prevent the click event from bubbling up to the parent elements
                             event.stopPropagation();
