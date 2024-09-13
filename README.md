@@ -136,7 +136,9 @@ Create a website or open an existing one, turn on its **Dev Mode** via the actio
 
 If you run into any issues during the build process, try these steps:
 
-- Make sure you have the latest versions of Node.js and Yarn installed.
+- Make sure you installed the `Cloudflared` CLI to create Quick Tunnels.
+- Make sure you have saved your **current tunnel URL** into the Dev Mode settings of your test website.
+- Make sure that you have the correct version for Node JS and Yarn, as detailed above.
 - Remove the shared cache files created by Yarn: `yarn cache clean`.
 - Check the console output for error messages and search for solutions online.
 - If the issue persists, please [open an issue](https://github.com/uniwebcms/uniweb-module-builder/issues/new) on the GitHub repository, providing as much detail as possible about the problem.
