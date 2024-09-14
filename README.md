@@ -153,8 +153,7 @@ The last step is to connect your new **Web Styler** to a website. To do that, op
 
 ## ✨ Creating a new component
 
-You are ready to create your first web component. Before we proceed, let's review what a 
-a typical repository of modules looks like.
+You are ready to create your first web component. Before we proceed, let's review the file structure of the `src` folder.
 
 ```
 src/
