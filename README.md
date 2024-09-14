@@ -5,9 +5,10 @@ Welcome to the world of Uniweb component libraries! If you're looking to create 
 [Uniweb](https://uniwebcms.com) is a powerful web CMS that helps you create dynamic websites with ease. Each website is linked to a component library, which is a webpack federated module. Don't worry if that sounds a bit technical – in simple terms, it means your components can be shared instantly across multiple websites, making your development process more efficient and consistent.
 
 By using component libraries with Uniweb, you'll enjoy benefits like:
-- 🔁 Reusability: Share components across multiple websites to save time and effort.
-- 🔧 Maintainability: Easily update your component library and watch the changes propagate to all connected websites.
-- 🤝 Friendliness: Benefit from having components that can readily be used and customized by content creators.
+
+- 👥 **Teamwork:** Make components that can readily be used and customized by content creators.
+- 🔁 **Reusability:** Share components across multiple websites to save time and effort.
+- 🔧 **Maintainability:** Easily update your component library and watch the changes propagate to all connected websites.
 
 In this guide, we'll walk you through the process of creating your own Uniweb component libraries. We'll assume you have some knowledge of modern JavaScript, React, and Tailwind CSS, but don't worry if you're not an expert – we'll provide plenty of examples and explanations along the way.
 
@@ -25,7 +26,7 @@ And just like that, you'll have your very own component library repository! 🎉
 
 Want to see your component library in action without any local setup? No problem! This repository includes a GitHub workflow that builds and hosts your component libraries automatically. Here's how to enable it:
 
-1. Go to the `Pages` tab under the `⚙ Settings` of your GitHub repository
+1. Go to the `⚙ Settings` tab of your GitHub repository and the go to the `Pages` tab on it.
 
 2. Under the section **Build and deployment**, in the **Source** menu, select `GitHub Actions`. The page auto saves, so you're all set!
 
@@ -49,8 +50,76 @@ Assuming you have [GitHub Actions enabled](https://github.com/uniwebcms/uniweb-m
 
 **⚠ A quick note on best practices:** To avoid affecting existing websites that use your libraries, it's a good idea to create a separate development branch (like `develop`) for your regular commits. When you're ready to release a new version, simply merge your development branch into `main`.
 
+## 💻 Local development
+
+While committing to the main branch is great for deploying new versions, it's not the most practical approach during development and testing. Luckily, there's a much better way to develop locally and see your changes instantly!
+
+The included server project offers a simple yet powerful solution for serving local files over the internet using a web server and a temporary Cloudflare Quick Tunnel. 
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/) is a nifty service that securely exposes your local development server to the internet, without the need for port forwarding or firewall configuration. This makes it super easy to test and share your component library with others during development.
+
+**⚠ Important**: Make sure to install the `Cloudflared` CLI and check that it's in your PATH. You can find the latest installation instructions here: [Cloudflare Tunnel Downloads](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/)
+
+- **macOS**: `brew install cloudflared`
+- **Windows**: `winget install --id Cloudflare.cloudflared`
+- **Linux**: [Cloudflare Package Repository ↗](https://pkg.cloudflare.com/)
+
+> 🗒 Psst... you can also use a permanent tunnel URL if you prefer. For instance, you can set up a [Cloudflare named tunnel](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/) or a [Pagekite tunnel](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/pagekite.md). If you go this route, just remember to set the `TUNNEL_URL` property in your `.env.dev` file to the tunnel's URL.
+
+## 🛠️ Build Locally
+
+This project uses [Node.js 18](https://nodejs.org/en/download/package-manager) with [Yarn 4.1](https://yarnpkg.com/) as package manager. If you already have Node.js, Yarn, and a code editor like VS Code installed, you're good to go! If not, don't sweat it – just [configure the development toolchain](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/dev_toolchain.md) first.
+
+If you are a VS Code user, you're in luck! There's a handy "Start Dev Environment" task configured under `.vscode/tasks.json`. You can run it using the Command Palette or the keyboard shortcut (`Ctrl+Shift+B` or `Cmd+Shift+B` on macOS). 
+
+If you need, or prefer, to start the scripts manually, no worries! Just open up 4 different terminals and run:
+
+- **Install Packages and Start Web Server**: `yarn && yarn serve -tunnel`
+- **Watch Tasks**: 
+    - **Watch Exports**: `yarn watch:exports`
+    - **Watch Docs**: `yarn watch:doc`
+    - **Watch Code**: `yarn watch`
+
+**Note:** The web server will serve files from the `build_dev` folder. Initially, this folder will have a single file named `quick-tunnel.txt` containing the URL of the current [Cloudflare quick tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/do-more-with-tunnels/trycloudflare/) pointing to http://localhost:3005. The quick tunnel URL changes every time the server starts and looks like `https://[tunnel-sub-domain].trycloudflare.com`. 
+
+The watch script will build a bundle of JavaScript files in dev mode and save them to the `build_dev/[module-name]` subfolder. The default module name is `StarterLibrary`. All source files under the `src` folder are watched for changes, and the target bundles are rebuilt as needed.
+
+The watch script output will give you the URL to connect your test website with your dev environment.
+
+```bash
+PUBLIC URL: https://[tunnel-sub-domain].com/StarterLibrary
+```
+
+> 🗒 Remember, when connecting a website with a module, the URL must include the module name in its path because there might be several modules hosted under the same domain.
+
+## 👷 Enabling Dev Mode on a Website
+
+Now that you have a temporary URL pointing to the current dev build of your library, you can use it on a website in Dev Mode. 
+
+1. Create a website, or open an existing one, and turn on its **Dev Mode** via the action menu `(…)▾` of the **Website** studio
+2. Set the **Component Library URL** to the URL produced in the last step. Continue developing the components in your module and reload the website to get the latest test bundle as it changes.
+
+## 🔧 Troubleshooting Dev Mode
+
+If you run into any issues during the build process, try these steps:
+
+- Make sure you installed the `Cloudflared` CLI to create Quick Tunnels.
+- Make sure you have saved your **current tunnel URL** into the Dev Mode settings of your test website.
+- Make sure that you have the correct version for Node JS and Yarn, as defined in the `.node-version` and `.yarnrc.yml` files.
+- Remove the shared cache files created by Yarn: `yarn cache clean`.
+- Check the console output for error messages and search for solutions online.
+- If the issue persists, please [open an issue](https://github.com/uniwebcms/uniweb-module-builder/issues/new) on the GitHub repository, providing as much detail as possible about the problem.
+
+## 🚀 Deploying to production
+
+The included GitHub workflow automates the process of building your files and hosting them on GitHub Pages, simplifying the deployment of a production build. However, if you haven't already done so, it's recommended to create a separate development branch, such as `develop`, for your regular commits. This allows you to keep your `main` branch clean and stable.
+
+When you're ready to release a new version to production, simply merge your changes from the development branch into the `main` branch. This merge operation will automatically trigger the GitHub Actions workflow, which will build your project and host the resulting files on GitHub Pages.
+
+By following this branching strategy, you can maintain a clear separation between your development and production environments, ensuring that only tested and approved changes are deployed to your live site.
+
 <details>
-  <summary>Example: Create and merge branches in Git</summary>
+  <summary><strong>Learn how to create and merge branches in Git</strong></summary>
 
   ```bash
   # Create a new branch named "develop"
@@ -74,88 +143,13 @@ Assuming you have [GitHub Actions enabled](https://github.com/uniwebcms/uniweb-m
   ```
   </details>
 
-## 💻 Local development
+## 🔗 Using your components in a website
 
-While committing to the main branch is great for deploying new versions, it's not the most practical approach during development and testing. Luckily, there's a much better way to develop locally and see your changes instantly!
-
-The included server project offers a simple yet powerful solution for serving local files over the internet using a web server and a temporary Cloudflare Quick Tunnel. 
-
-[Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/) is a nifty service that securely exposes your local development server to the internet, without the need for port forwarding or firewall configuration. This makes it super easy to test and share your component library with others during development.
-
-**⚠ Important**: Make sure to install the `Cloudflared` CLI and add it to your PATH. You can find the latest installation instructions here: [Cloudflare Tunnel Downloads](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/)
-
-- **macOS**: `brew install cloudflared`
-- **Windows**: `winget install --id Cloudflare.cloudflared`
-- **Linux**: [Cloudflare Package Repository ↗](https://pkg.cloudflare.com/)
-
-> 🗒 Psst... you can also use a permanent tunnel URL if you prefer. For instance, you can set up a [Cloudflare named tunnel](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/) or a [Pagekite tunnel](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/pagekite.md). If you go this route, just remember to set the `TUNNEL_URL` property in your `.env.dev` file to the tunnel's URL.
-
-## 🛠️ Technologies Used
-
-This template uses the following awesome technologies:
-
-- **Package Manager**: [Yarn](https://yarnpkg.com/) 4.1.0
-- **Framework**: [React](https://react.dev/)
-- **Styling**: [TailwindCSS](https://tailwindcss.com/) and [Twind](https://twind.style/)
-- **CI/CD**: [GitHub Pages Action workflow](https://github.com/marketplace/actions/github-pages-action)
-- **Utility Libraries**:
-  - [`@uniwebcms/module-builder`](https://www.npmjs.com/package/@uniwebcms/module-builder) v1.5.2
-  - [`@uniwebcms/module-sdk`](https://www.npmjs.com/package/@uniwebcms/module-sdk) v1.22.1
-
-If you already have Node.js, Yarn, and a code editor like VS Code installed, you're good to go! If not, don't sweat it – just [configure the development toolchain](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/dev_toolchain.md) first.
-
-## 🔨 Build Locally
-
-VS Code users, you're in luck! There's a handy "Start Dev Environment" task configured under `.vscode/tasks.json`. You can run it using the Command Palette or the keyboard shortcut (`Ctrl+Shift+B` or `Cmd+Shift+B` on macOS). 
-
-If you prefer to start the scripts manually, no worries! Just open up 4 different terminals and run:
-
-- **Install Packages and Start Web Server**: `yarn && yarn serve -tunnel`
-- **Watch Tasks**: 
-    - **Watch Exports**: `yarn watch:exports`
-    - **Watch Docs**: `yarn watch:doc`
-    - **Watch Code**: `yarn watch`
-
-**Note:** The web server will serve files from the `build_dev` folder. Initially, this folder will have a single file named `quick-tunnel.txt` containing the URL of the current [Cloudflare quick tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/do-more-with-tunnels/trycloudflare/) pointing to http://localhost:3005. The quick tunnel URL changes every time the server starts and looks like `https://[tunnel-sub-domain].trycloudflare.com`. 
-
-The watch script will build a bundle of JavaScript files in dev mode and save them to the `build_dev/[module-name]` subfolder. The default module name is `StarterLibrary`. All source files under the `src` folder are watched for changes, and the target bundles are rebuilt as needed.
-
-The watch script output will give you the URL to connect your test website with your dev environment.
-
-```bash
-PUBLIC URL: https://[tunnel-sub-domain].com/StarterLibrary
-```
-
-> 🗒 Remember, when connecting a website with a module, the URL must include the module name in its path because there might be several modules hosted under the same domain.
-
-## 👷 Enabling Dev Mode on a Website
-
-Create a website or open an existing one, turn on its **Dev Mode** via the action menu `(…)▾` of the **Website** studio, and set the **Component Library URL** to the URL produced in the last step. Continue developing the components in your module and reload the website to get the latest test bundle as it changes.
-
-## 🐛 Troubleshooting
-
-If you run into any issues during the build process, try these steps:
-
-- Make sure you installed the `Cloudflared` CLI to create Quick Tunnels.
-- Make sure you have saved your **current tunnel URL** into the Dev Mode settings of your test website.
-- Make sure that you have the correct version for Node JS and Yarn, as defined in the `.node-version` and `.yarnrc.yml` files.
-- Remove the shared cache files created by Yarn: `yarn cache clean`.
-- Check the console output for error messages and search for solutions online.
-- If the issue persists, please [open an issue](https://github.com/uniwebcms/uniweb-module-builder/issues/new) on the GitHub repository, providing as much detail as possible about the problem.
-
-## 🚀 Deploying to production
-
-Create a development branch, like `develop`, for your regular commits. When you're ready for a new production release, merge your changes into the `main` branch. The merge will trigger the GitHub action workflow and host the result on GitHub Pages. 
-
-You can find the URL of your available libraries by visiting the GitHub pages of your repository.
-
-**Note:** It may take a few minutes for Uniweb to detect the changes in your GitHub Pages and move the files to the CDN. Be patient and check back later if your updates are not immediately visible on your website.
-
-## 🔗 Connecting the module to a website
-
-Uniweb will take the files from GitHub Pages and move them to a CDN. To make this happen, create a **Web Styler** in your Uniweb so the system knows about your component library. Simply create a new **Web Styler** and set the URL of your library to `https://USER-NAME.github.io/REPO-NAME/LIBRARY-NAME/`.
+Now that you have a production build hosted at GitHub Pages, you are ready to use and share your components. To make this happen, create a **Web Styler** in your Uniweb so the system knows about your component library. Simply create a new **Web Styler** and set the URL of your library to `https://USER-NAME.github.io/REPO-NAME/LIBRARY-NAME/`.
 
 The last step is to connect the **Web Styler** that you created and use it in a website. To do that, open a website and click the **Edit** button to open the **Webpages** editor. Then click the action menu `(…)▾` and select "Main settings...". Select your **Web Styler** under the "Web Styler" input field.
+
+**Note:** Uniweb will take the files from GitHub Pages and move them to a CDN.  It may take a few minutes for Uniweb to detect the changes in your GitHub Pages and move the files to the CDN. Be patient and check back later if your updates are not immediately visible on your website.
 
 ## 🎯 Next steps
 
