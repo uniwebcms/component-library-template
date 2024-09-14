@@ -151,6 +151,115 @@ The last step is to connect your new **Web Styler** to a website. To do that, op
 
 **Note:** Uniweb will take the files from GitHub Pages and move them to a CDN.  It may take a few minutes for Uniweb to detect the changes in your GitHub Pages and move the files to the CDN. Be patient and check back later if your updates are not immediately visible on your website.
 
+## 🚀 Creating your first component
+
+You are ready to create your first web component. Befor we proceed, let's review what a 
+a typical repository of modules for Uniweb looks like this:
+
+```
+src/
+├── my-module/
+│   ├── components/
+│   │   ├── ComponentA/
+│   │   │   ├── index.jsx
+│   │   │   └── meta/
+│   │   │       ├── config.yml
+│   │   │       ├── default.png
+│   │   │       ├── preset1.jpg
+│   │   │       └── notes.md
+│   │   ├── ComponentB/
+│   │   │   └── ... (similar structure)
+│   │   └── ...
+│   ├── index.css
+│   ├── index.js
+│   ├── module.yml
+│   ├── package.json
+│   └── tailwind.config.js
+├── _shared/
+│   └── SharedComponentA1/
+│   │   └── ... (similar structure)
+│   └── ...
+├── package.json
+└── README.md
+```
+
+This file structure shows that each component in a module is placed in its own directory under `src/my-module/components/`. That must be the case for components that are exported as part of a library. Components that are only used internally can be just a single file under their module's folder or the `_shared` folder. For now, we will focus on exported components, which are components that provide the **metadata** needed by content creators to use them without any technical knowledge.
+
+Here's an example of a basic component structure:
+
+```jsx
+// File: src/my-module/components/ComponentName/index.js
+import React from 'react';
+import { SafeHtml, Image, Link, twMerge, twJoin } from '@uniwebcms/module-sdk';
+
+export default function ComponentName(props) {
+    const { block, page, website, input } = props;
+
+    // Component logic here
+
+    return (
+        // JSX here
+    );
+}
+```
+
+### Component Metadata
+
+Each component exported by a library (ie, module) should have a `meta/` directory containing:
+
+1. `config.yml`: Defines the component's parameters and presets.
+2. Screenshot images (e.g., `default.png`, `preset1.png`) showing previews for different component presets.
+3. `notes.md`: Optional file for additional component documentation.
+
+Example `config.yml`:
+
+```yaml
+name: ComponentName
+description: A reusable component for...
+export: true
+parameters:
+  - name: title
+    type: string
+    description: The main title of the component
+    default: Default Title
+  # ... other parameters
+presets:
+  preset1:
+    label: Expanded View
+    description: Shows the component in its expanded state
+    properties:
+      title: Expanded Component
+      expanded: true
+  # ... other presets
+```
+
+### First component: Features Section
+
+Let's create a component that renders a features section. here we will assume that the section has a title and a subtile, and a variable number of features, each with their own title and description.
+
+```jsx
+export default function FeatureList(props) {
+    const { block } = props;
+    const { title, subtitle } = block.main;
+    const features = block.items;
+
+    return (
+        <div>
+            <h2>{title}</h2>
+            <p>{subtitle}</p>
+            <ul>
+                {features.map((feature, index) => (
+                    <li key={index}>
+                        <h3>{feature.title}</h3>
+                        <p>{feature.description}</p>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+```
+
 ## 🎯 Next steps
 
 - [Component Library Development Guide](/guide.md)
