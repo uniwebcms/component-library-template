@@ -151,7 +151,7 @@ The last step is to connect your new **Web Styler** to a website. To do that, op
 
 **Note:** Uniweb will take the files from GitHub Pages and move them to a CDN.  It may take a few minutes for Uniweb to detect the changes in your GitHub Pages and move the files to the CDN. Be patient and check back later if your updates are not immediately visible on your website.
 
-## 🚀 Creating a new component
+## ✨ Creating a new component
 
 You are ready to create your first web component. Before we proceed, let's review what a 
 a typical repository of modules looks like.
@@ -253,4 +253,4 @@ That is all. Of course, there is a lot more to learn, such as adding customizati
 - [Examples of web components](https://github.com/uniwebcms/express/tree/main/src/blocks)
   - Explore a collection of example web components that you can use as a starting point for your own component libraries or as inspiration for new components.
 
-Feel free to explore, experiment, and have fun creating amazing component libraries with Uniweb! If you have any questions or need help along the way, don't hesitate to reach out to the Uniweb community. Happy coding! 🚀
+Feel free to explore, experiment, and have fun creating amazing component libraries with Uniweb! If you have any questions or need help along the way, don't hesitate to reach out to the Uniweb community.
