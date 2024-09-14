@@ -49,28 +49,30 @@ Assuming you have [GitHub Actions enabled](https://github.com/uniwebcms/uniweb-m
 
 **⚠ A quick note on best practices:** To avoid affecting existing websites that use your libraries, it's a good idea to create a separate development branch (like `develop`) for your regular commits. When you're ready to release a new version, simply merge your development branch into `main`.
 
-Here's an example of how you can create and merge a development branch using Git:
+<details>
+  <summary>Example: Create and merge branches in Git</summary>
 
-```bash
-# Create a new branch named "develop"
-git checkout -b develop
+  ```bash
+  # Create a new branch named "develop"
+  git checkout -b develop
 
-# Make changes and commit them
-git add .
-git commit -m "Add new components and fix bugs"
+  # Make changes and commit them
+  git add .
+  git commit -m "Add new components and fix bugs"
 
-# Push the changes to the remote "develop" branch
-git push -u origin develop
+  # Push the changes to the remote "develop" branch
+  git push -u origin develop
 
-# Switch back to the "main" branch
-git checkout main
+  # Switch back to the "main" branch
+  git checkout main
 
-# Merge the changes from "develop" into "main"
-git merge develop
+  # Merge the changes from "develop" into "main"
+  git merge develop
 
-# Push the updated "main" branch
-git push
-```
+  # Push the updated "main" branch
+  git push
+  ```
+  </details>
 
 ## 💻 Local development
 
