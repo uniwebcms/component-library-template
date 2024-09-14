@@ -147,7 +147,7 @@ By following this branching strategy, you can maintain a clear separation betwee
 
 Now that you have a production build hosted at GitHub Pages, you are ready to use and share your components. To make this happen, create a **Web Styler** in your Uniweb so the system knows about your component library. Simply create a new **Web Styler** and set the URL of your library to `https://USER-NAME.github.io/REPO-NAME/LIBRARY-NAME/`.
 
-The last step is to connect the **Web Styler** that you created and use it in a website. To do that, open a website and click the **Edit** button to open the **Webpages** editor. Then click the action menu `(…)▾` and select "Main settings...". Select your **Web Styler** under the "Web Styler" input field.
+The last step is to connect your new **Web Styler** to a website. To do that, open a website and click the **Edit** button to open the **Webpages** editor. Then click the action menu `(…)▾` and select "Main settings...". Select your **Web Styler** under the "Web Styler" input field.
 
 **Note:** Uniweb will take the files from GitHub Pages and move them to a CDN.  It may take a few minutes for Uniweb to detect the changes in your GitHub Pages and move the files to the CDN. Be patient and check back later if your updates are not immediately visible on your website.
 
