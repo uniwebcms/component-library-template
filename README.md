@@ -153,7 +153,7 @@ You can find the URL of your available libraries by visiting the GitHub pages of
 
 Uniweb will take the files from GitHub Pages and move them to a CDN. To make this happen, create a **Web Styler** in your Uniweb so the system knows about your component library. Simply create a new **Web Styler** and set the URL of your library to `https://USER-NAME.github.io/REPO-NAME/LIBRARY-NAME/`.
 
-The last step is to connect the **Web Styler** that you create and use it in a website. To do that, open a website and click the **Edit** button to open the **Webpages** editor. Then click the action menu `(…)▾` and select "Main settings...". Select your **Web Styler** under the "Web Styler" input field.
+The last step is to connect the **Web Styler** that you created and use it in a website. To do that, open a website and click the **Edit** button to open the **Webpages** editor. Then click the action menu `(…)▾` and select "Main settings...". Select your **Web Styler** under the "Web Styler" input field.
 
 ## 🎯 Next steps
 
