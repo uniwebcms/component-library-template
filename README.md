@@ -123,9 +123,7 @@ The watch script will build a bundle of JavaScript files in dev mode and save th
 The watch script output will give you the URL to connect your test website with your dev environment.
 
 ```bash
-----------------------------------------
 PUBLIC URL: https://[tunnel-sub-domain].com/StarterLibrary
-----------------------------------------
 ```
 
 > 🗒 Remember, when connecting a website with a module, the URL must include the module name in its path because there might be several modules hosted under the same domain.
