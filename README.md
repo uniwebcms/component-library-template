@@ -239,7 +239,7 @@ The fastest in the market
 Everyone can use it
 ```
 
-That is all. Of course, there is a lot more to learn, such as adding customization properties to your component, and creating proper metadata so that non-technical users understand what to expect from it. If you are ready for that, simple head over to the [Component Library Development Guide](/guide.md).
+That is all. Of course, there is a lot more to learn, such as adding customization properties to your component, and creating proper metadata so that non-technical users understand what to expect from it. If you are ready for that, simply head over to the [Component Library Development Guide](/guide.md).
 
 ## 🎯 Next steps
 
