@@ -15,8 +15,6 @@ In this guide, we'll walk you through the process of creating your own Uniweb co
 
 To get started, we've created this handy template repository for you. All you need to do is create a new repository based on this template.
 
-<img src="https://docs.github.com/assets/cb-77734/mw-1440/images/help/repository/use-this-template-button.webp" width="300">
-
 1. Click the "Use this template" button at the top right of the repository page.
 2. Select "Create a new repository" and fill in the details (name, description, etc.).
 3. Click "Create repository from template" to generate your new project.
