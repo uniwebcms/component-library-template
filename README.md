@@ -151,10 +151,10 @@ The last step is to connect your new **Web Styler** to a website. To do that, op
 
 **Note:** Uniweb will take the files from GitHub Pages and move them to a CDN.  It may take a few minutes for Uniweb to detect the changes in your GitHub Pages and move the files to the CDN. Be patient and check back later if your updates are not immediately visible on your website.
 
-## 🚀 Creating your first component
+## 🚀 Creating a new component
 
-You are ready to create your first web component. Befor we proceed, let's review what a 
-a typical repository of modules for Uniweb looks like this:
+You are ready to create your first web component. Before we proceed, let's review what a 
+a typical repository of modules looks like.
 
 ```
 src/
@@ -183,61 +183,21 @@ src/
 └── README.md
 ```
 
-This file structure shows that each component in a module is placed in its own directory under `src/my-module/components/`. That must be the case for components that are exported as part of a library. Components that are only used internally can be just a single file under their module's folder or the `_shared` folder. For now, we will focus on exported components, which are components that provide the **metadata** needed by content creators to use them without any technical knowledge.
+This file structure shows that each component in a module is placed in its own directory under `src/my-module/components/`. That is indeed the case for components that are exported as part of a library. Components that are only used internally can be just a single file under their module's folder or the `_shared` folder. For now, we will focus on exported components, which are components that provide the **metadata** needed by content creators to use them without any technical knowledge.
 
-Here's an example of a basic component structure:
+### 🥇 First component: FeatureList Section
+
+Let's create a component that renders a feature list section. Here we will assume that the section has a title and a subtile, and a variable number of features, each with their own title and description.
+
+1. Create a folder named `FeatureList` under `src/StarterLibrary/`
+2. Crate a file named `index.js` within the new folder
+3. Create a subfolder named `meta`
+4. Crate a file named `config.yml` within the `meta` subfolder
+5. Add the following code to the `index.js` file:
 
 ```jsx
-// File: src/my-module/components/ComponentName/index.js
 import React from 'react';
-import { SafeHtml, Image, Link, twMerge, twJoin } from '@uniwebcms/module-sdk';
 
-export default function ComponentName(props) {
-    const { block, page, website, input } = props;
-
-    // Component logic here
-
-    return (
-        // JSX here
-    );
-}
-```
-
-### Component Metadata
-
-Each component exported by a library (ie, module) should have a `meta/` directory containing:
-
-1. `config.yml`: Defines the component's parameters and presets.
-2. Screenshot images (e.g., `default.png`, `preset1.png`) showing previews for different component presets.
-3. `notes.md`: Optional file for additional component documentation.
-
-Example `config.yml`:
-
-```yaml
-name: ComponentName
-description: A reusable component for...
-export: true
-parameters:
-  - name: title
-    type: string
-    description: The main title of the component
-    default: Default Title
-  # ... other parameters
-presets:
-  preset1:
-    label: Expanded View
-    description: Shows the component in its expanded state
-    properties:
-      title: Expanded Component
-      expanded: true
-  # ... other presets
-```
-
-### First component: Features Section
-
-Let's create a component that renders a features section. here we will assume that the section has a title and a subtile, and a variable number of features, each with their own title and description.
-
-```jsx
 export default function FeatureList(props) {
     const { block } = props;
     const { title, subtitle } = block.main;
@@ -259,6 +219,28 @@ export default function FeatureList(props) {
     );
 }
 ```
+
+Hooray! You've made your first component. You can now see it in action. If you are developping locally and have the watch script running, your component should already be exported and usable from a website whose Dev Mode is set to your current tunnel. If you are coding in production mode, you need to commit your changes to the `main` branch for them to go live.
+
+Here is some somple text for you to add to a website page and test your component. Make sure to select your component as the rendered of the page section where you add this text.
+
+```markdown
+# Product Features
+
+Discover all the amazing features offered by our product.
+
+---
+## Fast
+
+The fastest in the market
+
+---
+## Intuitive
+
+Everyone can use it
+```
+
+That is all. Of course, there is a lot more to learn, such as adding customization properties to your component, and creating proper metadata so that non-technical users understand what to expect from it. If you are ready for that, simple head over to the [Component Library Development Guide](/guide.md).
 
 ## 🎯 Next steps
 
