@@ -25,11 +25,11 @@ And just like that, you'll have your very own component library repository! 🎉
 
 Want to see your component library in action without any local setup? No problem! This repository includes a GitHub workflow that builds and hosts your component libraries automatically. Here's how to enable it:
 
-1. Go to the `Pages` tab under the `⚙ Settings` of your GitHub repository ([/settings/pages](/settings/pages))
+1. Go to the `Pages` tab under the `⚙ Settings` of your GitHub repository
 
 2. Under the section **Build and deployment**, in the **Source** menu, select `GitHub Actions`. The page auto saves, so you're all set!
 
-The build process should start right away, but it may take a minute or two to complete. You can monitor its progress from the `⏵ Actions` ([/actions](/actions)) tab in your GitHub repository. When it's ready, you should see a successful `✅ Deploy` stage with the URL to your GitHub pages, like `https://USER-NAME.github.io/REPO-NAME/`.
+The build process should start right away, but it may take a minute or two to complete. You can monitor its progress from the `⏵ Actions` tab in your GitHub repository. When it's ready, you should see a successful `✅ Deploy` stage with the URL to your GitHub pages, like `https://USER-NAME.github.io/REPO-NAME/`.
 
 To find the URL for your new component library, visit the GitHub pages URL. You should see a page titled **Available Modules**. At this point, the first and only module listed would be **StarterLibrary**. Use the copy button next to it to grab its URL. It should look something like `https://USER-NAME.github.io/REPO-NAME/StarterLibrary/`.
 
