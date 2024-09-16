@@ -72,17 +72,18 @@ This project uses [Node.js 18](https://nodejs.org/en/download/package-manager) w
 
 If you are a VS Code user, you're in luck! There's a handy "Start Dev Environment" task configured under `.vscode/tasks.json`. You can run it using the Command Palette or the keyboard shortcut (`Ctrl+Shift+B` or `Cmd+Shift+B` on macOS). 
 
-If you need, or prefer, to start the scripts manually, no worries! Just open up 4 different terminals and run:
+If you need, or prefer, to start the scripts manually, no worries! Just open up 2 different terminals and run:
 
-- **Install Packages and Start Web Server**: `yarn && yarn serve -tunnel`
-- **Watch Tasks**: 
-    - **Watch Exports**: `yarn watch:exports`
-    - **Watch Docs**: `yarn watch:doc`
-    - **Watch Code**: `yarn watch`
+1. **Install packages and start web server with a tunnel**<br> 
+  `yarn && yarn serve -tunnel`
+2. **Watch for code changes**<br> 
+  `yarn watch`
 
 **Note:** The web server will serve files from the `build_dev` folder. Initially, this folder will have a single file named `quick-tunnel.txt` containing the URL of the current [Cloudflare quick tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/do-more-with-tunnels/trycloudflare/) pointing to http://localhost:3005. The quick tunnel URL changes every time the server starts and looks like `https://[tunnel-sub-domain].trycloudflare.com`. 
 
 The watch script will build a bundle of JavaScript files in dev mode and save them to the `build_dev/[module-name]` subfolder. The default module name is `StarterLibrary`. All source files under the `src` folder are watched for changes, and the target bundles are rebuilt as needed.
+
+**⚠ Important**: If you add (or remove) components to your libraries, you need to stop the  `yarn watch` (CTRL-C) and start it again so that it loads the latest list of available components.
 
 The watch script output will give you the URL to connect your test website with your dev environment.
 
