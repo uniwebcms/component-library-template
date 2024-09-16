@@ -2174,9 +2174,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniwebcms/module-builder@npm:^1.6.1":
-  version: 1.6.1
-  resolution: "@uniwebcms/module-builder@npm:1.6.1"
+"@uniwebcms/module-builder@npm:^1.6.2":
+  version: 1.6.2
+  resolution: "@uniwebcms/module-builder@npm:1.6.2"
   dependencies:
     "@tailwindcss/nesting": "npm:^0.0.0-insiders.565cd3e"
     assets-webpack-plugin: "npm:^7.1.1"
@@ -2209,7 +2209,10 @@ __metadata:
     raw-loader: ^4.0.2
     style-loader: ^2.0.0
     webpack: ^5.74.0
-  checksum: 10/1bb1b916f8fc7e01fd80ab4ef6bf6ef438e8198f6c1df699da4c040f8681fa507d7d080227383fa8587935f530152499bb7dac2acb0eaaada98bc6c2e14edc1b
+  dependenciesMeta:
+    cloudflared:
+      optional: true
+  checksum: 10/87ec563a24d4e7ff45df4c07e8290c77fabfccbe8d3405bd0b5a850b4521d9f307dabb1a6a3f78361c0c766cb45d010553066f185aa31ffe175bf1b7b97114f6
   languageName: node
   linkType: hard
 
@@ -2858,20 +2861,16 @@ __metadata:
     "@mdx-js/mdx": "npm:^3.0.1"
     "@mdx-js/react": "npm:^3.0.1"
     "@types/react": "npm:^18.3.4"
-    "@uniwebcms/module-builder": "npm:^1.6.1"
+    "@uniwebcms/module-builder": "npm:^1.6.2"
     babel-loader: "npm:^8.2.2"
-    chokidar: "npm:^3.6.0"
     css-loader: "npm:^5.2.0"
     dotenv: "npm:^10.0.0"
     http-server: "npm:^14.1.1"
-    image-size: "npm:^1.1.1"
-    js-yaml: "npm:^4.1.0"
     postcss: "npm:^8.4.20"
     postcss-loader: "npm:^7.0.2"
     raw-loader: "npm:^4.0.2"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
-    run-func: "npm:^3.0.0"
     sass: "npm:^1.50.0"
     sass-loader: "npm:^12.6.0"
     style-loader: "npm:^2.0.0"
@@ -3017,25 +3016,6 @@ __metadata:
     fsevents:
       optional: true
   checksum: 10/863e3ff78ee7a4a24513d2a416856e84c8e4f5e60efbe03e8ab791af1a183f569b62fc6f6b8044e2804966cb81277ddbbc1dc374fba3265bd609ea8efd62f5b3
-  languageName: node
-  linkType: hard
-
-"chokidar@npm:^3.6.0":
-  version: 3.6.0
-  resolution: "chokidar@npm:3.6.0"
-  dependencies:
-    anymatch: "npm:~3.1.2"
-    braces: "npm:~3.0.2"
-    fsevents: "npm:~2.3.2"
-    glob-parent: "npm:~5.1.2"
-    is-binary-path: "npm:~2.1.0"
-    is-glob: "npm:~4.0.1"
-    normalize-path: "npm:~3.0.0"
-    readdirp: "npm:~3.6.0"
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  checksum: 10/c327fb07704443f8d15f7b4a7ce93b2f0bc0e6cea07ec28a7570aa22cd51fcf0379df589403976ea956c369f25aa82d84561947e227cd925902e1751371658df
   languageName: node
   linkType: hard
 
@@ -6652,16 +6632,6 @@ __metadata:
   bin:
     rimraf: bin.js
   checksum: 10/063ffaccaaaca2cfd0ef3beafb12d6a03dd7ff1260d752d62a6077b5dfff6ae81bea571f655bb6b589d366930ec1bdd285d40d560c0dae9b12f125e54eb743d5
-  languageName: node
-  linkType: hard
-
-"run-func@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "run-func@npm:3.0.0"
-  bin:
-    run-func: index.js
-    run-func-mem: mem.js
-  checksum: 10/789a5ee33ca7d8aa9536815def6458c0fa3b5536443b724d1b56441208049c53969fa8e11a35b859aacaec1709f784b08bb63ae67648795942aa3fa9cc0c7274
   languageName: node
   linkType: hard
 
