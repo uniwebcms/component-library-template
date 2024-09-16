@@ -72,6 +72,7 @@ jobs:
               run: yarn build
               env:
                   NODE_ENV: production
+                  PUBLIC_URL: ${{ needs.prepare.outputs.public_url }}
 
             - name: Build Manifest
               run: yarn build:manifest
