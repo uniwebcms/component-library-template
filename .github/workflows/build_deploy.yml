@@ -63,13 +63,15 @@ jobs:
               run: echo "GH_PAGES_URL=${{ needs.prepare.outputs.public_url }}" >> "$GITHUB_ENV"
 
             - name: Install Dependencies
-              run: yarn
+              run: yarn install --production
 
             - name: Build Module exports
               run: yarn build:exports
 
             - name: Build Module
               run: yarn build
+              env:
+                  NODE_ENV: production
 
             - name: Build Manifest
               run: yarn build:manifest
