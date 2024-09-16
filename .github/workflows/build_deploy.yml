@@ -63,7 +63,8 @@ jobs:
             #  run: echo "GH_PAGES_URL=${{ needs.prepare.outputs.public_url }}" >> "$GITHUB_ENV"
 
             - name: Install Dependencies for Production
-              run: yarn workspaces focus --production
+              run: yarn
+              #run: yarn workspaces focus --production
 
             #- name: Build Module exports
             #  run: yarn build:exports
