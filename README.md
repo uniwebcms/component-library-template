@@ -170,9 +170,9 @@ src/
 │   │   ├── ComponentB/
 │   │   │   └── ... (similar structure)
 │   │   └── ...
+│   ├── config.yml
 │   ├── index.css
 │   ├── index.js
-│   ├── module.yml
 │   ├── package.json
 │   └── tailwind.config.js
 ├── _shared/
