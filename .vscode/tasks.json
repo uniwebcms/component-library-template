@@ -33,22 +33,8 @@
         },
         {
             "label": "Watch Tasks",
-            "dependsOn": ["Watch Exports", "Watch Docs", "Watch Code"],
+            "dependsOn": ["Watch Code"],
             "dependsOrder": "parallel",
-            "problemMatcher": []
-        },
-        {
-            "type": "shell",
-            "label": "Watch Exports",
-            "command": "yarn watch:exports",
-            "isBackground": true,
-            "problemMatcher": []
-        },
-        {
-            "type": "shell",
-            "label": "Watch Docs",
-            "command": "yarn watch:doc",
-            "isBackground": true,
             "problemMatcher": []
         },
         {
