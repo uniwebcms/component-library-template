@@ -24,13 +24,13 @@ src/
 │   │   ├── ComponentB/
 │   │   │   └── ... (similar structure)
 │   │   └── ...
-│   ├── index.js
+│   ├── config.yml
 │   ├── index.css
-│   ├── module.yml
+│   ├── index.js
 │   ├── package.json
 │   └── tailwind.config.js
 ├── _shared/
-│   └── SharedComponentA1/
+│   └── ComponentX/
 │   │   └── ... (similar structure)
 │   └── ...
 ├── package.json

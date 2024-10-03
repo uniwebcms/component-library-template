@@ -1,191 +1,284 @@
-# component-library-template
-Library of components for the Uniweb CMS platform.
+# Uniweb Component Libraries
 
-This repository serves as a template for creating four types of remote components for Uniweb Engine, which can render elements or pages for either direct use (app type and report type) or indirect use (website and documentation). The template includes four distinct collections, each containing a basic/full example of how to create the components for different use case.
+Welcome to the world of Uniweb component libraries! If you're looking to create dynamic, reusable web components for your Uniweb websites, you've come to the right place.
 
-In addition to the source code for the components, this template also includes utilities for building and serving, which assist in building components and serving the distribution files for local development. Moreover, it comes with a complete setup for a GitHub Pages Action workflow for CI/CD, along with two approaches for generating component tutorials for use in Docufolio.
+[Uniweb](https://uniwebcms.com) is a powerful web CMS that helps you create dynamic websites with ease. Each website is linked to a component library, which is a webpack federated module. Don't worry if that sounds a bit technical – in simple terms, it means your components can be shared instantly across multiple websites, making your development process more efficient and consistent.
 
-This template is designed to be compact by removing unnecessary or rarely used features, yet it remains comprehensive by integrating all the functionalities needed for remote components across websites, reports, documentation, and apps.
+By using component libraries with Uniweb, you'll enjoy benefits like:
 
-## Technologies Used
+- 👥 **Teamwork:** Make components that can readily be used and customized by content creators.
+- 🔁 **Reusability:** Share components across multiple websites to save time and effort.
+- 🔧 **Maintainability:** Easily update your component library and watch the changes propagate to all connected websites.
 
-This template leverages the following technologies:
+In this guide, we'll walk you through the process of creating your own Uniweb component libraries. We'll assume you have some knowledge of modern JavaScript, React, and Tailwind CSS, but don't worry if you're not an expert – we'll provide plenty of examples and explanations along the way.
 
-- **Package Manager**: Yarn 4.1.0
-- **Framework**: React
-- **Styling**: TailwindCSS and Twind
-- **CI/CD**: GitHub Pages Action workflow
-- **Tutorial**: Docusara-powered tutorial site
-- **Utility Libraries**:
-  - `@uniwebcms/module-builder` v1.5.2
-  - `@uniwebcms/tutorial-builder` v1.3.15
-  - `@uniwebcms/report-sdk` v1.3.0
-  - `@uniwebcms/module-sdk` v1.22.1
+## 🚀 Setup: Start from a Template Repository
 
-## Quick Start
+To get started, we've created this handy template repository for you. All you need to do is create a new repository based on this template.
 
-To quickly get started with this project template, follow these steps:
+1. Click the "Use this template" button at the top right of the repository page.
+2. Select "Create a new repository" and fill in the details (name, description, etc.).
+3. Click "Create repository from template" to generate your new project.
 
-### 1. Create a New Repository from the Template
+And just like that, you'll have your very own component library repository! 🎉
 
-1. **On GitHub**: 
-   - Navigate to this template repository on GitHub.
-   - Click the "Use this template" button at the top right of the repository page.
-   - Select "Create a new repository" and fill in the repository details (name, description, etc.).
-   - Click "Create repository from template" to generate your new project.
+## ⚡ Quick start: Build and host using GitHub actions
 
-### 2. Clone the Repository
+Want to see your component library in action without any local setup? No problem! This repository includes a GitHub workflow that builds and hosts your component libraries automatically. Here's how to enable it:
 
-You can clone your new repository to your local machine using one of the following methods:
+1. Go to the `⚙ Settings` tab of your GitHub repository, and then go to the `Pages` tab on it.
 
-- **Using Git (Command Line)**:
-    ```bash
-    git clone https://github.com/uniwebcms/component-library-template.git
-    ```
+2. Under the section **Build and deployment**, in the **Source** menu, select `GitHub Actions`. The page auto saves, so you're all set!
 
-- **Using GitHub Desktop:**:
-    - Open GitHub Desktop.
-    - Click on "File" > "Clone Repository".
-    - In the "URL" tab, paste the URL of your newly created repository.
-    - Choose the local path where you want to - store the project and click "Clone".
+The build process should start right away, but it may take a minute or two to complete. You can monitor its progress from the `⏵ Actions` tab in your GitHub repository. When it's ready, you should see a successful `✅ Deploy` stage with the URL to your GitHub pages, like `https://USER-NAME.github.io/REPO-NAME/`.
 
-### 3. Install Dependencies
+To find the URL for your new component library, visit the GitHub pages URL. You should see a page titled **Available Modules**. At this point, the first and only module listed would be **StarterLibrary**. Use the copy button next to it to grab its URL. It should look something like `https://USER-NAME.github.io/REPO-NAME/StarterLibrary/`.
 
-Navigate to the project directory to install the required dependencies. This template uses `yarn` as the package manager, and it conveniently includes the `yarn` binary executable within the project. This means that users who clone the repository do not need to have `yarn` installed globally on their system; they can use the bundled version directly.
+Now you're ready to use your shiny new library in a Uniweb website! Head over to your Uniweb instance, which might be [uniweb.app](https://uniweb.app) or another instance.
+
+Create a new website and skip the template selection for now – we want to keep things simple and start from scratch.
+
+Since your website doesn't have a component library or content yet, it will be a blank page. But don't worry, that's about to change! Open the action menu `(⋅⋅⋅)▾` in the website studio and select "Enable dev mode...". Then, paste the URL of your GitHub-hosted library into the "Component Library URL" field and apply your changes.
+
+Ta-da! 🎩✨ You should now see some content on your website, generated by the `Section` component in the `StarterLibrary` of your repository. Feel free to add content to your website and explore other components from your library by clicking the Edit button at the top right corner of the Website Studio.
+
+## 🚚 Deploying New Versions
+
+The easiest way to deploy your component library is to use the included [GitHub workflow](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/build_and_deploy_with_gh_actions.md), which builds your files and hosts them on GitHub Pages. In production mode, Uniweb monitors these files and copies them into an efficient CDN for optimal delivery.
+
+Assuming you have [GitHub Actions enabled](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/build_and_deploy_with_gh_actions.md), every time you commit changes to the `main` branch of your repository, a new build will be generated and hosted within about a minute and a half.
+
+**⚠ A quick note on best practices:** To avoid affecting existing websites that use your libraries, it's a good idea to create a separate development branch (like `develop`) for your regular commits. When you're ready to release a new version, simply merge your development branch into `main`.
+
+## 💻 Local development
+
+While committing to the main branch is great for deploying new versions, it's not the most practical approach during development and testing. Luckily, there's a much better way to develop locally and see your changes instantly!
+
+The included server project offers a simple yet powerful solution for serving local files over the internet using a web server and a temporary Cloudflare Quick Tunnel. 
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/) is a nifty service that securely exposes your local development server to the internet, without the need for port forwarding or firewall configuration. This makes it super easy to test and share your component library with others during development.
+
+**⚠ Important**: Make sure to install the `Cloudflared` CLI and check that it's in your PATH. You can find the latest installation instructions here: [Cloudflare Tunnel Downloads](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/)
+
+- **macOS**: `brew install cloudflared`
+- **Windows**: `winget install --id Cloudflare.cloudflared`
+- **Linux**: [Cloudflare Package Repository ↗](https://pkg.cloudflare.com/)
+
+> 🗒 Psst... you can also use a permanent tunnel URL if you prefer. For instance, you can set up a [Cloudflare named tunnel](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/) or a [Pagekite tunnel](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/pagekite.md). If you go this route, just remember to set the `TUNNEL_URL` property in your `.env.dev` file to the tunnel's URL.
+
+## 🛠️ Build Locally
+
+This project uses [Node.js 18](https://nodejs.org/en/download/package-manager) with [Yarn 4.1](https://yarnpkg.com/) as package manager. If you already have Node.js, Yarn, and a code editor like VS Code installed, you're good to go! If not, don't sweat it – just [configure the development toolchain](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/dev_toolchain.md) first.
+
+If you are a VS Code user, you're in luck! There's a handy "Start Dev Environment" task configured under `.vscode/tasks.json`. You can run it using the Command Palette or the keyboard shortcut (`Ctrl+Shift+B` or `Cmd+Shift+B` on macOS). 
+
+If you need, or prefer, to start the scripts manually, no worries! Just open up 2 different terminals and run:
+
+1. **Install packages and start web server with a tunnel**<br> 
+  `yarn && yarn serve -tunnel`
+2. **Watch for code changes**<br> 
+  `yarn watch`
+
+**Note:** The web server will serve files from the `build_dev` folder. Initially, this folder will have a single file named `quick-tunnel.txt` containing the URL of the current [Cloudflare quick tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/do-more-with-tunnels/trycloudflare/) pointing to http://localhost:3005. The quick tunnel URL changes every time the server starts and looks like `https://[tunnel-sub-domain].trycloudflare.com`. 
+
+The watch script will build a bundle of JavaScript files in dev mode and save them to the `build_dev/[module-name]` subfolder. The default module name is `StarterLibrary`. All source files under the `src` folder are watched for changes, and the target bundles are rebuilt as needed.
+
+**⚠ Important**: If you add (or remove) components to your libraries, you need to stop the  `yarn watch` (CTRL-C) and start it again so that it loads the latest list of available components.
+
+The watch script output will give you the URL to connect your test website with your dev environment.
 
 ```bash
-yarn install
+PUBLIC URL: https://[tunnel-sub-domain].com/StarterLibrary
 ```
 
-### 4. Run the Project
+> 🗒 Remember, when connecting a website with a module, the URL must include the module name in its path because there might be several modules hosted under the same domain.
 
-The "Run the Project" section is designed to help you develop and test your components during the development stage. This process is divided into two parts: building the JavaScript files and working with the tutorial.
+## 👷 Enabling Dev Mode on a Website
 
-#### Building the Target Module
+Now that you have a temporary URL pointing to the current dev build of your library, you can use it on a website in Dev Mode. 
 
-To build the target module (as defined in the `.env` file) during development, two scripts are primarily used: `yarn watch` and `yarn serve -tunnel`.
+1. Create a website, or open an existing one, and turn on its **Dev Mode** via the action menu `(⋅⋅⋅)▾` of the **Website** studio
+2. Set the **Component Library URL** to the URL produced in the last step. Continue developing the components in your module and reload the website to get the latest test bundle as it changes.
 
-1. **`yarn watch`**:
-   - This script initiates the Webpack build process in development mode and monitors file changes, automatically rebuilding when changes are detected.
-   - The output files are generated in the `build_dev` directory.
-   - **Important Note**: The `yarn watch` script requires a `TUNNEL_URL` to be defined in the `.env` file. If this value is missing, the build will fail with an error. This value can be manually set if you’re using a different tunneling technology, but the recommended approach is to let the `yarn serve -tunnel` command create it automatically (more details below).
+## 🔧 Troubleshooting Dev Mode
 
-2. **`yarn serve -tunnel`**:
-   - This script serves the files generated in the `build_dev` directory on a local development server, typically on port `3005` (as defined in the `.env` file).
-   - The `-tunnel` flag creates a local tunnel using the Cloudflared library, providing a publicly accessible URL.
-   - Upon successful execution, the command prints out the tunnel URL, which is crucial for development. This URL can be used in Uniweb website studio (previewer)'s dev mode to override the production remote component URL, enabling you to develop, test, and debug your components in real-time.
-   - **Tip**: If you encounter a build error in `yarn watch` due to a missing `TUNNEL_URL`, run `yarn serve -tunnel` first. This command will generate a `quick-tunnel.txt` file in the `build_dev` directory, containing a dynamically generated remote URL that can be recognized by the build utilities.
+If you run into any issues during the build process, try these steps:
 
-By following these steps, you can efficiently develop and test your components with real-time feedback and integration into the Uniweb website studio.
+- Make sure you installed the `Cloudflared` CLI to create Quick Tunnels.
+- Make sure you have saved your **current tunnel URL** into the Dev Mode settings of your test website.
+- Make sure that you have the correct version for Node JS and Yarn, as defined in the `.node-version` and `.yarnrc.yml` files.
+- Remove the shared cache files created by Yarn: `yarn cache clean`.
+- Check the console output for error messages and search for solutions online.
+- If the issue persists, please [open an issue](https://github.com/uniwebcms/uniweb-module-builder/issues/new) on the GitHub repository, providing as much detail as possible about the problem.
 
-#### Building the Documentation
+## 🚀 Deploying to production
 
-Documentation is used in the Uniweb's docufolio system to show the list of available components the module exposes and guides of how to setup, fill data in docufolio to make the selected component perform as expect. To create the documentation for your components, the process involves generating a schema that contains detailed information for each component in the target module (as defined in the `.env` file). This information is collected from the `doc` folder under each module.
+The included GitHub workflow automates the process of building your files and hosting them on GitHub Pages, simplifying the deployment of a production build. However, if you haven't already done so, it's recommended to create a separate development branch, such as `develop`, for your regular commits. This allows you to keep your `main` branch clean and stable.
 
-##### Using the Post-Build Script
+When you're ready to release a new version to production, simply merge your changes from the development branch into the `main` branch. This merge operation will automatically trigger the GitHub Actions workflow, which will build your project and host the resulting files on GitHub Pages.
 
-  - The `yarn watch:doc` post-build script is the recommended method for generating the schema.
-  - This script will build the schema file and place it under the following path:
-    ```
-    build_dev/[TARGET_MODULE]/_site/
-    ```
-  - Since the schema file is generated alongside the JavaScript files, no additional hosting or tunneling is required to access the schema. This means you don’t need to worry about how Uniweb accesses the schema—the process is seamless.
-  - **Important**: The generated schema file will be placed under `build_dev/[TARGET_MODULE]/`. Ensure that you run the `yarn watch` script first to prepare the build environment.
+By following this branching strategy, you can maintain a clear separation between your development and production environments, ensuring that only tested and approved changes are deployed to your live site.
 
-#### Building the Tutorial Website (Optional)
+<details>
+  <summary><strong>Learn how to create and merge branches in Git</strong></summary>
 
-If you want to create a comprehensive tutorial website for your components, you can generate a website that contains detailed information for each component across all modules. This step is optional but can be useful for more in-depth documentation.
+  ```bash
+  # Create a new branch named "develop"
+  git checkout -b develop
 
-**Using the `tutorial` Sub-Project**
+  # Make changes and commit them
+  git add .
+  git commit -m "Add new components and fix bugs"
 
-  - The `tutorial` sub-project uses Docusara as the engine to generate the tutorial website.
-  - To execute this process, run the following command:
-    ```bash
-    yarn watch:tutorial
-    ```
-  - This command will generate the tutorial website, which is hosted locally on port 3000 by default. The website offers a visually rich and interactive platform to view and explore component documentation.
+  # Push the changes to the remote "develop" branch
+  git push -u origin develop
 
+  # Switch back to the "main" branch
+  git checkout main
 
-### 5. Build the Project
+  # Merge the changes from "develop" into "main"
+  git merge develop
 
-The "Build the Project" section is focused on the actions that occur in the production environment. The recommended approach is to utilize the automated solution provided by GitHub Pages Actions. This template includes a complete workflow located under `.github/workflows` that is executed by GitHub upon detecting changes.
+  # Push the updated "main" branch
+  git push
+  ```
+  </details>
 
-#### Activating the GitHub Pages Action
+## 🔗 Using your components in a website
 
-To activate the GitHub Pages Action, simply commit your code changes once you are confident they are ready for production. GitHub will automatically run the workflow whenever it detects changes in the repository.
+Now that you have a production build hosted at GitHub Pages, you are ready to use and share your components. To make this happen, create a **Web Styler** in your Uniweb so the system knows about your component library. Simply create a new **Web Styler** and set the URL of your library to `https://USER-NAME.github.io/REPO-NAME/LIBRARY-NAME/`.
 
-The workflow consists of four main steps:
+The last step is to connect your new **Web Styler** to a website. To do that, open a website and click the **Edit** button to open the **Webpages** editor. Then click the action menu `(⋅⋅⋅)▾` and select "Main settings...". Select your **Web Styler** under the "Web Styler" input field.
 
-1. **Prepare**:
-   - This step reads the environment variables defined in your `.env` file to set up the build environment.
+**Note:** Uniweb will take the files from GitHub Pages and move them to a CDN.  It may take a few minutes for Uniweb to detect the changes in your GitHub Pages and move the files to the CDN. Be patient and check back later if your updates are not immediately visible on your website.
 
-2. **Build**:
-   - This step compiles the JavaScript files and builds the tutorial.
-   - **Tutorial Build Options**: 
-     - You can choose between the Docusara approach or the post-build script approach to generate the tutorial schema. 
-     - Enable your preferred approach in the workflow file and comment out the other.
+## ✨ Creating a new component
 
-3. **Deploy**:
-   - This job hosts the build results (artifact files) under the main branch (often `master`).
+You are ready to create your first web component. Before we proceed, let's review the file structure of the `src` folder.
 
-4. **Release**:
-   - This job also hosts the build results, but in the `gh-pages` branch.
-   - To enable the release job and disable the deploy job, set the `RELEASE_BRANCH` value in the `.env` file.
+```
+src/
+├── my-module/
+│   ├── components/
+│   │   ├── ComponentA/
+│   │   │   ├── index.jsx
+│   │   │   └── meta/
+│   │   │       ├── config.yml
+│   │   │       ├── default.png
+│   │   │       ├── preset1.jpg
+│   │   │       └── notes.md
+│   │   ├── ComponentB/
+│   │   │   └── ... (similar structure)
+│   │   └── ...
+│   ├── config.yml
+│   ├── index.css
+│   ├── index.js
+│   ├── package.json
+│   └── tailwind.config.js
+├── _shared/
+│   └── ComponentX/
+│   │   └── ... (similar structure)
+│   └── ...
+├── package.json
+└── README.md
+```
 
-#### Choosing Between Deploy and Release
+This file structure shows that component are grouped into modules. Each module is an independent library of componets. They can also share components across libraries via the special `_shared` folder. Components that are meant to be exported by a library must have their own folder with a `meta` subfolder in it. Components that are only used internally can be just a single file since they don't require any metadata. 
 
-- **Deploy Job**:
-  - The deploy job hosts only the latest build under the main branch. This is typically sufficient, as Uniweb handles backup builds in the cloud and manages fallback jobs in case of errors.
+### 🥇 First component: FeatureList Section
 
-- **Release Job**:
-  - The release job hosts the build files in a dedicated `gh-pages` branch, which can keep older builds. This can be useful for tracking changes over time or rolling back to a previous version if necessary.
+Let's create a component that renders a feature list section. Here we will assume that the section has a title and a subtile, and a variable number of features, each with their own title and description.
 
-Both approaches work effectively, so the choice depends on your specific needs. If you require version tracking and potential rollbacks, the release branch may be more suitable. Otherwise, the deploy job is simpler and leverages Uniweb’s built-in backup and fallback capabilities.
+1. Create a folder named `FeatureList` under `src/StarterLibrary/`
+2. Crate a file named `index.js` within the new folder
+5. Add the following code to the `index.js` file:
 
-### Extra Reading
+```jsx
+import React from 'react';
 
-This section introduces some advanced scripts available for more specific use cases, particularly for those who prefer to customize their development environment further.
+export default function FeatureList(props) {
+    const { block } = props;
+    const { title, subtitle } = block.main;
+    const features = block.items;
+    const { align = 'center' } = block.getBlockProperties();
+    const headerClass = (align === 'left') ? 'text-left' : 'text-center';
 
-#### Advanced Scripts in the `/builder/` Folder
+    return (
+        <section>
+            <header className={headerClass}>
+                <h2>{title}</h2>
+                <p>{subtitle}</p>
+            </header>
+            <ul>
+                {features.map((feature, index) => (
+                    <li key={index}>
+                        <h3>{feature.title}</h3>
+                        <p>{feature.description}</p>
+                    </li>
+                ))}
+            </ul>
+        </section>
+    );
+}
+```
+4. Create a subfolder named `meta` under `FeatureList`
+5. Crate a file named `config.yml` within the `meta` subfolder
+6. Add the following properties to the `config.yml` file:
 
-1. **`yarn watch:local`**:
-   - This script functions similarly to `yarn watch` but is specifically designed not to work with the automatic tunneling provided by `yarn serve -tunnel`.
-   - The key difference is in the Webpack configuration: the public path is set to `localhost` along with the development port, rather than the tunnel URL.
-   - When using `yarn watch:local`, you will need to manually run the `yarn serve` script to serve the JavaScript files. The order of execution for these two scripts does not matter.
-   - These scripts are typically used in conjunction with a local Uniweb instance for faster development cycles. However, they can also be paired with alternative tunneling technologies to expose your `localhost` to a public URL, which can then be used as the dev_mode URL in a live Uniweb’s Website Studio (previewer).
-   - This setup is ideal for developers who prefer using tunneling methods other than Cloudflare for their local development environment.
+```yaml
+label: Feature List
+description: A page section with a header and feature descriptions.
+parameters:
+  - name: align
+    label: Alignment
+    description: The content alignment
+    type: string
+    enum: 
+      - {label: Center, value: center}
+      - {label: Left, value: left}
+    default: center
+```
 
-2. **`yarn build:manifest`**:
-   - This script is used to create the manifest file for the latest build of the Target Module, as specified in the `.env` file.
-   - The manifest file is crucial in production environments, as Uniweb requires this file to back up the remote JavaScript files and the schema file. For this reason, `yarn build:manifest` is included as one of the steps in the GitHub Actions workflow.
-   - While it is primarily used in production, this script can also be valuable in a local development environment. Running it locally allows you to debug or inspect the content of the manifest file, helping you ensure everything is configured correctly before pushing to production.
-   - **Important**: Make sure to execute this script after running a build script like `yarn watch` to ensure that the manifest reflects the most recent build.
+Hooray! You've made your first component. You can now see it in action. If you are developping locally and have the watch script running, your component should already be exported and usable from a website whose Dev Mode is set to your current tunnel. If you are coding in production mode, you need to commit your changes to the `main` branch for them to go live.
 
-3. **`yarn build:dev`**:
-   - This script explicitly defines the build mode as development.
-   - When you run this script, the build files are generated and placed under the `build_dev` directory.
-   - It is particularly useful for previewing the build results in a development environment, allowing you to see how your components behave before pushing any changes to production.
+Here is some somple text for you to add to a webpage and test your component. Make sure to select your component as the rendered of the page section where you add this text.
 
-4. **`yarn build:prod`**:
-   - This script explicitly defines the build mode as production.
-   - The build files generated by this script are placed in the `dist` directory.
-   - Running `yarn build:prod` is essential when you want to preview the final production build. This allows you to verify that everything is working as expected in a production-like environment before deploying.
-   - **Note**: These scripts are ideal for scenarios where you need to inspect the differences between development and production builds, helping ensure consistency and functionality across environments.
+```markdown
+# Product Features
 
-#### Advanced Scripts in the `tutorial` Subproject
+Discover all the amazing features offered by our product.
 
-1. **`yarn clear`**:
-   - This script is used to clear the tutorial site's generated assets, caches, and build artifacts.
-   - It’s a useful utility for cleaning up the environment, especially before a fresh build or when troubleshooting issues related to stale files.
+---
+## Fast
 
-2. **`yarn build:prod`**:
-   - This script is used to build the tutorial site in production mode manually during the local development stage.
-   - **Important**: Before running this script, ensure that two environment variables are pre-filled:
-     - `TUTORIAL_SITE_URL`: This value is directly passed to the `url` property in the `docusaurus.config` file. [Learn more about the `url` property](https://docusaurus.io/docs/docusaurus.config.js#url).
-     - `TUTORIAL_SITE_BASE_URL`: This value is directly passed to the `baseUrl` property in the `docusaurus.config` file. [Learn more about the `baseUrl` property](https://docusaurus.io/docs/docusaurus.config.js#baseUrl).
-   - A common use case for this script is when hosting the tutorial site on a public website. In such cases, set these variables to reflect the public site URL.
+The fastest in the market
 
-3. **`yarn build:gh`**:
-   - This script also builds the tutorial site in production mode but is specifically designed to work with the GitHub Actions workflow.
-   - It knows which `url` and `baseUrl` to use based on the environment provided by GitHub Actions, making it the preferred choice for CI/CD pipelines.
+---
+## Intuitive
 
+Everyone can use it
+```
+
+That is all. Of course, there is a lot more to learn, such as adding customization properties to your component, and creating proper metadata so that non-technical users understand what to expect from it. If you are ready for that, simply head over to the [Component Library Development Guide](/guide.md).
+
+### 🥇 Component's capabilities
+
+Our example component may look simple, but since it's working together with the underlying Uniweb JS Engine, it automatically supports some advanced functionalities. Specifically, our new component can:
+
+1. Show internationalized content based the active language.
+2. Apply font and color themes, including light, dim, and dark variants.
+3. Fetch dynamic data from different data sources, and cache it.
+4. Display a custom background with a plain color, a two-color gradient, an image, or a video.
+
+## 🎯 Next steps
+
+- [Component Library Development Guide](/guide.md)
+  - Learn how to develop your own React components to render the contents of a website.
+- [Content and template editing with Docufolio](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/docufolio.md)
+  - Learn how to use Docufolio, a powerful content management tool integrated with Uniweb, to create and edit website content and templates.
+- [Web theme for websites and templates](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/webthemes.md)
+  - Discover how to create and apply custom themes to your Uniweb websites and templates, ensuring a consistent and professional look and feel.
+- [Examples of web components](https://github.com/uniwebcms/express/tree/main/src/blocks)
+  - Explore a collection of example web components that you can use as a starting point for your own component libraries or as inspiration for new components.
+
+Feel free to explore, experiment, and have fun creating amazing component libraries with Uniweb! If you have any questions or need help along the way, don't hesitate to reach out to the Uniweb community.
