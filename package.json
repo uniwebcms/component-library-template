@@ -8,13 +8,9 @@
     ],
     "scripts": {
         "serve": "cd builder && yarn run serve",
-        "watch:exports": "cd builder && yarn run watch_and_run 'yarn run-func preBuild.js generateExports'",
+        "refresh": "cd builder && yarn run refresh",
         "watch": "cd builder && yarn run watch:tunnel",
-        "watch:doc": "cd builder && yarn run watch_and_run 'yarn run build:doc'",
-        "build:exports": "cd builder && yarn run-func preBuild.js generateExports",
-        "build": "cd builder && yarn run build",
-        "build:doc": "cd builder && yarn run build:doc",
-        "build:manifest": "cd builder && yarn run build:manifest"
+        "build": "cd builder && yarn run build"
     },
     "dependencies": {
         "react": "^17.0.2",

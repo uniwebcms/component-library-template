@@ -2174,9 +2174,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniwebcms/module-builder@npm:^1.6.2":
-  version: 1.6.2
-  resolution: "@uniwebcms/module-builder@npm:1.6.2"
+"@uniwebcms/module-builder@npm:^1.6.4":
+  version: 1.6.4
+  resolution: "@uniwebcms/module-builder@npm:1.6.4"
   dependencies:
     "@tailwindcss/nesting": "npm:^0.0.0-insiders.565cd3e"
     assets-webpack-plugin: "npm:^7.1.1"
@@ -2212,7 +2212,7 @@ __metadata:
   dependenciesMeta:
     cloudflared:
       optional: true
-  checksum: 10/87ec563a24d4e7ff45df4c07e8290c77fabfccbe8d3405bd0b5a850b4521d9f307dabb1a6a3f78361c0c766cb45d010553066f185aa31ffe175bf1b7b97114f6
+  checksum: 10/e173256178fcd67434ee016ea3dccd18bc7cbec29ee81741297c89102063dcb8176b7f15b2e43a085ec845e0e7f1336f28809392b07dcca10054dfa4ae5a55d3
   languageName: node
   linkType: hard
 
@@ -2861,7 +2861,7 @@ __metadata:
     "@mdx-js/mdx": "npm:^3.0.1"
     "@mdx-js/react": "npm:^3.0.1"
     "@types/react": "npm:^18.3.4"
-    "@uniwebcms/module-builder": "npm:^1.6.2"
+    "@uniwebcms/module-builder": "npm:^1.6.4"
     babel-loader: "npm:^8.2.2"
     css-loader: "npm:^5.2.0"
     dotenv: "npm:^10.0.0"
