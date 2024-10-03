@@ -12,7 +12,9 @@
     "dependencies": {
         "@headlessui/react": "^1.7.13",
         "@tailwindcss/line-clamp": "^0.4.4",
+        "@tailwindcss/typography": "^0.5.15",
         "@uniwebcms/module-sdk": "^1.22.1",
+        "@uniwebcms/uniweb-tailwind-plugin": "^1.0.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-icons": "^4.11.0",

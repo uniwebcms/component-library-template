@@ -3421,6 +3421,32 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@tailwindcss/typography", [\
+      ["npm:0.5.15", {\
+        "packageLocation": "./.yarn/cache/@tailwindcss-typography-npm-0.5.15-9a4acf8b32-8c677e4de2.zip/node_modules/@tailwindcss/typography/",\
+        "packageDependencies": [\
+          ["@tailwindcss/typography", "npm:0.5.15"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:96128f87239438ec59156dc6db600c6fde5172b1b10c472b22b3f216a95c9274cc6a929602d766eb1ae2573cbf45f38450d87c8d72a710fde0e650430670ec33#npm:0.5.15", {\
+        "packageLocation": "./.yarn/__virtual__/@tailwindcss-typography-virtual-37ac59519f/0/cache/@tailwindcss-typography-npm-0.5.15-9a4acf8b32-8c677e4de2.zip/node_modules/@tailwindcss/typography/",\
+        "packageDependencies": [\
+          ["@tailwindcss/typography", "virtual:96128f87239438ec59156dc6db600c6fde5172b1b10c472b22b3f216a95c9274cc6a929602d766eb1ae2573cbf45f38450d87c8d72a710fde0e650430670ec33#npm:0.5.15"],\
+          ["@types/tailwindcss", null],\
+          ["lodash.castarray", "npm:4.4.0"],\
+          ["lodash.isplainobject", "npm:4.0.6"],\
+          ["lodash.merge", "npm:4.6.2"],\
+          ["postcss-selector-parser", "npm:6.0.10"],\
+          ["tailwindcss", "npm:3.3.5"]\
+        ],\
+        "packagePeers": [\
+          "@types/tailwindcss",\
+          "tailwindcss"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@tootallnate/once", [\
       ["npm:2.0.0", {\
         "packageLocation": "./.yarn/cache/@tootallnate-once-npm-2.0.0-e36cf4f140-ad87447820.zip/node_modules/@tootallnate/once/",\
@@ -3717,6 +3743,28 @@ const RAW_RUNTIME_STATE =
           "@types/react",\
           "react-dom",\
           "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@uniwebcms/uniweb-tailwind-plugin", [\
+      ["npm:1.0.1", {\
+        "packageLocation": "./.yarn/cache/@uniwebcms-uniweb-tailwind-plugin-npm-1.0.1-af205c958d-2d38f64b12.zip/node_modules/@uniwebcms/uniweb-tailwind-plugin/",\
+        "packageDependencies": [\
+          ["@uniwebcms/uniweb-tailwind-plugin", "npm:1.0.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:96128f87239438ec59156dc6db600c6fde5172b1b10c472b22b3f216a95c9274cc6a929602d766eb1ae2573cbf45f38450d87c8d72a710fde0e650430670ec33#npm:1.0.1", {\
+        "packageLocation": "./.yarn/__virtual__/@uniwebcms-uniweb-tailwind-plugin-virtual-b767d9bf51/0/cache/@uniwebcms-uniweb-tailwind-plugin-npm-1.0.1-af205c958d-2d38f64b12.zip/node_modules/@uniwebcms/uniweb-tailwind-plugin/",\
+        "packageDependencies": [\
+          ["@uniwebcms/uniweb-tailwind-plugin", "virtual:96128f87239438ec59156dc6db600c6fde5172b1b10c472b22b3f216a95c9274cc6a929602d766eb1ae2573cbf45f38450d87c8d72a710fde0e650430670ec33#npm:1.0.1"],\
+          ["@types/tailwindcss", null],\
+          ["tailwindcss", "npm:3.3.5"]\
+        ],\
+        "packagePeers": [\
+          "@types/tailwindcss",\
+          "tailwindcss"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6704,11 +6752,38 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["lodash.castarray", [\
+      ["npm:4.4.0", {\
+        "packageLocation": "./.yarn/cache/lodash.castarray-npm-4.4.0-f3706198e9-fca8c7047e.zip/node_modules/lodash.castarray/",\
+        "packageDependencies": [\
+          ["lodash.castarray", "npm:4.4.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["lodash.debounce", [\
       ["npm:4.0.8", {\
         "packageLocation": "./.yarn/cache/lodash.debounce-npm-4.0.8-f1d6e09799-cd0b281978.zip/node_modules/lodash.debounce/",\
         "packageDependencies": [\
           ["lodash.debounce", "npm:4.0.8"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["lodash.isplainobject", [\
+      ["npm:4.0.6", {\
+        "packageLocation": "./.yarn/cache/lodash.isplainobject-npm-4.0.6-d73937742f-29c6351f28.zip/node_modules/lodash.isplainobject/",\
+        "packageDependencies": [\
+          ["lodash.isplainobject", "npm:4.0.6"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["lodash.merge", [\
+      ["npm:4.6.2", {\
+        "packageLocation": "./.yarn/cache/lodash.merge-npm-4.6.2-77cb4416bf-d0ea2dd009.zip/node_modules/lodash.merge/",\
+        "packageDependencies": [\
+          ["lodash.merge", "npm:4.6.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -8870,6 +8945,15 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["postcss-selector-parser", [\
+      ["npm:6.0.10", {\
+        "packageLocation": "./.yarn/cache/postcss-selector-parser-npm-6.0.10-a4d7aaa270-f8ad9beb76.zip/node_modules/postcss-selector-parser/",\
+        "packageDependencies": [\
+          ["postcss-selector-parser", "npm:6.0.10"],\
+          ["cssesc", "npm:3.0.0"],\
+          ["util-deprecate", "npm:1.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:6.0.13", {\
         "packageLocation": "./.yarn/cache/postcss-selector-parser-npm-6.0.13-f732d92326-e779aa1f8c.zip/node_modules/postcss-selector-parser/",\
         "packageDependencies": [\
@@ -9758,7 +9842,9 @@ const RAW_RUNTIME_STATE =
           ["starter-library", "workspace:src/StarterLibrary"],\
           ["@headlessui/react", "virtual:96128f87239438ec59156dc6db600c6fde5172b1b10c472b22b3f216a95c9274cc6a929602d766eb1ae2573cbf45f38450d87c8d72a710fde0e650430670ec33#npm:1.7.16"],\
           ["@tailwindcss/line-clamp", "virtual:96128f87239438ec59156dc6db600c6fde5172b1b10c472b22b3f216a95c9274cc6a929602d766eb1ae2573cbf45f38450d87c8d72a710fde0e650430670ec33#npm:0.4.4"],\
+          ["@tailwindcss/typography", "virtual:96128f87239438ec59156dc6db600c6fde5172b1b10c472b22b3f216a95c9274cc6a929602d766eb1ae2573cbf45f38450d87c8d72a710fde0e650430670ec33#npm:0.5.15"],\
           ["@uniwebcms/module-sdk", "virtual:96128f87239438ec59156dc6db600c6fde5172b1b10c472b22b3f216a95c9274cc6a929602d766eb1ae2573cbf45f38450d87c8d72a710fde0e650430670ec33#npm:1.22.1"],\
+          ["@uniwebcms/uniweb-tailwind-plugin", "virtual:96128f87239438ec59156dc6db600c6fde5172b1b10c472b22b3f216a95c9274cc6a929602d766eb1ae2573cbf45f38450d87c8d72a710fde0e650430670ec33#npm:1.0.1"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:96128f87239438ec59156dc6db600c6fde5172b1b10c472b22b3f216a95c9274cc6a929602d766eb1ae2573cbf45f38450d87c8d72a710fde0e650430670ec33#npm:18.2.0"],\
           ["react-icons", "virtual:96128f87239438ec59156dc6db600c6fde5172b1b10c472b22b3f216a95c9274cc6a929602d766eb1ae2573cbf45f38450d87c8d72a710fde0e650430670ec33#npm:4.12.0"],\
