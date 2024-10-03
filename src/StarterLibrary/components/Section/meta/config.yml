@@ -8,6 +8,7 @@ description:
   en: A section block displays content that is entered from the docufolio.
   fr: Un bloc de section affiche le contenu qui est saisi à partir du docufolio.
 export: true
+category: content
 properties:
   alignment: 
     label: 

@@ -8,6 +8,7 @@ description:
   en: A sample list of items with text and icons.
   fr: Une liste d'éléments avec texte et icônes.
 export: true
+category: content
 properties:
   size:
     label:

@@ -7,4 +7,12 @@ page_templates:
         preset: centered_tight
       - name: List
         preset: medium
+categories:
+  content:
+    label:
+      en: Content
+      fr: Contenu
+    description:
+      en: Components that display content.
+      fr: Composants qui affichent du contenu.
 version: preset
