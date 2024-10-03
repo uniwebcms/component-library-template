@@ -20,6 +20,10 @@ module.exports = {
                 '8xl': '96rem',
                 '9xl': '108rem',
             },
+            // Adding custom color themes for the typography "prose" class
+            // @see: https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#adding-custom-color-themes
+            // Customizing the CSS for "prose"
+            // @see https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#customizing-the-css
         },
     },
 };
