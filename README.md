@@ -225,7 +225,8 @@ Options:
 -   `--module`: Name of the module to add the component to (defaults to the newest subfolder name under the `src` folder)
 -   `--type`: Type of component (section, block, or element)
 -   `--export`: Create an exportable component
--   `--config`: Create a component with config files (not exported)
+-   `--config`: Create a component with config files and export set to false
+-   `--shared`: Create a component to be shared across modules (in `_shared` folder)
 -   `--description`: Brief description of the component
 -   `--parameters`: Initial parameters for the component (e.g., "align:string,items:number")
 
