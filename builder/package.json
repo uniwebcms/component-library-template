@@ -1,6 +1,6 @@
 {
     "name": "builder",
-    "version": "1.6.4",
+    "version": "1.6.6",
     "private": true,
     "description": "",
     "scripts": {
@@ -22,7 +22,7 @@
         "@mdx-js/mdx": "^3.0.1",
         "@mdx-js/react": "^3.0.1",
         "@types/react": "^18.3.4",
-        "@uniwebcms/module-builder": "^1.6.4",
+        "@uniwebcms/module-builder": "^1.6.6",
         "babel-loader": "^8.2.2",
         "css-loader": "^5.2.0",
         "dotenv": "^10.0.0",

@@ -1,6 +1,6 @@
 {
     "name": "website-components-template",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "packageManager": "yarn@4.1.0",
     "private": true,
     "workspaces": [
@@ -11,7 +11,9 @@
         "serve": "cd builder && yarn run serve",
         "refresh": "cd builder && yarn run refresh",
         "watch": "cd builder && yarn run watch:tunnel",
-        "build": "cd builder && yarn run build"
+        "build": "cd builder && yarn run build",
+        "new:module": "node builder/console.js new:module",
+        "new:component": "node builder/console.js new:component"
     },
     "dependencies": {
         "react": "^17.0.2",
