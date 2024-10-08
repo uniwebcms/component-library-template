@@ -182,11 +182,13 @@ src/
 └── README.md
 ```
 
-This file structure shows that component are grouped into modules. Each module is an independent library of components. They can also share components across libraries via the special `_shared` folder. Components that are meant to be exported by a library must have their own folder with a `meta` subfolder in it. Components that are only used internally can be just a single file since they don't require any metadata.
+This file structure shows that components are grouped into modules. Each module is an independent library of components. They can also share components across libraries via the special folder that start with an underscore, such as `_shared` or `_utils`.
+
+> 🗒 Components that are meant to be exported by a library must have their own folder with a `meta` subfolder in it. Components that are only used internally can be just a single file since they don't require any metadata.
 
 ### Using CLI Commands
 
-We've introduced two new CLI commands to streamline your development process:
+This project includes two CLI commands to streamline your development process:
 
 #### 1. Create a New Module
 
@@ -201,8 +203,6 @@ Options:
 -   `--name`: Name of the new module
 -   `--description`: Brief description of the module
 
-If options are not provided, the CLI will prompt you for the necessary information.
-
 Example:
 
 ```bash
@@ -211,13 +211,15 @@ yarn new:module --name MyAwesomeModule --description "A module for awesome compo
 
 This will create a new module named "MyAwesomeModule" with the provided description.
 
+If options are not provided, the CLI will prompt you for the necessary information.
+
 #### 2. Create a New Component
 
 ```bash
 yarn new:component [options]
 ```
 
-This command creates a new component within a specified module.
+This command creates a new component within a specified module. Also, just as with the previous command, if options are not provided, the CLI will prompt you for the necessary information.
 
 Options:
 
@@ -230,8 +232,6 @@ Options:
 -   `--description`: Brief description of the component
 -   `--parameters`: Initial parameters for the component (e.g., "align:string,items:number")
 
-If options are not provided, the CLI will prompt you for the necessary information.
-
 Example:
 
 ```bash
@@ -242,7 +242,7 @@ This will create a new exportable block component named "FeatureCard" in the "My
 
 ### 🥇 First component: FeatureList Section
 
-Let's create a component that renders a feature list section. Here we will assume that the section has a title and a subtile, and a variable number of features, each with their own title and description.
+Let's implement a component that renders a feature list section. Here we will assume that the section has a title and a subtile, and a variable number of features, each with their own title and description.
 
 1. Create a folder named `FeatureList` under `src/StarterLibrary/`
 2. Crate a file named `index.js` within the new folder
@@ -321,7 +321,7 @@ That is all. Of course, there is a lot more to learn, such as adding customizati
 
 ### 🥇 Component's capabilities
 
-Our example component may look simple, but since it's working together with the underlying Uniweb JS Engine, it automatically supports some advanced functionalities. Specifically, our new component can:
+Our example component may look simple, but since it's working together with the underlying Uniweb JS Engine, it already supports some advanced functionalities. Specifically, our new component can:
 
 1. Show internationalized content based the active language.
 2. Apply font and color themes, including light, dim, and dark variants.
