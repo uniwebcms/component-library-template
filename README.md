@@ -145,9 +145,13 @@ git push
 
 ## 🔗 Using your components in a website
 
-Now that you have a production build hosted at GitHub Pages, you are ready to use and share your components. To make this happen, create a **Web Styler** in your Uniweb so the system knows about your component library. Simply create a new **Web Styler** and set the URL of your library to `https://USER-NAME.github.io/REPO-NAME/LIBRARY-NAME/`.
+<!-- Now that you have a production build hosted at GitHub Pages, you are ready to use your components. To do that, open a website and click the **Edit** button to open the **Content** editor. Then click the action menu `(⋅⋅⋅)▾` and select "Configure web components...". Copy the URL of your library and paste it into the "Custom Library URL" field. If you are using GitHub Pages for hosting it, its the URL would look like `https://USER-NAME.github.io/REPO-NAME/LIBRARY-NAME/`. -->
 
-The last step is to connect your new **Web Styler** to a website. To do that, open a website and click the **Edit** button to open the **Webpages** editor. Then click the action menu `(⋅⋅⋅)▾` and select "Main settings...". Select your **Web Styler** under the "Web Styler" input field.
+Now that you have a production build hosted at GitHub Pages, you are ready to use your components. To do that, open a website, click the action menu `(⋅⋅⋅)▾` and select "Configure web components...". Copy the URL of your library and paste it into the "Custom Library URL" field. A GitHub Pages URL normally has the form `https://USER-NAME.github.io/REPO-NAME/LIBRARY-NAME/`.
+
+<!-- Now that you have a production build hosted at GitHub Pages, you are ready to use and share your components. To make this happen, create a **Web Styler** in your Uniweb so the system knows about your component library. Simply create a new **Web Styler** and set the URL of your library to `https://USER-NAME.github.io/REPO-NAME/LIBRARY-NAME/`.
+
+The last step is to connect your new **Web Styler** to a website. To do that, open a website and click the **Edit** button to open the **Webpages** editor. Then click the action menu `(⋅⋅⋅)▾` and select "Main settings...". Select your **Web Styler** under the "Web Styler" input field. -->
 
 **Note:** Uniweb will take the files from GitHub Pages and move them to a CDN. It may take a few minutes for Uniweb to detect the changes in your GitHub Pages and move the files to the CDN. Be patient and check back later if your updates are not immediately visible on your website.
 
@@ -182,9 +186,9 @@ src/
 └── README.md
 ```
 
-This file structure shows that components are grouped into modules. Each module is an independent library of components. They can also share components across libraries via the special folder that start with an underscore, such as `_shared` or `_utils`.
+This file structure shows that components are grouped into modules. Each module is an independent library of components. The libraries can share components across libraries via the folders with names that start with an underscore, such as `_shared` or `_utils`.
 
-> 🗒 Components that are meant to be exported by a library must have their own folder with a `meta` subfolder in it. Components that are only used internally can be just a single file since they don't require any metadata.
+<!-- > 🗒 Components that are meant to be exported by a library must have their own folder with a `meta` subfolder in it. Components that are only used internally can be just a single file since they don't require any metadata. -->
 
 ### Using CLI Commands
 
@@ -228,7 +232,7 @@ Options:
 -   `--type`: Type of component (section, block, or element)
 -   `--export`: Create an exportable component
 -   `--config`: Create a component with config files and export set to false
--   `--shared`: Create a component to be shared across modules (in `_shared` folder)
+-   `--shared`: Create a component to be shared across modules (in the `_shared` folder)
 -   `--description`: Brief description of the component
 -   `--parameters`: Initial parameters for the component (e.g., "align:string,items:number")
 
@@ -244,11 +248,67 @@ This will create a new exportable block component named "FeatureCard" in the "My
 
 Let's implement a component that renders a feature list section. Here we will assume that the section has a title and a subtile, and a variable number of features, each with their own title and description.
 
-1. Create a folder named `FeatureList` under `src/StarterLibrary/`
-2. Crate a file named `index.js` within the new folder
-3. Add the following code to the `index.js` file:
+1. Create a new component using the provided CLI command:
 
-```jsx
+    ```bash
+    yarn new:component --name FeatureList --export --parameters "align:enum"
+    ```
+
+2. Edit the code of the `index.js` file under the `src/StarterLibrary/components/FeatureList` folder:
+
+    ```jsx
+    import React from 'react';
+
+    export default function FeatureList(props) {
+        const { block } = props;
+        const { title, subtitle } = block.main;
+        const features = block.items;
+        const { align = 'center' } = block.getBlockProperties();
+        const headerClass = align === 'left' ? 'text-left' : 'text-center';
+
+        return (
+            <section>
+                <header className={headerClass}>
+                    <h2>{title}</h2>
+                    <p>{subtitle}</p>
+                </header>
+                <ul>
+                    {features.map((feature, index) => (
+                        <li key={index}>
+                            <h3>{feature.title}</h3>
+                            <p>{feature.description}</p>
+                        </li>
+                    ))}
+                </ul>
+            </section>
+        );
+    }
+    ```
+
+3. Add proper enum options to the `align` parameter we defined in our CLI command. To do that, edit the configuration file `config.yml` under `src/StarterLibrary/components/FeatureList/meta` folder:
+    ```yaml
+    label: Feature List
+    description: Showcase lists of features.
+    parameters:
+        - name: align
+          label: Alignment
+          description: The content alignment
+          type: string
+          enum:
+              - { label: Center, value: center }
+              - { label: Left, value: left }
+          default: center
+    ```
+
+<!-- This command will create the component `FeatureList` under the newest module, which in this case is `StarterLibrary`. It will also add a parameter named `align` to the component, and define it as an enumeration of possible values.
+
+> Note: if you choose to create the files manually while you are in "watch", make sure to run `yarn refresh` when ready so that the list of exported components is updated. That `yarn new:component` does that for you by default. -->
+
+<!-- 1. Create a folder named `FeatureList` under `src/StarterLibrary/`
+2. Crate a file named `index.js` within the new folder
+3. Add the following code to the `index.js` file: -->
+
+<!-- ```jsx
 import React from 'react';
 
 export default function FeatureList(props) {
@@ -275,9 +335,9 @@ export default function FeatureList(props) {
         </section>
     );
 }
-```
+``` -->
 
-4. Create a subfolder named `meta` under `FeatureList`
+<!-- 4. Create a subfolder named `meta` under `FeatureList`
 5. Crate a file named `config.yml` within the `meta` subfolder
 6. Add the following properties to the `config.yml` file:
 
@@ -293,11 +353,15 @@ parameters:
           - { label: Center, value: center }
           - { label: Left, value: left }
       default: center
-```
+``` -->
 
-Hooray! You've made your first component. You can now see it in action. If you are developping locally and have the watch script running, your component should already be exported and usable from a website whose Dev Mode is set to your current tunnel. If you are coding in production mode, you need to commit your changes to the `main` branch for them to go live.
+Hooray! You've made your first component. You can now see it in action. If you are developing locally and have the watch script running, your component should already be exported and usable from a website whose Dev Mode is set to your current tunnel. If you are coding in production mode, you need to commit your changes to the `main` branch for them to go live.
 
-Here is some somple text for you to add to a webpage and test your component. Make sure to select your component as the rendered of the page section where you add this text.
+> **⚠ Important** If you choose to manually create the files of an exported component while you are in "watch" mode, make sure to run `yarn refresh` when ready so that the list of exported components is updated. The `new:component` command does that already.
+
+#### Sample Content
+
+Here is some sample text for you to add to a webpage and test your component. Make sure to select your component as the rendered of the page section where you add this text.
 
 ```markdown
 # Product Features
@@ -319,7 +383,7 @@ Everyone can use it
 
 That is all. Of course, there is a lot more to learn, such as adding customization properties to your component, and creating proper metadata so that non-technical users understand what to expect from it. If you are ready for that, simply head over to the [Component Library Development Guide](/guide.md).
 
-### 🥇 Component's capabilities
+### 🦾 Component's capabilities
 
 Our example component may look simple, but since it's working together with the underlying Uniweb JS Engine, it already supports some advanced functionalities. Specifically, our new component can:
 
