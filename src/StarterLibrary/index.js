@@ -7,7 +7,7 @@ import * as dynamicExports from './dynamicExports';
 // Export selectable components under the module's "default" property
 export default dynamicExports;
 
-// Export site-level components and settings under the module's "site" property
+// Export site-level components and settings under the module's "config" property
 // Example:
 
 // export const config = {
