@@ -10,7 +10,7 @@ export default dynamicExports;
 // Export site-level components and settings under the module's "site" property
 // Example:
 
-// export const site = {
+// export const config = {
 //     Layout: MyLayoutComponent       // take control of the site's layout
 //     props: { disableTheming: true } // eg, disable auto theming
 //     report: { ... }                 // for document rendering (eg, Word/Excel/JSON)
