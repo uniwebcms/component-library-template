@@ -1,6 +1,6 @@
 # Understaning Website Content
 
-A website consists of pages organized in a way that makes sense for its visitors - like a home page, product pages, about page, and so on. Each page is built from sections that serve different purposes, such as introducing your company, showcasing features, or presenting your team.
+A website consists of pages organized in a way that makes sense for its visitors - like a home page, product pages, about page, and so on. Each page is built from sections that serve different purposes, such as introducing a company, showcasing features, or presenting a team.
 
 ## Page Sections
 
