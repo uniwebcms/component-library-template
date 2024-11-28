@@ -250,6 +250,8 @@ This will create a new exportable block component named "FeatureCard" in the "My
 
 Let's implement a component that renders a feature list section. Here we will assume that the section has a title and a subtile, and a variable number of features, each with their own title and description.
 
+> 🗒 Learn more about [content rules](content-rules.md) to familiarize yourself with the data given to a component.
+
 1. Create a new component using the provided CLI command:
 
     ```bash
