@@ -38,7 +38,7 @@ To find the URL for your new component library, visit the GitHub pages URL. You 
 
 Now you're ready to use your shiny new library in a Uniweb website! Head over to your Uniweb instance, which might be [uniweb.app](https://uniweb.app) or another instance.
 
-Create a new website and **skip the template selection** – we want to keep things simple and start from scratch.
+Create a new website via the **Skip template** option – we want to keep things simple and start from scratch.
 
 Since your website doesn't have a component library or content yet, it will be a blank page. But don't worry, that's about to change! Open the action menu `(⋅⋅⋅)▾` in the website studio and select "Manage components...". Then, paste the URL of your GitHub-hosted library under the "Custom URL" tab and into the "Library URL" field and apply your changes.
 
