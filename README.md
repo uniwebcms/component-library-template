@@ -12,8 +12,6 @@ By using component libraries with Uniweb, you'll enjoy benefits like:
 -   🔁 **Reusability:** Share components across multiple websites to save time and effort.
 -   🔧 **Maintainability:** Easily update your component library and watch the changes propagate to all connected websites.
 
-In this guide, we'll walk you through the process of creating your own Uniweb component libraries. We'll assume you have some knowledge of modern JavaScript, React, and Tailwind CSS, but don't worry if you're not an expert – we'll provide plenty of examples and explanations along the way.
-
 In this guide, we'll walk you through creating Uniweb component libraries using modern JavaScript, React, and Tailwind CSS. Don't worry if you're not familiar with these technologies – you can start by copying our examples. You can even create custom components using AI assistants with our [ready-to-use prompts](ai-prompts.md).
 
 ## 🚀 Setup: Start from a Template Repository
