@@ -122,12 +122,12 @@ Shows team members as equal content groups:
 
 ```
 ## Sarah Chen
-Lead Designer
+### Lead Designer
 [Photo of Sarah]
 Sarah brings 10 years of experience...
 
 ## Alex Rodriguez
-Lead Developer
+### Lead Developer
 [Photo of Alex]
 Alex has built systems for...
 ```
