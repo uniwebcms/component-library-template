@@ -2,7 +2,7 @@
 
 Welcome to the world of Uniweb component libraries! If you're looking to create dynamic, reusable web components for your Uniweb websites, you've come to the right place. 
 
-With this starter template you can build your components using GitHub actions, so there is no need to have a local dev environment. The URL of your newly built library is all you need to start using it on a website. Want to iterate faster? Set up a local envirnmoment, code locally with hot reload, and see changes in real-time.
+This starter template offers two ways to build your components: use the included GitHub action for a no-setup approach, or set up a local development environment for faster iteration. With the GitHub action approach, simply commit to the main branch and your components are automatically built and hosted. All you need is the base URL to start using your library on any website, with new versions fetched automatically. For those who prefer rapid development, the local setup provides hot reload functionality to see your changes in real-time.
 
 [Uniweb](https://uniwebcms.com) is a powerful web CMS that helps you create dynamic websites with ease. Each website is linked to a component library, which is a webpack federated module. Don't worry if that sounds a bit technical – in simple terms, it means your components can be shared instantly across multiple websites, making your development process more efficient and consistent.
 
