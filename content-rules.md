@@ -96,7 +96,7 @@ Transform your business with our platform
 [Second slide background]
 ## Innovation at Work
 See how our solutions drive growth
-[Product showcase image]
+[Product showcase YouTube video]
 ```
 
 ### Features Section
