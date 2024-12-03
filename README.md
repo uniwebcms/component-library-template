@@ -50,6 +50,8 @@ The easiest way to deploy your component library is to use the included [GitHub 
 
 Assuming you have [GitHub Actions enabled](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/build_and_deploy_with_gh_actions.md), every time you commit changes to the `main` branch of your repository, a new build will be generated and hosted within about a minute and a half.
 
+You can work on your repository on a web browser with [the github.dev web-based editor](https://github.com/github/dev), or work on a local clone on your computer. 
+
 **⚠ A quick note on best practices:** To avoid affecting existing websites that use your libraries, it's a good idea to create a separate development branch (like `develop`) for your regular commits. When you're ready to release a new version, simply merge your development branch into `main`.
 
 ## 💻 Local development
