@@ -52,7 +52,7 @@ Assuming you have [GitHub Actions enabled](https://github.com/uniwebcms/uniweb-m
 
 You can work on your repository on a web browser with [the github.dev web-based editor](https://github.com/github/dev), or work on a local clone on your computer. 
 
-**⚠ A quick note on best practices:** To avoid affecting existing websites that use your libraries, it's a good idea to create a separate development branch (like `develop`) for your regular commits. When you're ready to release a new version, simply merge your development branch into `main`.
+**⚠ A quick note on best practices:** To avoid affecting existing websites that use your libraries, it's a good idea to create a separate development branch (like `develop`) for your regular commits. When you're ready to release a new version, simply merge your development branch into `main`. [Learn more](/guide/important.md)
 
 ## 💻 Local development
 
@@ -117,7 +117,7 @@ If you run into any issues during the build process, try these steps:
 
 The included GitHub workflow automates the process of building your files and hosting them on GitHub Pages, simplifying the deployment of a production build. However, if you haven't already done so, it's recommended to create a separate development branch, such as `develop`, for your regular commits. This allows you to keep your `main` branch clean and stable.
 
-When you're ready to release a new version to production, simply merge your changes from the development branch into the `main` branch. This merge operation will automatically trigger the GitHub Actions workflow, which will build your project and host the resulting files on GitHub Pages.
+When you're ready to release a new version to production, simply merge your changes from the development branch into the `main` branch. This merge operation will automatically trigger the GitHub Actions workflow, which will build your project and host the resulting files on GitHub Pages. IMPORTANT: [follow best practices](/guide/important.md) when updating production libraries.
 
 By following this branching strategy, you can maintain a clear separation between your development and production environments, ensuring that only tested and approved changes are deployed to your live site.
 
