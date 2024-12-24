@@ -316,3 +316,10 @@ export default function Locations(props) {
 Creating component libraries for Uniweb involves leveraging React, Tailwind CSS, and the Uniweb SDK to build flexible, responsive, and internationalized components. By following this guide and the provided best practices, you can create powerful and reusable components for Uniweb-powered websites.
 
 Remember to refer to the Uniweb documentation for the latest updates and advanced features as the platform evolves.
+
+## Next steps
+
+-   [Understanding Library Updates: Power and Responsibility](/important.md)
+    -   Uniweb's component library system offers remarkable deployment capabilities. But with great power comes great responsibility.
+-   [Strategic Component Design: Building Libraries That Scale](/design-tips.md)
+    -   How to structure your libraries to maximize reusability while ensuring they remain intuitive for end users.

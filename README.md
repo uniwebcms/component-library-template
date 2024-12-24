@@ -387,7 +387,7 @@ The fastest in the market
 Everyone can use it
 ```
 
-That is all. Of course, there is a lot more to learn, such as adding customization properties to your component, and creating proper metadata so that non-technical users understand what to expect from it. If you are ready for that, simply head over to the [Component Library Development Guide](/guide.md).
+That is all. Of course, there is a lot more to learn, such as adding customization properties to your component, and creating proper metadata so that non-technical users understand what to expect from it. If you are ready for that, simply head over to the [Component Library Development Guide](/intro.md).
 
 ### 🦾 Component's capabilities
 
@@ -400,7 +400,7 @@ Our example component may look simple, but since it's working together with the 
 
 ## 🎯 Next steps
 
--   [Component Library Development Guide](/guide.md)
+-   [Component Library Development Guide](/intro.md)
     -   Learn how to develop your own React components to render the contents of a website.
 -   [Content and template editing with Docufolio](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/docufolio.md)
     -   Learn how to use Docufolio, a powerful content management tool integrated with Uniweb, to create and edit website content and templates.
