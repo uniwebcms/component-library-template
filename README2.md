@@ -107,7 +107,8 @@ src/
 We've created comprehensive guides to help you build effective components:
 
 - [Understanding Content](docs/understanding-content.md) - How content works in Uniweb components
-- [Component Development](docs/component-development.md) - Building effective components
+- [Understanding Components](docs/understanding-components.md) - How components work with the core engine
+- [Component Development](docs/component-development.md) - Practical guide to building components
 - [Configuration Guide](docs/component-configuration.md) - Making components configurable
 - [Advanced Features](docs/advanced-features.md) - Complex capabilities and patterns
 

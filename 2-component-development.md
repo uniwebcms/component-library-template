@@ -1,102 +1,249 @@
-# Uniweb Component Development Guide
+# Developing Uniweb Components
 
-## Technical Foundation
+This guide explains how to develop effective components for Uniweb. You'll learn common patterns, best practices, and how to make the most of Uniweb's core engine capabilities.
 
-Uniweb component libraries are built with React, giving you a powerful and familiar foundation for web development. While our examples use Tailwind CSS for styling, you have complete freedom to use standard CSS files and classes. Your components are standard React components that gain significant additional capabilities through Uniweb's core engine.
+## Creating Your First Component
 
-### Building Components
-
-Components are written in React, giving you access to all standard React features including hooks, context, and component composition. For styling, you can choose what works best for your team - whether that's Tailwind's utility classes, traditional CSS, or a combination of both. Here's a simple example:
+Let's start with a basic component that displays a title, description, and optional image:
 
 ```jsx
 import React from 'react';
-import './styles.css'; // Standard CSS import
+import { Image } from '@uniwebcms/module-sdk';
 
-export default function FeatureCard({ block }) {
-    const { title, description } = block.main;
+export default function SimpleSection({ block }) {
+    const { title, description, images } = block.main;
+    const mainImage = images?.[0];
     
     return (
-        // Using a mix of standard CSS classes and Tailwind
-        <div className="feature-card p-6 rounded-lg">
-            <h3 className="card-title">{title}</h3>
-            <p className="card-description">{description}</p>
+        <section className="py-12 px-6">
+            <div className="container mx-auto">
+                <h2 className="text-3xl font-bold mb-4">{title}</h2>
+                <p className="text-gray-600 mb-6">{description}</p>
+                {mainImage && (
+                    <Image 
+                        src={mainImage.src}
+                        alt={mainImage.alt || title}
+                        className="rounded-lg shadow-md"
+                    />
+                )}
+            </div>
+        </section>
+    );
+}
+```
+
+This component showcases several important principles:
+- It receives content through the block prop
+- It uses destructuring to access content easily
+- It handles optional content (images) gracefully
+- It uses Uniweb's Image component for optimal image handling
+
+## Working with the SDK
+
+Uniweb provides several helper components through its SDK that make common tasks easier and more reliable:
+
+```jsx
+import { SafeHtml, Image, Link } from '@uniwebcms/module-sdk';
+
+export default function ArticleSection({ block }) {
+    const { title, content, images, links } = block.main;
+    
+    return (
+        <article>
+            <h2>{title}</h2>
+            
+            {/* Safely render HTML content */}
+            <SafeHtml content={content} />
+            
+            {/* Optimized image handling */}
+            {images?.[0] && (
+                <Image
+                    src={images[0].src}
+                    alt={images[0].alt}
+                    className="article-image"
+                />
+            )}
+            
+            {/* Smart link handling */}
+            {links?.[0] && (
+                <Link href={links[0].url} className="article-link">
+                    {links[0].text}
+                </Link>
+            )}
+        </article>
+    );
+}
+```
+
+## Component Patterns
+
+### Layout Variations
+
+Components can offer different layouts while maintaining content flexibility. Rather than creating separate components for each layout, use parameters to switch between them:
+
+```jsx
+export default function TeamSection({ block }) {
+    const { title, subtitle } = block.main;
+    const members = block.items;
+    const { layout = 'grid' } = block.getBlockProperties();
+    
+    return (
+        <section>
+            <header>
+                <h2>{title}</h2>
+                {subtitle && <p>{subtitle}</p>}
+            </header>
+            
+            <div className={layout === 'grid' ? 'grid-layout' : 'list-layout'}>
+                {members.map((member, index) => (
+                    <div key={index} className="member">
+                        <h3>{member.title}</h3>
+                        <p>{member.description}</p>
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+}
+```
+
+### Content Flexibility
+
+Your components should be flexible about what content they use. Not every instance of your component will have all possible content types. Handle missing content gracefully:
+
+```jsx
+export default function FeatureSection({ block }) {
+    const { 
+        title, 
+        subtitle = '',  // Provide defaults for optional content
+        icons = [],     // Default to empty array for collections
+        images = [] 
+    } = block.main;
+    
+    return (
+        <section>
+            <h2>{title}</h2>
+            {subtitle && <p>{subtitle}</p>}
+            
+            {icons.length > 0 && (
+                <div className="icons">
+                    {/* Render icons */}
+                </div>
+            )}
+            
+            {images.length > 0 && (
+                <div className="images">
+                    {/* Render images */}
+                </div>
+            )}
+        </section>
+    );
+}
+```
+
+### Internal Components
+
+While exported components should be flexible, internal components can be more specialized. This helps keep your code organized and maintainable:
+
+```jsx
+// Internal component for a specific layout
+function GridLayout({ members }) {
+    return (
+        <div className="grid grid-cols-3 gap-6">
+            {members.map((member, index) => (
+                <MemberCard key={index} member={member} />
+            ))}
+        </div>
+    );
+}
+
+// Another internal component for a specific purpose
+function MemberCard({ member }) {
+    return (
+        <div className="card">
+            <h3>{member.title}</h3>
+            <p>{member.description}</p>
+        </div>
+    );
+}
+
+// Exported component that uses internal components
+export default function TeamSection({ block }) {
+    const { layout = 'grid' } = block.getBlockProperties();
+    const members = block.items;
+    
+    return layout === 'grid' ? (
+        <GridLayout members={members} />
+    ) : (
+        <ListLayout members={members} />
+    );
+}
+```
+
+## Styling Components
+
+You can use Tailwind CSS utility classes or standard CSS for styling. Choose what works best for your team:
+
+```jsx
+// Using Tailwind
+export default function Card({ block }) {
+    return (
+        <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            {/* Content */}
+        </div>
+    );
+}
+
+// Using standard CSS
+import './styles.css';
+
+export default function Card({ block }) {
+    return (
+        <div className="card hover-effect">
+            {/* Content */}
         </div>
     );
 }
 ```
 
-### Enhanced by the Core Engine
+## Working with Dynamic Data
 
-When your components run in Uniweb, they automatically gain sophisticated capabilities through the core engine. Your components adapt to different themes without additional code. They handle backgrounds - whether they're solid colors, gradients, images, or videos. They work seamlessly with multiple languages and integrate naturally with site search. The core engine manages all these features, letting you focus on creating distinctive components.
+Components can receive dynamic data through the input prop. This is useful for components that display content from multiple sources:
 
-The data management system is equally sophisticated. Your components receive properly structured content without having to manage API calls or state management. Dynamic content updates automatically, and multilingual support works out of the box. These aren't features you need to implement - they're inherent capabilities your components gain from running in the Uniweb environment.
-
-## Development Environments
-
-### Component-First Development with UniStudio
-
-UniStudio provides a streamlined environment for component development that emulates Uniweb's core engine. You can focus on creating and refining components without needing a full Uniweb instance. UniStudio uses mock data that matches Uniweb's data structure, providing instant updates with hot reload as you work. This makes it perfect for the initial phase of component development when you're focused on functionality and design.
-
-### Testing with Real Data
-
-Once your components are working well in UniStudio, you can test them with real data by creating a tunnel to your localhost. This connects your development environment to an actual Uniweb site, where your components receive real content and interact with all core engine features. You can verify how your components handle multilingual content, interact with site navigation, and work with dynamic data. This progression from UniStudio to real data testing provides a natural path from initial development to full feature verification.
-
-## Deployment and Distribution
-
-The deployment process for component libraries is designed to be both simple and reliable. When you push changes to your repository's main branch, GitHub Actions automatically builds your library and publishes it to GitHub Pages. Uniweb monitors these published libraries and, when it detects updates, copies the files to its content delivery network (CDN). This ensures your components are distributed efficiently to all websites using your library.
-
-For a smooth development workflow, we recommend maintaining separate branches for development and production code. Working in a development branch gives you the freedom to experiment and refine your components without affecting live websites. When your changes are ready, merging to the main branch triggers the deployment process, updating all websites that use your library.
-
-## Component Architecture
-
-Understanding how components interact with Uniweb's core engine helps you create more effective solutions. Each component receives a `block` prop that provides access to content, configuration, and site-wide settings. Here's how the data structure works:
-
-```javascript
-{
-    main: {}, // Primary content
-    items: [], // Related content
-    getBlockProperties(), // Component parameters
-    getSiteProperties(), // Site settings
-    getTheme() // Current theme
+```jsx
+export default function BlogSection({ block, input }) {
+    const { title } = block.main;
+    const posts = input?.profiles || [];
+    
+    return (
+        <section>
+            <h2>{title}</h2>
+            <div className="posts">
+                {posts.map((post, index) => (
+                    <article key={index}>
+                        <h3>{post.getTitle()}</h3>
+                        <p>{post.getExcerpt()}</p>
+                    </article>
+                ))}
+            </div>
+        </section>
+    );
 }
 ```
 
-Your components can handle both static and dynamic content through this unified interface. For static content, you simply access the data provided in the block prop. For dynamic content, the core engine provides methods to load and manage data from various sources. Here's an example:
+## Common Patterns and Tips
 
-```javascript
-// Static content is directly available
-const { title, description } = block.main;
-
-// Dynamic content can be loaded as needed
-const posts = await block.loadProfiles('blog-posts');
-```
-
-### Theme Integration
-
-Theme support in Uniweb components happens automatically through the core engine. Your components can access the current theme settings to ensure visual consistency across the site. The theme system provides colors, typography settings, and other design tokens that you can use in your components:
-
-```javascript
-const theme = block.getTheme();
-const styles = {
-    color: theme.colors.primary,
-    fontFamily: theme.fonts.heading
-};
-```
-
-### Content and Language Support
-
-Multilingual support is built into the core of Uniweb. When your components receive content, it's already in the correct language based on the user's selection. You don't need to handle language switching or content translation - the core engine manages all of this for you. Similarly, search integration happens automatically. The core engine indexes your component's content and makes it available through the site's search functionality without requiring any additional code.
-
-## Development Best Practices
-
-Creating effective components requires attention to both code quality and user experience. Your components should be focused and maintainable, following standard React best practices while taking advantage of Uniweb's capabilities. Consider performance in your design - optimize render cycles, use appropriate image formats, and follow good practices for React development.
-
-Accessibility should be a core consideration in your component development. Maintain semantic HTML structure and ensure your components work well with keyboard navigation. Support screen readers through appropriate ARIA attributes and follow WCAG guidelines to ensure your components are usable by everyone.
-
-Testing should cover various scenarios your components might encounter. Verify that your components work well with different types of content, display correctly across device sizes, and handle multilingual content appropriately. Test search integration to ensure your content is properly indexed and discoverable.
+1. Always handle optional content gracefully
+2. Use parameters for layout variations rather than creating multiple components
+3. Keep exported components flexible
+4. Create specialized internal components when needed
+5. Follow React best practices for performance
+6. Use the SDK's helper components for common tasks
 
 ## Next Steps
 
-As you continue developing with Uniweb, you might want to explore advanced component patterns, learn more about dynamic data loading, or understand the component lifecycle in depth. Our documentation provides detailed guides on these topics, and our Discord community is always available to help you succeed with component development.
+- Learn about [Component Configuration](component-configuration.md)
+- Explore [Advanced Features](advanced-features.md)
+- Review the [Content Structure Guide](understanding-content.md)
 
-Need help? Join our [Discord community](https://discord.gg/uniweb) or check the [documentation](https://docs.uniweb.dev).
+Remember that components should be easy to use, flexible with content, and maintainable. The Uniweb core engine handles many complex tasks automatically, letting you focus on creating effective presentations of content.
