@@ -41,7 +41,7 @@ Component names are crucial - they help users find the right tool for their cont
 "Service List"      # Layout-specific (should be a parameter)
 ```
 > [!IMPORTANT]
-> The name of your component in your code does not need to match the user-facing name (label) that you give to it. For example, the internal name "FeatureSection" may be named "Features" in the component's metadata.
+> The name of your component in your code does not need to match the user-facing name that you give to it. For example, the internal name "FeatureSection" may be named "Features" in the component's metadata.
 
 ### Standard Components
 
