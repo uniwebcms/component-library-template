@@ -4,6 +4,18 @@
 
 Uniweb component libraries are built with React, giving you a powerful and familiar foundation for web development. While our examples use Tailwind CSS for styling, you have complete freedom to use standard CSS files and classes. Your components are standard React components that gain significant additional capabilities through Uniweb's core engine.
 
+## A Different Approach
+
+When you start creating **user-facing components** for Uniweb, you'll need to shift your thinking about what a component is and how it should work. If you've worked with other frameworks or systems, you might be used to creating many specific components, each with a fixed layout. That is okay for **internal components**, those that are not exported and used by end users. Uniweb takes a fundamentally different approach for **exported components**: exported components are powerful, content-focused solutions that can adapt to different presentation needs.
+
+You may create several **internal components** named: TeamGrid, TeamList, and TeamCards. But they may be linked to the layout options of single **Team Members** component. This isn't just about reducing the number of user-facing components - it's about creating more powerful, content-focused solutions that give users flexibility without complexity.
+
+An **exported component** is:
+- Focused on a type of content (like team members, features, or testimonials)
+- Capable of multiple presentation styles through parameters
+- Smart about handling different content patterns
+- Independent of specific layout decisions
+
 ### Building Components
 
 Components are written in React, giving you access to all standard React features including hooks, context, and component composition. For styling, you can choose what works best for your team - whether that's Tailwind's utility classes, traditional CSS, or a combination of both. Here's a simple example:

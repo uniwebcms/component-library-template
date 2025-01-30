@@ -1,8 +1,23 @@
-# Creating Components for Uniweb: A Different Approach
+# Documenting Components for End Users
 
-When you start creating components for Uniweb, you'll need to shift your thinking about what a component is and how it should work. If you've worked with other frameworks or systems, you might be used to creating many specific components, each with a fixed layout. Uniweb takes a fundamentally different approach: components are powerful, content-focused solutions that can adapt to different presentation needs.
+When building components for Uniweb, you're not just writing code - you're creating tools that content creators will use every day. While Uniweb maintains a clean separation between content and presentation, exported components are where developers and content creators meet. The documentation, parameter names, and presets you create become the interface through which non-technical users interact with your components.
 
-## Understanding the Paradigm Shift
+This guide will help you create component documentation that bridges the technical and content worlds effectively.
+
+## Understanding Your Audience
+
+When documenting exported components, you're writing for content creators who:
+- Think in terms of content and presentation, not technical implementation
+- Want to understand what a component can do for them
+- Need to know what content to prepare
+- Look for visual examples and clear use cases
+- May be exploring your component library for the first time
+
+This is very different from documenting code for other developers. Internal components and technical documentation can use developer terminology, but exported components need clear, user-friendly language that focuses on content and outcomes.
+
+# User-Facing Components
+
+If you've worked with other frameworks or systems, you might be used to creating many specific components, each with a fixed layout. That is okay for **internal components**, those that are not exported and used by end users. When you  create **user-facing components** , you need to shift your thinking about what a component is and how it should work. 
 
 In traditional systems, you might create separate components like:
 - TeamGrid
