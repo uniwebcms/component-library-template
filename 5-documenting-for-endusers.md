@@ -10,7 +10,7 @@ In traditional systems, you might create separate components like:
 - TeamCards
 - TeamFeatured
 
-In Uniweb, you create a single **Team Members** component that can handle all these presentations through its configuration. This isn't just about reducing the number of components - it's about creating more powerful, content-focused solutions that give users flexibility without complexity.
+In Uniweb, you create a single **Team Members** component that can handle all these presentations through its configuration. This isn't just about reducing the number of user-facing components - it's about creating more powerful, content-focused solutions that give users flexibility without complexity.
 
 A Uniweb component is:
 - Focused on a type of content (like team members, features, or testimonials)
