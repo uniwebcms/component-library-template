@@ -28,7 +28,7 @@ In traditional systems, you might create separate components like:
 In Uniweb, you create a single **Team Members** component that can handle all these presentations through its configuration. This isn't just about reducing the number of user-facing components - it's about creating more powerful, content-focused solutions that give users flexibility without complexity.
 
 A Uniweb component is:
-- Focused on a type of content (like team members, features, or testimonials)
+- Focused on a purpose (like team members, feature showcase, or testimonials)
 - Capable of multiple presentation styles through parameters
 - Smart about handling different content patterns
 - Independent of specific layout decisions

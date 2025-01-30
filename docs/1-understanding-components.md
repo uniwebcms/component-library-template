@@ -11,7 +11,7 @@ When you start creating **user-facing components** for Uniweb, you'll need to sh
 You may create several **internal components** named: TeamGrid, TeamList, and TeamCards. But they may be linked to the layout options of a single **Team Members** component. This isn't just about reducing the number of user-facing components - it's about creating more powerful, content-focused solutions that give users flexibility without complexity.
 
 An **exported component** is:
-- Focused on a type of content (like team members, features, or testimonials)
+- Focused on a purpose (like team members, feature showcase, or testimonials)
 - Capable of multiple presentation styles through parameters
 - Smart about handling different content patterns
 - Independent of specific layout decisions
@@ -45,13 +45,13 @@ The data management system is equally sophisticated. Your components receive pro
 
 ## Development Environments
 
-### Component-First Development with UniStudio
+### Component-First Development with MockSite
 
-UniStudio provides a streamlined environment for component development that emulates Uniweb's core engine. You can focus on creating and refining components without needing a full Uniweb instance. UniStudio uses mock data that matches Uniweb's data structure, providing instant updates with hot reload as you work. This makes it perfect for the initial phase of component development when you're focused on functionality and design.
+MockSite provides a streamlined test environment for component development that emulates Uniweb's core engine. You can focus on creating and refining components without needing a full Uniweb instance. MockSite uses mock data that matches expected component props, providing instant updates with hot reload as you work. This makes it perfect for the initial phase of component development when you're focused on functionality and design.
 
 ### Testing with Real Data
 
-Once your components are working well in UniStudio, you can test them with real data by creating a tunnel to your localhost. This connects your development environment to an actual Uniweb site, where your components receive real content and interact with all core engine features. You can verify how your components handle multilingual content, interact with site navigation, and work with dynamic data. This progression from UniStudio to real data testing provides a natural path from initial development to full feature verification.
+Once your components are working well in MockSite, you can test them with real data by creating a public tunnel to your localhost, and using it as the library URL for a Uniweb site. This connects your development environment to an actual Uniweb site, where your components receive real content and interact with all core engine features. You can verify how your components handle multilingual content, interact with site navigation, and work with dynamic data. This progression from MockSite to real data testing provides a natural path from initial development to full feature verification.
 
 ## Deployment and Distribution
 
