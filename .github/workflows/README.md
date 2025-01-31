@@ -1,24 +1,33 @@
-# Build and Deploy Workflow
+# Version-Based Module Deployment
 
-This workflow builds modules and makes them publicly available via GitHub Pages using one of two deployment mechanisms.
+This workflow automates deployment of federated modules based on version numbers in package.json files.
 
-## Key Behaviors
+## How It Works
 
-- When `RELEASE_BRANCH` is empty:
-  - Built artifacts go directly to GitHub Pages
-  - Each new build replaces previous builds
-  - Triggers on every push to main branch
+1. Each module in `src/` has its own package.json with a version number
+2. When code is pushed to main:
+   - Workflow checks each module's version against previously deployed versions
+   - Only modules with increased versions are built
+   - Built modules are deployed to gh-pages branch, preserving previous builds
 
-- When `RELEASE_BRANCH` is set:
-  - Artifacts are added to specified branch while preserving previous builds
-  - Only triggers when code is merged to release branch
-  - Maintains history of all deployments
+## For Module Developers
 
-## GitHub Pages Configuration
+To deploy a new version:
+1. Update your module's version in package.json
+2. Push to main branch
 
-The "Settings / Build and deployment / Source" setting determines which deployment mechanism is used:
+Requirements:
+- Modules must be in src/ directory
+- Each module needs package.json with valid version number
+- Private modules (prefixed with '_') are ignored
+- Version must increase for new build (follows semver)
+- Modules with version 0.0.0 won't be built (use this to prevent building modules that aren't ready)
 
-- "GitHub Actions": For when RELEASE_BRANCH is empty - serves latest build output directly
-- "Deploy from a branch": For when RELEASE_BRANCH is set - serves from release branch with accumulated builds
+Version history is maintained in `.github/module-versions.json`
 
-Select the appropriate option based on whether you want to preserve deployment history.
+## Technical Details
+
+- TARGET_MODULE env var passes modules to build script
+- Webpack builds only specified modules
+- All builds preserved in gh-pages branch
+- Version checks use semver comparison
