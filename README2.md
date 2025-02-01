@@ -6,7 +6,7 @@ When a Uniweb website needs to render content, it connects to exactly one compon
 
 ## Key Concepts
 
-Uniweb separates content from rendering. Each page section contains content (headings, text, images, icons, etc.) that is managed in the CMS. Your exported components are responsible for rendering this content, which is provided in an easy-to-use format, including dynamic content fetched by the engine. The same component can be used across multiple sections with different content and parameters, making it highly reusable.
+Uniweb separates content from rendering. Each page section contains content (headings, text, images, icons, etc.) that is managed in the CMS. Your components are responsible for rendering this content, which is provided in an easy-to-use format, including dynamic content fetched by the engine. The same component can be used across multiple sections with different content and parameters, making it highly reusable.
 
 If you've worked with other frameworks or systems, you might be used to creating many specific components, each with a fixed layout. That is okay for **internal components**, those that are not exported and used by end users. Uniweb takes a fundamentally different approach for **exported components**: user-facing components are expected to be powerful, content-focused solutions that can adapt to different presentation needs. Exported components are often higher-order components (HoC) that achieve their results by using lower-order internal components.
 
@@ -65,7 +65,9 @@ Each of these approaches is explained below.
 
 ### 1. Deploy and Release with GitHub Actions
 
-This is the method to deploy your library in production, but can also be used for testing. While it is the least practical testing method, it requires no local setup, and lets you use a Uniweb instance to manage the contents of your test website.
+This is the method to deploy your library in production, but can also be used for testing. While it is the least practical testing method, it requires no local setup since it builds your modules using an included GitHub Workflow, and hosts them with GitHub Pages.
+
+#### Getting Started
 
 Build your library with GitHub Actions, and make the build publicly available through GitHub Pages:
 
