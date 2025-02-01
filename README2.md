@@ -36,6 +36,7 @@ At the heart of every Uniweb website is a core engine - a JS library that handle
 -   Content localization
 -   Data fetching and state management
 -   Page hierarchy management
+-   Runtime loading and versioning of component libraries
 -   Communication with the Uniweb backend
 
 This means you can build components without worrying about these implementation details. Your components receive ready-to-use content and data structures, letting you focus on creating great user experiences.
@@ -71,6 +72,8 @@ src/
 
 This project has a `StarterLibrary` that you can instantly build and test. You can modify it by, for example, adding new components. You can also create a new library, since the project supports having multiple libraries. To do that, simply copy the complete `src/StarterLibrary` contents and paste them as a new folder, like `src/MyLib`.
 
+Once you have your environment set up, you can start exploring the StarterLibrary code and creating your own components. For a comprehensive guide on component development, check out our [Understanding Components](docs/1-understanding-components.md) guide - it's the best place to start learning how to create effective Uniweb components.
+
 The project also includes a GitHub workflow that builds and hosts your component libraries automatically. When enabled, new builds are created automatically in response to commits that include libraries with higher version numbers than those of the last build.
 
 ## Creating Components
@@ -85,7 +88,7 @@ This generates all the needed files for an exported component, including the met
 
 ## Testing Components
 
-You have three ways to test your components during development:
+You have three ways to test your components during development. Note that these testing approaches all work with Dev Mode - a special state that allows you to connect unregistered libraries to websites. For production use, you'll need to register your library as explained in the Publishing section.
 
 1. **Production deployment:** impractical for fluid testing but needs no local setup
 2. **Local Development:** use a local mock site powered by the Uniweb Runtime Environment
@@ -131,6 +134,8 @@ When a website loads, it periodically checks if its component library has compat
 -   Bug fixes (x.x.3) are automatically applied
 -   New features (x.2.x) are applied when the site is republished
 -   Major updates (1.x.x) require manual review by site administrators
+
+This version management system, combined with Uniweb's runtime architecture, means your updates can be instantly available across all authorized websites using your library - a powerful feature for maintaining and improving websites at scale.
 
 ### 2. Uniweb RE (Runtime Environment)
 
@@ -217,6 +222,8 @@ Now that you have a temporary URL pointing to the current dev build of your libr
 1. Create a website, or open an existing one, and turn on its **Dev Mode** via the action menu `(⋅⋅⋅)▾` of the **Website** studio
 2. Set the **Component Library URL** to the URL produced in the last step. Continue developing the components in your module and reload the website to get the latest test bundle as it changes.
 
+Testing is just the first step in your component library's journey. Once you've verified your components work as intended, you can move on to publishing your library for production use.
+
 ## Publishing Your Library
 
 While you can use unregistered libraries for testing and development using the methods described above, libraries must be registered with Uniweb before they can be used in published websites.
@@ -266,7 +273,7 @@ These guides provide detailed explanations and examples to help you understand a
 
 -   Documentation: [docs.uniweb.dev](https://docs.uniweb.dev)
 -   Issues: [GitHub Issues](../../issues)
--   Community: [Discord](https://discord.gg/uniweb)
+-   Community: Join our [Discord](https://discord.gg/uniweb) to connect with other library developers, share ideas, and get help
 
 ---
 
