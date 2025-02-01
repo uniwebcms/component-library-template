@@ -73,12 +73,6 @@ jobs:
             - name: Generate Index Page
               run: node .github/scripts/generateIndex.js $GITHUB_REPOSITORY
 
-            # Record which versions were built
-            - name: Update Version History
-              run: node .github/scripts/update-history.js
-              env:
-                  TARGET_MODULE: ${{ needs.prepare.outputs.build_modules }}
-
             # Save build output for deployment
             - name: Upload Build
               uses: actions/upload-artifact@v4
@@ -112,3 +106,38 @@ jobs:
               with:
                   name: dist
                   failOnError: false
+
+            - name: Update Version History
+              env:
+                  TARGET_MODULE: ${{ needs.prepare.outputs.build_modules }}
+              run: node .github/scripts/update-history.js
+
+            # Update and commit version history to main branch
+            - name: Commit Updated Version History
+              run: |
+                  # Configure Git for committing
+                  git config user.name "github-actions"
+                  git config user.email "github-actions@github.com"
+                  # Add and commit the updated version history file
+                  git add .github/module-versions.json
+                  git commit -m "Update module versions [skip ci]" || echo "No changes to commit"
+                  git push origin main
+
+            # Append the URL to the job summary
+            - name: Write Deployment URL to Summary
+              run: |
+                  echo "## Deployed Runtime Modules" >> $GITHUB_STEP_SUMMARY
+                  echo "[View your published libraries](${{ needs.prepare.outputs.public_url }})" >> $GITHUB_STEP_SUMMARY
+
+            - name: Write Build Summary
+              run: |
+                  echo "## Modules Built" >> "$GITHUB_STEP_SUMMARY"
+                  if [ -z "${{ needs.prepare.outputs.build_modules }}" ]; then
+                    echo "No modules built in this run." >> "$GITHUB_STEP_SUMMARY"
+                  else
+                    # Convert comma-separated list to an array and then to a bullet list.
+                    IFS=',' read -r -a modules <<< "${{ needs.prepare.outputs.build_modules }}"
+                    for module in "${modules[@]}"; do
+                      echo "- \`${module}\`" >> "$GITHUB_STEP_SUMMARY"
+                    done
+                  fi
