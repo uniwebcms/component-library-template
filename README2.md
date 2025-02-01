@@ -217,6 +217,32 @@ Now that you have a temporary URL pointing to the current dev build of your libr
 1. Create a website, or open an existing one, and turn on its **Dev Mode** via the action menu `(⋅⋅⋅)▾` of the **Website** studio
 2. Set the **Component Library URL** to the URL produced in the last step. Continue developing the components in your module and reload the website to get the latest test bundle as it changes.
 
+## Publishing Your Library
+
+While you can use unregistered libraries for testing and development using the methods described above, libraries must be registered with Uniweb before they can be used in published websites.
+
+### Why Registration Matters
+
+Component libraries represent significant intellectual property - they're powerful, reusable assets that encapsulate both design and functionality. The clean separation between content and presentation in Uniweb means libraries are particularly valuable and need protection. Registration helps:
+
+-   Establish ownership and protect intellectual property rights
+-   Enable professional developers to monetize their work
+-   Maintain quality standards in the Uniweb ecosystem
+-   Provide accountability for library maintenance and updates
+
+### Registration and Licensing
+
+To use a library in published websites, it must be registered with the Uniweb instance where the websites are hosted (e.g., uniweb.app). Once registered, you can:
+
+-   Grant usage permissions to specific users or websites
+-   Manage your own licensing terms and compensation
+-   Control who can publish websites using your library
+-   Update your library across all authorized websites
+
+Uniweb enforces these permissions, ensuring your library is only used by those you've authorized. While Uniweb offers standard libraries for quick no-code website creation, it also supports this marketplace of custom libraries for more ambitious projects. Organizations can commission custom libraries from professional developers or license existing ones, with clear protections for intellectual property.
+
+For detailed information about registration, licensing, and intellectual property protection, see our [Library Registration Guide](docs/library-registration.md).
+
 ## A Different Approach to Web Development
 
 Traditional web development often forces a choice between website builders that limit developer freedom and custom solutions that require building everything from scratch. Uniweb takes a fundamentally different approach through its runtime architecture: each website loads a complete component library as a federated module, letting you update components instantly across all sites using that library.
