@@ -4,101 +4,111 @@
 name: Build and Deploy
 
 on:
-   push:
-       branches: [main]
-   workflow_dispatch:
+    push:
+        branches: [main]
 
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-   contents: write
-   pages: write
-   id-token: write
+    contents: write
+    pages: write
+    id-token: write
 
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
-   group: 'pages'
-   cancel-in-progress: false
+    group: 'pages'
+    cancel-in-progress: false
 
 jobs:
-   prepare:
-       runs-on: ubuntu-latest
-       outputs:
-           build_modules: ${{ steps.check.outputs.modules }}
-           public_url: ${{ steps.url.outputs.url }}
+    # prepare data for downstream jobs to use
+    prepare:
+        runs-on: ubuntu-latest
 
-       steps:
-           - uses: actions/checkout@v4
+        # set outputs
+        outputs:
+            build_modules: ${{ steps.check.outputs.modules }}
+            public_url: ${{ steps.url.outputs.url }}
 
-           # Create version history file if it doesn't exist
-           - name: Initialize Version History
-             run: |
-               if [[ ! -f .github/module-versions.json ]]; then
-                 echo "{}" > .github/module-versions.json
-               fi
+        steps:
+            - uses: actions/checkout@v4
 
-           # Determine which modules need building based on version changes
-           - id: check
-             name: Check Version Changes
-             run: node .github/scripts/version-check.js >> "$GITHUB_OUTPUT"
+            # Create version history file if it doesn't exist
+            - name: Initialize Version History
+              run: |
+                  if [[ ! -f .github/module-versions.json ]]; then
+                    echo "{}" > .github/module-versions.json
+                  fi
 
-           # Set URL for public access via GitHub Pages
-           - id: url
-             name: Set Public URL
-             run: echo "url=https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}" >> "$GITHUB_OUTPUT"
+            # Determine which modules need building based on version changes
+            - id: check
+              name: Check Version Changes
+              run: node .github/scripts/version-check.js >> "$GITHUB_OUTPUT"
 
-   build:
-       needs: prepare
-       # Skip if no modules need updating
-       if: ${{ needs.prepare.outputs.build_modules != '' }}
-       runs-on: ubuntu-latest
-       steps:
-           - uses: actions/checkout@v4
-           - run: yarn
+            # Set URL for public access via GitHub Pages
+            - id: url
+              name: Set Public URL
+              run: echo "url=https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}" >> "$GITHUB_OUTPUT"
 
-           # Build only modules with version increases
-           - name: Build Modules
-             run: yarn build
-             env:
-                 NODE_ENV: production
-                 PUBLIC_URL: ${{ needs.prepare.outputs.public_url }}
-                 TARGET_MODULE: ${{ needs.prepare.outputs.build_modules }}
+    build:
+        needs: prepare
+        # Skip if no modules need updating
+        if: ${{ needs.prepare.outputs.build_modules != '' }}
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - run: yarn
 
-           # Generate index page for GitHub Pages
-           - name: Generate Index Page
-             run: node .github/scripts/generateIndex.js $GITHUB_REPOSITORY
+            # Build only modules with version increases
+            - name: Build Modules
+              run: yarn build
+              env:
+                  NODE_ENV: production
+                  PUBLIC_URL: ${{ needs.prepare.outputs.public_url }}
+                  TARGET_MODULE: ${{ needs.prepare.outputs.build_modules }}
 
-           # Record which versions were built
-           - name: Update Version History
-             run: node .github/scripts/update-history.js
+            # Generate index page for GitHub Pages
+            - name: Generate Index Page
+              run: node .github/scripts/generateIndex.js $GITHUB_REPOSITORY
 
-           # Save build output for deployment
-           - name: Upload Build
-             uses: actions/upload-artifact@v4
-             with:
-                 name: dist
-                 path: ./dist
+            # Record which versions were built
+            - name: Update Version History
+              run: node .github/scripts/update-history.js
+              env:
+                  TARGET_MODULE: ${{ needs.prepare.outputs.build_modules }}
 
-   deploy:
-       needs: [prepare, build]
-       runs-on: ubuntu-latest
-       steps:
-           - uses: actions/checkout@v4
-           
-           # Get build output
-           - uses: actions/download-artifact@v4
-             with:
-                 name: dist
-                 path: dist
+            # Save build output for deployment
+            - name: Upload Build
+              uses: actions/upload-artifact@v4
+              with:
+                  name: dist
+                  path: ./dist
 
-           # Deploy to gh-pages branch, preserving previous builds
-           - name: Deploy to GitHub Pages
-             uses: peaceiris/actions-gh-pages@v4
-             with:
-                 github_token: ${{ secrets.GITHUB_TOKEN }}
-                 publish_dir: dist
-                 keep_files: true
-                 publish_branch: gh-pages
+    deploy:
+        needs: [prepare, build]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
 
-           # Cleanup
-           - uses: geekyeggo/delete-artifact@v5
-             with:
-                 name: dist
-                 failOnError: false
+            # Get build output
+            - uses: actions/download-artifact@v4
+              with:
+                  name: dist
+                  path: dist
+
+            # Deploy to gh-pages branch, preserving previous builds
+            - name: Deploy to GitHub Pages
+              uses: peaceiris/actions-gh-pages@v4
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: dist
+                  keep_files: true
+                  publish_branch: gh-pages
+
+            # Cleanup
+            - uses: geekyeggo/delete-artifact@v5
+              with:
+                  name: dist
+                  failOnError: false
