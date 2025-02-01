@@ -16,7 +16,7 @@ This project includes several scripts to perform common tasks easily. The same t
 
 ## Project Structure
 
-This project is organized to support multiple component libraries:
+This project is organized to support multiple component libraries. Each library is a complete module that can power multiple websites, and libraries can share common components:
 
 ```
 src/
@@ -94,13 +94,13 @@ We use semantic versioning to manage module updates. The version number (like 1.
 -   The middle number (x.2.x) represents new features that won't break existing code
 -   The last number (x.x.3) represents bug fixes and minor patches
 
-When a new version appears, each website automatically determines if it can be safely used. Bug fixes and new features are automatically approved, while breaking changes require manual review.
+When a new version is published, websites using your library will detect it. Updates containing bug fixes (x.x.3) and new features (x.2.x) are automatically approved, while breaking changes (1.x.x) require manual review to ensure website compatibility.
 
 ### 2. Uniweb RE (Runtime Environment)
 
 A simple and effective testing technique for new components is to work with them locally using mock data.
 
-[Uniweb RE](https://github.com/uniwebcms/uniweb-re) is a runtime environment that mimics how Uniweb powers a website and connects it with a component library. It provides:
+[Uniweb RE](https://github.com/uniwebcms/uniweb-re) is a runtime environment that mimics how Uniweb powers a website and connects it with a component library. It uses mock data that represents typical website content (headings, text, images, etc.) to help you test how your components handle different content scenarios. It provides:
 
 -   A testing ground with structured mock data
 -   A runtime host for federated component modules
@@ -198,7 +198,7 @@ Detailed examples of how components work with content, including code samples an
 5. [Documenting for End Users](docs/5-documenting-for-endusers.md) - How to document user-facing components
 6. [Advanced Features](docs/advanced-features.md) - Complex capabilities and patterns
 
-These guides will help you understand Uniweb's component architecture and make the most of its capabilities.
+These guides provide detailed explanations and examples to help you understand and leverage Uniweb's component architecture. We recommend reading them in order, as each guide builds upon concepts introduced in previous ones.
 
 ## Support
 
