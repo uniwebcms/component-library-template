@@ -20,7 +20,7 @@ The watch process will build your components and make them available for testing
 
 You have three ways to test your components during development:
 
-#### 1. MockSite (For Initial Testing)
+#### 1. Uniweb RE (Runtime Environment)
 Test your components with structured mock data before connecting to a real site:
 
 ```bash
@@ -30,13 +30,13 @@ yarn install
 yarn dev
 ```
 
-MockSite is a mockup site generator that mimics how a Uniweb site loads and renders components. It provides:
+Uniweb RE is a local site generator that mimics how a Uniweb site loads and renders components. It provides:
 - A testing ground with structured mock data
 - A runtime host for federated component modules
 - A way to verify component behavior before connecting to a live site
 
 #### 2. Local Development with Tunnel
-Test against a live Uniweb instance using a tunnel to your localhost:
+Test against a live Uniweb instance using a public tunnel to your localhost:
 
 ```bash
 # Install Cloudflared CLI first, then:
@@ -49,7 +49,7 @@ The tunnel creates a secure URL for your development server (running on port 300
 > [!NOTE]
 > Localhost tunnel is also known as **Local Port Forwarding** in tools like VS Code.
 
-#### 3. Public Release with GitHub Actions
+#### 3. Deploy and Release with GitHub Actions
 Make your library publicly available through GitHub Pages:
 
 1. Enable GitHub Pages (Settings → Pages → Source: GitHub Actions)
@@ -106,11 +106,12 @@ src/
 
 We've created comprehensive guides to help you build effective components:
 
-- [Understanding Content](docs/understanding-content.md) - How content works in Uniweb components
-- [Understanding Components](docs/understanding-components.md) - How components work with the core engine
-- [Component Development](docs/component-development.md) - Practical guide to building components
-- [Configuration Guide](docs/component-configuration.md) - Making components configurable
-- [Advanced Features](docs/advanced-features.md) - Complex capabilities and patterns
+1. [Understanding Components](docs/1-understanding-components.md) - How components work with the core engine
+2. [Understanding Content](docs/2-understanding-content.md) - How content works in Uniweb components
+3. [Component Development](docs/3-component-development.md) - Practical guide to building components
+4. [Configuration Guide](docs/4-component-configuration.md) - Making components configurable
+5. [Documenting for End Users](docs/5-documenting-for-endusers.md) - How to document user-facing components
+6. [Advanced Features](docs/advanced-features.md) - Complex capabilities and patterns
 
 These guides will help you understand Uniweb's component architecture and make the most of its capabilities.
 

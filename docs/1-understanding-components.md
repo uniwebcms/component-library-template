@@ -6,11 +6,11 @@ Uniweb component libraries are built with React, giving you a powerful and famil
 
 ## A Different Approach
 
-When you start creating **user-facing components** for Uniweb, you'll need to shift your thinking about what a component is and how it should work. If you've worked with other frameworks or systems, you might be used to creating many specific components, each with a fixed layout. That is okay for **internal components**, those that are not exported and used by end users. Uniweb takes a fundamentally different approach for **exported components**: exported components are powerful, content-focused solutions that can adapt to different presentation needs.
+When you start creating **user-facing components**, you'll need to shift your thinking about what a component is and how it should work. If you've worked with other frameworks or systems, you might be used to creating many specific components, each with a fixed layout. That is okay for **internal components**, those that are not exported and used by end users. Uniweb takes a fundamentally different approach for **exported components**: user-facing components are expected to be powerful, content-focused solutions that can adapt to different presentation needs.
 
-You may create several **internal components** named: TeamGrid, TeamList, and TeamCards. But they may be linked to the layout options of a single **Team Members** component. This isn't just about reducing the number of user-facing components - it's about creating more powerful, content-focused solutions that give users flexibility without complexity.
+You may create several **internal components** named: TeamGrid, TeamList, and TeamCards. But they may be linked to the layout options of a single **Team Members** exported component. This isn't just about reducing the number of user-facing components - it's about creating more powerful, content-focused solutions that give users flexibility without complexity.
 
-An **exported component** is:
+An **exported component** should be:
 - Focused on a purpose (like team members, feature showcase, or testimonials)
 - Capable of multiple presentation styles through parameters
 - Smart about handling different content patterns
@@ -45,13 +45,13 @@ The data management system is equally sophisticated. Your components receive pro
 
 ## Development Environments
 
-### Component-First Development with MockSite
+### Component-First Development with Uniweb RE (Realtime Environment)
 
-MockSite provides a streamlined test environment for component development that emulates Uniweb's core engine. You can focus on creating and refining components without needing a full Uniweb instance. MockSite uses mock data that matches expected component props, providing instant updates with hot reload as you work. This makes it perfect for the initial phase of component development when you're focused on functionality and design.
+Uniweb RE provides a streamlined test environment for component development that emulates Uniweb's core engine. You can focus on creating and refining components without needing a full Uniweb instance. Uniweb RE uses mock data that matches expected component props, providing instant updates with hot reload as you work. This makes it perfect for the initial phase of component development when you're focused on functionality and design.
 
 ### Testing with Real Data
 
-Once your components are working well in MockSite, you can test them with real data by creating a public tunnel to your localhost, and using it as the library URL for a Uniweb site. This connects your development environment to an actual Uniweb site, where your components receive real content and interact with all core engine features. You can verify how your components handle multilingual content, interact with site navigation, and work with dynamic data. This progression from MockSite to real data testing provides a natural path from initial development to full feature verification.
+Once your components are working well in Uniweb RE, you can test them with real data by creating a public tunnel to your localhost, and using it as the library URL for a Uniweb site. This connects your development environment to an actual Uniweb site, where your components receive real content and interact with all core engine features. You can verify how your components handle multilingual content, interact with site navigation, and work with dynamic data. This progression from Uniweb RE to real data testing provides a natural path from initial development to full feature verification.
 
 ## Deployment and Distribution
 
@@ -101,14 +101,14 @@ Multilingual support is built into the core of Uniweb. When your components rece
 
 ## Development Best Practices
 
-Creating effective components requires attention to both code quality and user experience. Your components should be focused and maintainable, following standard React best practices while taking advantage of Uniweb's capabilities. Consider performance in your design - optimize render cycles, use appropriate image formats, and follow good practices for React development.
+Creating effective components requires attention to both code quality and user experience. Your components should be focused and maintainable, following standard React best practices while taking advantage of Uniweb's capabilities. Consider accesibility and responsiveness in your design. Let Uniweb take care of render cycles, image optimization, and dynamic data fetching.
 
 Accessibility should be a core consideration in your component development. Maintain semantic HTML structure and ensure your components work well with keyboard navigation. Support screen readers through appropriate ARIA attributes and follow WCAG guidelines to ensure your components are usable by everyone.
 
-Testing should cover various scenarios your components might encounter. Verify that your components work well with different types of content, display correctly across device sizes, and handle multilingual content appropriately. Test search integration to ensure your content is properly indexed and discoverable.
+Testing should cover various scenarios your components might encounter. Verify that your components work well with different types of content, and display correctly across device sizes. Test search integration to ensure your content is properly indexed and discoverable.
 
 ## Next Steps
 
-As you continue developing with Uniweb, you might want to explore advanced component patterns, learn more about dynamic data loading, or understand the component lifecycle in depth. Our documentation provides detailed guides on these topics, and our Discord community is always available to help you succeed with component development.
+As you continue developing with the Uniweb Framework, you might want to explore advanced component patterns, learn more about dynamic data loading, or understand the component lifecycle in depth. Our documentation provides detailed guides on these topics, and our Discord community is always available to help you succeed with component development.
 
 Need help? Join our [Discord community](https://discord.gg/uniweb) or check the [documentation](https://docs.uniweb.dev).
