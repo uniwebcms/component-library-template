@@ -1,0 +1,267 @@
+{
+  "_self": {},
+  "List": {
+    "title": {
+      "en": "List",
+      "fr": "List"
+    },
+    "label": {
+      "en": "List",
+      "fr": "List"
+    },
+    "description": {
+      "en": "A sample list of items with text and icons.",
+      "fr": "Une liste d'éléments avec texte et icônes."
+    },
+    "export": true,
+    "category": "content",
+    "properties": {
+      "size": {
+        "label": {
+          "en": "Size",
+          "fr": "Taille"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "small"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "medium"
+          },
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Grand"
+            },
+            "value": "large"
+          }
+        ],
+        "default": "medium",
+        "description": {
+          "en": "Controls the size of text and icons in the list.",
+          "fr": "Contrôle la taille du texte et des icônes dans la liste."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Small item list",
+          "fr": "Liste d'éléments petits"
+        },
+        "properties": {
+          "size": "small"
+        },
+        "image": {
+          "height": 1087,
+          "width": 1678,
+          "type": "webp",
+          "path": "assets/List/small.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Medium item list",
+          "fr": "Liste d'éléments moyens"
+        },
+        "properties": {
+          "size": "medium"
+        },
+        "image": {}
+      },
+      {
+        "label": {
+          "en": "Large item list",
+          "fr": "Liste d'éléments grands"
+        },
+        "properties": {
+          "size": "large"
+        },
+        "image": {}
+      }
+    ],
+    "name": "List"
+  },
+  "Section": {
+    "title": {
+      "en": "Section",
+      "fr": "Section"
+    },
+    "label": {
+      "en": "Section",
+      "fr": "Section"
+    },
+    "description": {
+      "en": "A section block displays content that is entered from the docufolio.",
+      "fr": "Un bloc de section affiche le contenu qui est saisi à partir du docufolio."
+    },
+    "export": true,
+    "category": "content",
+    "properties": {
+      "alignment": {
+        "label": {
+          "en": "Content Alignment",
+          "fr": "Alignement du contenu"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "default": "left",
+        "description": {
+          "en": "Controls the alignment of the content in the block.",
+          "fr": "Contrôle l'alignement du contenu dans le bloc."
+        }
+      },
+      "spacing": {
+        "label": {
+          "en": "Spacing",
+          "fr": "Espacement"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "small"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "medium"
+          },
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Grand"
+            },
+            "value": "large"
+          }
+        ],
+        "default": "medium",
+        "description": {
+          "en": "Controls the spacing around the block.",
+          "fr": "Contrôle l'espacement autour du bloc."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Centered Layout with tight spacing",
+          "fr": "Mise en page centrée avec un espacement serré"
+        },
+        "properties": {
+          "alignment": "center",
+          "spacing": "small"
+        },
+        "image": {
+          "height": 721,
+          "width": 1832,
+          "type": "webp",
+          "path": "assets/Section/centered_tight.webp"
+        },
+        "source": {
+          "bg_url": "https://via.placeholder.com/150"
+        }
+      },
+      {
+        "label": {
+          "en": "Left Layout with loose spacing",
+          "fr": "Mise en page à gauche avec un espacement lâche"
+        },
+        "properties": {
+          "alignment": "left",
+          "spacing": "large"
+        },
+        "image": {
+          "height": 1426,
+          "width": 2980,
+          "type": "webp",
+          "path": "assets/Section/left_loose.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Right Layout with medium spacing",
+          "fr": "Mise en page à droite avec un espacement moyen"
+        },
+        "properties": {
+          "alignment": "right",
+          "spacing": "medium"
+        },
+        "image": {
+          "height": 1087,
+          "width": 1678,
+          "type": "webp",
+          "path": "assets/Section/right_medium.webp"
+        }
+      }
+    ],
+    "elements": {
+      "pretitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that precedes the main headline.",
+          "fr": "Une phrase qui précède le titre principal."
+        }
+      },
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "text": {
+        "type": "paragraph",
+        "description": {
+          "en": "The body text.",
+          "fr": "Le texte du corps."
+        }
+      }
+    },
+    "name": "Section"
+  }
+}
