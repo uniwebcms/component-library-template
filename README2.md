@@ -12,6 +12,8 @@ This template comes with everything needed for professional library development:
 
 Uniweb separates content from rendering. Each page section contains content (headings, text, images, icons, etc.) that is managed in the CMS. Your components are responsible for rendering this content, which is provided in an easy-to-use format, including dynamic content fetched by the engine. The same component can be used across multiple sections with different content and parameters, making it highly reusable.
 
+To effectively build these components, it's important to understand the two main types you'll work with:
+
 ### Component Types
 
 There are two types of components you'll work with:
@@ -96,7 +98,7 @@ This generates all the needed files for an exported component, including the met
 
 ## Testing Components
 
-You have three ways to test your components during development. Note that these testing approaches all work with Dev Mode - a special state that allows you to connect unregistered libraries to websites. For production use, you'll need to register your library as explained in the Publishing section.
+You can test your components using three different approaches, each suited to different development needs. All testing methods use Dev Mode, which allows you to connect unregistered libraries to websites for development purposes. When you're ready for production, you'll need to register your library as explained in the Publishing section.
 
 1. **Production deployment:** impractical for fluid testing but needs no local setup
 2. **Local Development:** use a local mock site powered by the Uniweb Runtime Environment
@@ -113,7 +115,7 @@ This is the method to deploy your library in production, but can also be used fo
 Build your library with GitHub Actions, and make the build publicly available through GitHub Pages:
 
 1. Go to the `⚙ Settings` tab of your GitHub repository, and then go to the `Pages` tab
-2. Under the section **Build and deployment**, in the **Source** menu, make sure that `Deploy from a branch` is selected. In the **Branch** menu, select `gh-pages`, and then click the **Save** button.
+2. Under the section **Build and deployment**, in the **Source** menu, make sure that `Deploy from a branch` is selected. In the **Branch** menu, select `gh-pages`, leave `/ (root)` as the folder, and then click the **Save** button.
 
 The build process should start right away, but it may take a minute or two to complete. You can monitor its progress from the `⏵ Actions` tab in your GitHub repository. When it's ready, you should see a successful `✅ Deploy` stage with the URL to your GitHub pages, like `https://USER-NAME.github.io/REPO-NAME/`.
 
@@ -260,9 +262,11 @@ For detailed information about registration, licensing, and intellectual propert
 
 ## A Different Approach to Web Development
 
-Traditional web development often forces a choice between website builders that limit developer freedom and custom solutions that require building everything from scratch. Uniweb takes a fundamentally different approach through its runtime architecture: each website loads a complete component library as a federated module, letting you update components instantly across all sites using that library.
+Traditional web development forces a choice between website builders with limited flexibility and custom solutions that require rebuilding common infrastructure. Uniweb eliminates this trade-off by providing a robust core engine that handles infrastructure while giving developers complete creative freedom.
 
-When organizations use website builders, they hit a ceiling as their needs grow. When they build custom solutions, they spend more time on infrastructure than innovation. Uniweb solves this by providing the infrastructure as a core engine, letting developers focus on creating components that make websites unique. Your components automatically work with advanced features like multilingual content, search, and dynamic data - features that would typically take months to build from scratch.
+This architecture prevents the common pitfalls of both approaches. Website builders no longer impose technical limitations as projects grow. Custom solutions don't require months spent rebuilding standard features like multilingual support, search, or dynamic data management. Instead, developers can focus entirely on creating unique, powerful components.
+
+The runtime module system transforms your component libraries into versatile assets. Each library can power multiple websites while remaining independently maintainable and updateable, creating lasting value that extends beyond any single project.
 
 ## Understanding Component Development
 
