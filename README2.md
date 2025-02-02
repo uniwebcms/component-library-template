@@ -85,7 +85,7 @@ The project also includes a GitHub workflow that builds and hosts your component
 Create a new component with all necessary files:
 
 ```bash
-yarn new:component FeatureList --export --parameters "align:enum"
+yarn new:component FeatureList --export
 ```
 
 This generates all the needed files for an exported component, including the metadata files used for documenting it. By default, it adds the component to the newest library subfolder under the `src` folder. If that is not what you want, you can use the optional `--module TargetModule` parameter to specify the desired library folder. See the [First Component Guide](docs/first-component.md) for a complete walkthrough.
