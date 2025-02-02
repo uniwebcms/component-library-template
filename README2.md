@@ -66,9 +66,13 @@ src/
 
 ## Getting Started
 
-1. Click the "Use this template" button above to create your own repository
-2. Clone your new repository locally
-3. Install dependencies: `yarn install`
+1. Click the "Use this template" button above to create your own repository  
+   ℹ️ We recommend checking "Include All Branches" to include the `gh-pages` branch where your builds will be distributed from. No worries if you forget - the included GitHub Actions will set it up automatically.
+
+That's all you need to get started! If you want to develop locally, you can also:
+
+2. Clone your new repository
+3. Install dependencies with `yarn install`
 
 This project has a `StarterLibrary` that you can instantly build and test. You can modify it by, for example, adding new components. You can also create a new library, since the project supports having multiple libraries. To do that, simply copy the complete `src/StarterLibrary` contents and paste them as a new folder, like `src/MyLib`.
 
@@ -105,7 +109,7 @@ This is the method to deploy your library in production, but can also be used fo
 Build your library with GitHub Actions, and make the build publicly available through GitHub Pages:
 
 1. Go to the `⚙ Settings` tab of your GitHub repository, and then go to the `Pages` tab
-2. Under the section **Build and deployment**, in the **Source** menu, select `GitHub Actions`. The page auto-saves, so you're all set!
+2. Under the section **Build and deployment**, in the **Source** menu, make sure that `Deploy from a branch` is selected. In the **Branch** menu, select `gh-pages`, and then click the **Save** button.
 
 The build process should start right away, but it may take a minute or two to complete. You can monitor its progress from the `⏵ Actions` tab in your GitHub repository. When it's ready, you should see a successful `✅ Deploy` stage with the URL to your GitHub pages, like `https://USER-NAME.github.io/REPO-NAME/`.
 
