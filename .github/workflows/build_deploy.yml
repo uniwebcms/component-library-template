@@ -37,12 +37,12 @@ jobs:
 
             - name: Ensure gh-pages Branch Exists
               run: |
+                  git config user.name "github-actions"
+                  git config user.email "github-actions@github.com"
                   if ! git ls-remote --exit-code origin gh-pages; then
                     git checkout --orphan gh-pages
                     echo "This branch is used for GitHub Pages deployment" > README.md
                     touch .nojekyll
-                    git config user.name "github-actions"
-                    git config user.email "github-actions@github.com"
                     git add README.md .nojekyll
                     git commit -m "Initial commit on gh-pages branch [skip ci]"
                     git push origin gh-pages
