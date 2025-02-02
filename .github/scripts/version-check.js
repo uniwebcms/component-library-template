@@ -28,9 +28,15 @@ function isVersionGreater(versionA, versionB) {
 function getModulesToBuild() {
     // Read version history, default to empty if file doesn't exist
     const historyPath = path.join(process.cwd(), '.github/module-versions.json');
-    const history = fs.existsSync(historyPath)
-        ? JSON.parse(fs.readFileSync(historyPath, 'utf8'))
-        : {};
+
+    // Check if this is the first deployment.
+    const firstDeployment = process.env.FIRST_DEPLOYMENT === 'true';
+
+    // If it's the first deployment, override history to be empty.
+    const history =
+        firstDeployment || !fs.existsSync(historyPath)
+            ? {}
+            : JSON.parse(fs.readFileSync(historyPath, 'utf8'));
 
     // Get modules from src directory
     const srcDir = path.join(process.cwd(), 'src');
