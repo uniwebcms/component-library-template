@@ -1,8 +1,12 @@
 # Uniweb Component Library Starter
 
-This starter template helps you create professional component libraries for [Uniweb](https://uniwebcms.com) websites. Uniweb is a full content management system (CMS), with its main instance at [uniweb.app](https://uniweb.app) and enterprise instances available for organizations. A component library in Uniweb is a federated runtime module - a standalone bundle of React components that websites load and execute at runtime. This is different from traditional npm packages that are bundled at build time. This approach means you can update components across all your websites instantly, without needing to rebuild and redeploy each site.
+Welcome to the world of [Uniweb](https://uniwebcms.com) component libraries! If you're looking to create dynamic, reusable web components for your Uniweb websites, you've come to the right place. This starter template has everything you need for creating, building, deploying, and testing your libraries.
 
-When a Uniweb website needs to render content, it connects to exactly one component library that defines how content should be presented. Each website uses a single library to ensure design consistency and dependency compatibility across all components, from navigation and headers to content sections. The library exists as a separate module that can be updated independently of the websites using it. Your components work with Uniweb's core engine, which automatically handles infrastructure concerns like multilingual content, search, page hierarchy, and dynamic data management.
+Uniweb is a full content management system (CMS), with its main instance at [uniweb.app](https://uniweb.app) and enterprise instances available for organizations. Each component library is packaged as a runtime module - a standalone bundle of React components that websites load and execute at runtime. This is different from traditional npm packages that are bundled at build time. This approach means you can update components across all your websites instantly, without needing to rebuild and redeploy each site.
+
+When a Uniweb website needs to render content, it loads exactly one runtime module carrying a component library that defines how content should be presented. Each website uses a single library to ensure design consistency and dependency compatibility across all components, from navigation and headers to content sections. A website also includes the Uniweb's core engine, which automatically handles infrastructure concerns like multilingual content, search, page hierarchy, and dynamic data management.
+
+The included GitHub Workflow builds and deploys your library modules. The included runtime environment and optional public tunnel give you efficient ways to test your components against mock and real websites.
 
 ## Key Concepts
 

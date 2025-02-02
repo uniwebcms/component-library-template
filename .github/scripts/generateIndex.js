@@ -42,6 +42,7 @@ const generateIndex = (dirPath = '.', repoName = 'Unknown Repository') => {
     const htmlTemplate = `
     <html>
         <head>
+            <meta name="robots" content="noindex, nofollow">
             <script type="module" src="https://cdn.skypack.dev/twind/shim"></script>
         </head>
         <body class="bg-gray-100 p-10">
