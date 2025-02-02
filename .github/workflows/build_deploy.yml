@@ -33,6 +33,8 @@ jobs:
             public_url: ${{ steps.url.outputs.url }}
 
         steps:
+            - uses: actions/checkout@v4
+
             - name: Ensure gh-pages Branch Exists
               run: |
                   if ! git ls-remote --exit-code origin gh-pages; then
@@ -46,8 +48,6 @@ jobs:
                   else
                     echo "gh-pages branch already exists."
                   fi
-
-            - uses: actions/checkout@v4
 
             # Create version history file if it doesn't exist
             - name: Initialize Version History
