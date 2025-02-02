@@ -150,17 +150,3 @@ jobs:
               run: |
                   echo "## Deployed Runtime Modules" >> "$GITHUB_STEP_SUMMARY"
                   echo "[View your published libraries](${{ needs.prepare.outputs.public_url }})" >> "$GITHUB_STEP_SUMMARY"
-
-            # Write a build summary to the job summary
-            - name: Write Build Summary
-              run: |
-                  echo "## Modules Built" >> "$GITHUB_STEP_SUMMARY"
-                  if [ -z "${{ needs.prepare.outputs.build_modules }}" ]; then
-                    echo "No modules built in this run." >> "$GITHUB_STEP_SUMMARY"
-                  else
-                    # Convert comma-separated list to an array and then to a bullet list.
-                    IFS=',' read -r -a modules <<< "${{ needs.prepare.outputs.build_modules }}"
-                    for module in "${modules[@]}"; do
-                      echo "- \`${module}\`" >> "$GITHUB_STEP_SUMMARY"
-                    done
-                  fi
