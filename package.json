@@ -8,12 +8,20 @@
         "builder"
     ],
     "scripts": {
-        "serve": "cd builder && yarn run serve",
-        "refresh": "cd builder && yarn run refresh",
-        "watch": "cd builder && yarn run watch:tunnel",
-        "build": "cd builder && yarn run build",
+        "serve": "yarn --cwd builder run serve",
+        "refresh": "yarn --cwd builder run refresh",
+        "watch:tunnel": "yarn --cwd builder run watch:tunnel",
+        "watch:local": "yarn --cwd builder run watch:local",
+        "build": "yarn --cwd builder run build",
         "new:module": "node builder/console.js new:module",
-        "new:component": "node builder/console.js new:component"
+        "new:component": "node builder/console.js new:component",
+        "new:site": "node builder/console.js new:site",
+        "version:patch": "node builder/version-modules.js patch",
+        "version:minor": "node builder/version-modules.js minor",
+        "version:major": "node builder/version-modules.js major",
+        "push:patch": "node builder/version-modules.js patch --push",
+        "push:minor": "node builder/version-modules.js minor --push",
+        "push:major": "node builder/version-modules.js major --push"
     },
     "dependencies": {
         "react": "^17.0.2",
