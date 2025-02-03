@@ -68,7 +68,7 @@ src/
 
 ## Getting Started
 
-1. Click the "Use this template" button above to create your own repository  
+1. Click the [Use this template](https://github.com/new?template_name=component-library-template&template_owner=uniwebcms) button above to create your own repository  
    ℹ️ We recommend checking "Include All Branches" to include the `gh-pages` branch where your builds will be distributed from. No worries if you forget - the included GitHub Actions will set it up automatically.
 
 That's all you need to [deploy and release with GitHub Actions](#1-deploy-and-release-with-github-actions)! If you want to develop locally, you should also:
