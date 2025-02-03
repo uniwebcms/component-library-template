@@ -14,10 +14,6 @@ Uniweb separates content from rendering. Each page section contains content (hea
 
 To effectively build these components, it's important to understand the two main types you'll work with:
 
-### Component Types
-
-There are two types of components you'll work with:
-
 1. **Exported Components**: These are the components that appear in the CMS interface for content writers to use. They:
 
     - Show up in the CMS component selector
