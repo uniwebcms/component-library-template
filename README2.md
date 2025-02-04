@@ -92,7 +92,7 @@ yarn new:component FeatureList --export
 
 This generates all the needed files for an exported component, including the metadata files used for documenting it. By default, it adds the component to the newest library subfolder under the `src` folder. If that is not what you want, you can use the optional `--module TargetModule` parameter to specify the desired library folder. See the [First Component Guide](docs/first-component.md) for a complete walkthrough.
 
-## Testing Components
+## Testing and Deploying Components
 
 You can test your components using three different approaches, each suited to different development needs. All testing methods use Dev Mode, which allows you to connect unregistered libraries to websites for development purposes. When you're ready for production, you'll need to register your library as explained in the Publishing section.
 
