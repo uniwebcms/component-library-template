@@ -94,13 +94,16 @@ This generates all the needed files for an exported component, including the met
 
 ## Testing and Deploying Components
 
-You can test your components using three different approaches, each suited to different development needs. All testing methods use Dev Mode, which allows you to connect unregistered libraries to websites for development purposes. When you're ready for production, you'll need to register your library as explained in the Publishing section.
+You can test your components using three different approaches, each suited to different development needs. All testing methods use Dev Mode, which allows you to connect unregistered libraries to websites for development purposes.
 
 1. **Production deployment:** impractical for fluid testing but needs no local setup
 2. **Local Development:** use a local mock site powered by the Uniweb Runtime Environment
 3. **Local Development with Tunnel:** a hybrid of the previous two in which you create a public tunnel to your localhost and connect a real website to your locally hosted library
 
 Each of these approaches is explained below.
+
+> [!IMPORTANT]
+> When you're ready for production, you'll need to register your library as explained in the Publishing section.
 
 ### 1. Deploy and Release with GitHub Actions
 
