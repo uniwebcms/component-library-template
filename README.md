@@ -170,7 +170,7 @@ You can learn how to add pages and components to your test site from the [Uniweb
 
 You will need three terminals: one to run your library's hosting server, one to watch the library for changes, and one to host your test website's server.
 
-Before starting, if you don't yet have a test website, create one under the `test` folder:
+Before starting, if you don't yet have a test website, you can create one under the `test` folder with this command:
 
 ```bash
 yarn new:site TestSite
