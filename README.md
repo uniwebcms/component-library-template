@@ -102,7 +102,8 @@ You can test your components using three different approaches, each suited to di
 
 Each of these approaches is explained below.
 
-> [!IMPORTANT] When you're ready for production, you'll need to register your library as explained in the [Publishing section](#publishing-your-library).
+> [!IMPORTANT] \
+> When you're ready for production, you'll need to register your library as explained in the [Publishing section](#publishing-your-library).
 
 ### 1. Deploy and Release with GitHub Actions
 
