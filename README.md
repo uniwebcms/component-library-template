@@ -1,66 +1,198 @@
-# Uniweb Component Libraries
+# Uniweb Component Library Starter
 
-Welcome to the world of Uniweb component libraries! If you're looking to create dynamic, reusable web components for your Uniweb websites, you've come to the right place. 
+Welcome to the world of [Uniweb](https://uniwebcms.com) component libraries! If you're looking to create dynamic, reusable web components for your Uniweb websites, you've come to the right place. This starter template provides everything you need to create, build, deploy, and test your libraries.
 
-This starter template offers two ways to build your components: use the included GitHub Actions for a no-setup approach, or set up a local development environment for faster iteration. With the GitHub Actions approach, simply commit to the main branch and your components are automatically built and hosted. All you need is the base URL to start using your library on any website, with new versions fetched automatically. For rapid development, the local setup creates a secure tunnel to your localhost and provides hot reload functionality, letting you see changes instantly.
+Uniweb is a full content management system (CMS), with its main instance at [uniweb.app](https://uniweb.app) and enterprise instances available for organizations. Each component library is packaged as a runtime module - a standalone bundle of React components that websites load and execute at runtime. Unlike traditional npm packages that are bundled at build time, this approach allows you to update components across all your websites instantly, without rebuilding or redeploying each site.
 
-[Uniweb](https://uniwebcms.com) is a powerful web CMS that helps you create dynamic websites with ease. Each website is linked to a component library, which is a webpack federated module. Don't worry if that sounds a bit technical – in simple terms, it means your components can be shared instantly across multiple websites, making your development process more efficient and consistent.
+A Uniweb website loads exactly one runtime module as its component library, which defines how all content should be presented. Using a single library ensures design consistency and dependency compatibility across all components, from navigation and headers to content sections. Each website also includes Uniweb's core engine, which automatically handles infrastructure concerns like multilingual content, search, page hierarchy, and dynamic data management.
 
-By using component libraries with Uniweb, you'll enjoy benefits like:
+This template comes with everything needed for professional library development: an automated GitHub Workflow for building and deployment, a runtime environment for local development, and flexible testing options that work with both mock data and live websites.
 
--   👥 **Teamwork:** Make components that can readily be used and customized by content creators.
--   🔁 **Reusability:** Share components across multiple websites to save time and effort.
--   🔧 **Maintainability:** Easily update your component library and watch the changes propagate to all connected websites.
+## Key Concepts
 
-In this guide, we'll walk you through creating Uniweb component libraries using modern JavaScript, React, and Tailwind CSS. Don't worry if you're not familiar with these technologies – you can start by copying our examples. You can even create custom components using AI assistants with our [ready-to-use prompts](ai-prompts.md).
+Uniweb separates content from rendering. Each page section contains content (headings, text, images, icons, etc.) that is managed in the CMS. Your components are responsible for rendering this content, which is provided in an easy-to-use format, including dynamic content fetched by the engine. The same component can be used across multiple sections with different content and parameters, making it highly reusable.
 
-## 🚀 Setup: Start from a Template Repository
+To effectively build these components, it's important to understand the two main types you'll work with:
 
-To get started, we've created this handy template repository for you. All you need to do is create a new repository based on this template.
+1. **Exported Components**: These are the components that appear in the CMS interface for content writers to use. They:
 
-1. Click the "Use this template" button at the top right of the repository page.
-2. Select "Create a new repository" and fill in the details (name, description, etc.).
-3. Click "Create repository from template" to generate your new project.
+    - Show up in the CMS component selector
+    - Include metadata to help non-technical users understand their purpose and capabilities
+    - Offer configurable parameters and preset templates
+    - Need to be flexible enough to handle various content scenarios
+    - Often compose multiple internal components to achieve their goals
 
-And just like that, you'll have your very own component library repository! 🎉
+2. **Internal Components**: These are traditional React components that:
+    - Are used as building blocks within your codebase
+    - Never appear directly in the CMS interface
+    - Can be more specialized and single-purpose
+    - Work just like components in any other React project
 
-## ⚡ Quick start: Build and host using GitHub actions
+While you might create multiple internal components for specific layouts, exported components take a goal-oriented approach. For example, instead of having separate "ImageLeft", "ImageRight", and "ImageGrid" components, you might create a single "FeatureSection" component that offers these as layout options. This makes more sense for content creators who think in terms of what they want to achieve rather than specific layouts.
 
-Want to see your component library in action without any local setup? No problem! This repository includes a GitHub workflow that builds and hosts your component libraries automatically. Here's how to enable it:
+### The Core Engine
 
-1. Go to the `⚙ Settings` tab of your GitHub repository, and then go to the `Pages` tab on it.
+At the heart of every Uniweb website is a core engine - a JS library that handles all the complex infrastructure so your components can focus purely on rendering. The engine manages:
 
-2. Under the section **Build and deployment**, in the **Source** menu, select `GitHub Actions`. The page auto saves, so you're all set!
+-   Routing and component rendering
+-   Content localization
+-   Data fetching and state management
+-   Page hierarchy management
+-   Runtime loading and versioning of component libraries
+-   Communication with the Uniweb backend
+
+This means you can build components without worrying about these implementation details. Your components receive ready-to-use content and data structures, letting you focus on creating great user experiences.
+
+## CLI Scripts
+
+This project includes several scripts to perform common tasks easily. The same tasks can be performed manually by learning a few more steps. The corresponding set of manual steps for every CLI script are explained in the [technical guide](docs/cli-scripts.md). The guide also documents all the optional parameters of each command.
+
+## Project Structure
+
+This project is organized to support multiple component libraries. Each library is a complete module that can power multiple websites, and libraries can share common components:
+
+```
+src/
+├── my-library/          # A component library
+│   ├── components/      # Individual components
+│   │   ├── ComponentA/
+│   │   │   ├── index.jsx
+│   │   │   └── meta/   # Component metadata
+│   │   │       ├── config.yml
+│   │   │       └── ... (other metadata)
+│   ├── config.yml      # Library configuration
+│   └── ... (other library files)
+├── _shared/            # Shared components
+│   └── ... (shared components across libraries)
+```
+
+## Getting Started
+
+1. Click the [Use this template](https://github.com/new?template_name=component-library-template&template_owner=uniwebcms) button above to create your own repository  
+   ℹ️ We recommend checking "Include All Branches" to include the `gh-pages` branch where your builds will be distributed from. No worries if you forget - the included GitHub Actions will set it up automatically.
+
+That's all you need to [deploy and release with GitHub Actions](#1-deploy-and-release-with-github-actions)! If you want to develop locally, you should also:
+
+2. Clone your new repository
+3. Install dependencies with `yarn install`
+
+This project has a `StarterLibrary` that you can instantly build and test. You can modify it by, for example, adding new components. You can also create a new library, since the project supports having multiple libraries. To do that, simply copy the complete `src/StarterLibrary` contents and paste them as a new folder, like `src/MyLib`.
+
+Once you have your environment set up, you can start exploring the StarterLibrary code and creating your own components. For a comprehensive guide on component development, check out our [Understanding Components](docs/1-understanding-components.md) guide - it's the best place to start learning how to create effective Uniweb components.
+
+The project also includes a GitHub workflow that builds and hosts your component libraries automatically. When enabled, new builds are created automatically in response to commits that include libraries with higher version numbers than those of the last build.
+
+## Creating Components
+
+Create a new component with all necessary files:
+
+```bash
+yarn new:component FeatureList --export
+```
+
+This generates all the needed files for an exported component, including the metadata files used for documenting it. By default, it adds the component to the newest library subfolder under the `src` folder. If that is not what you want, you can use the optional `--module TargetModule` parameter to specify the desired library folder. See the [First Component Guide](docs/first-component.md) for a complete walkthrough.
+
+## Testing and Deploying Components
+
+You can test your components using three different approaches, each suited to different development needs. All testing methods use Dev Mode, which allows you to connect unregistered libraries to websites for development purposes. When you're ready for production, you'll need to register your library as explained in the Publishing section.
+
+1. **Production deployment:** impractical for fluid testing but needs no local setup
+2. **Local Development:** use a local mock site powered by the Uniweb Runtime Environment
+3. **Local Development with Tunnel:** a hybrid of the previous two in which you create a public tunnel to your localhost and connect a real website to your locally hosted library
+
+Each of these approaches is explained below.
+
+### 1. Deploy and Release with GitHub Actions
+
+This is the method to deploy your library in production, but can also be used for testing. While it is the least practical testing method, it requires no local setup since it builds your modules using an included GitHub Workflow, and hosts them with GitHub Pages.
+
+#### Getting Started
+
+Build your library with GitHub Actions, and make the build publicly available through GitHub Pages:
+
+1. Go to the `⚙ Settings` tab of your GitHub repository, and then go to the `Pages` tab
+2. Under the section **Build and deployment**, in the **Source** menu, make sure that `Deploy from a branch` is selected. In the **Branch** menu, select `gh-pages`, leave `/ (root)` as the folder, and then click the **Save** button.
 
 The build process should start right away, but it may take a minute or two to complete. You can monitor its progress from the `⏵ Actions` tab in your GitHub repository. When it's ready, you should see a successful `✅ Deploy` stage with the URL to your GitHub pages, like `https://USER-NAME.github.io/REPO-NAME/`.
 
 To find the URL for your new component library, visit the GitHub pages URL. You should see a page titled **Available Modules**. At this point, the first and only module listed would be **StarterLibrary**. Use the copy button next to it to grab its URL. It should look something like `https://USER-NAME.github.io/REPO-NAME/StarterLibrary/`.
 
-Now you're ready to use your shiny new library in a Uniweb website! Head over to your Uniweb instance, which might be [uniweb.app](https://uniweb.app) or another instance.
+Now you're ready to use your library in a Uniweb website! Head over to your Uniweb instance.
 
 Create a new website via the **Skip template** option – we want to keep things simple and start from scratch.
 
-Since your website doesn't have a component library or content yet, it will be a blank page. But don't worry, that's about to change! Open the action menu `(⋅⋅⋅)▾` in the website studio and select "Manage components...". Then, paste the URL of your GitHub-hosted library under the "Custom URL" tab and into the "Library URL" field and apply your changes.
+Since your website doesn't have a component library or content yet, it will be a blank page. Open the action menu `(⋅⋅⋅)▾` in the website studio and select "Manage components...". Then, paste the URL of your GitHub-hosted library under the "Custom URL" tab and into the "Library URL" field and apply your changes.
 
 Ta-da! 🎩✨ You should now see some content on your website, generated by the `Section` component in the `StarterLibrary` of your repository. You can select a different component by clicking the Edit button at the top right corner of the Website Studio. This opens the Content Editor, where you can select which component renders each website page section.
 
-## 🚚 Deploying New Versions
+#### Version Management
 
-The easiest way to deploy your component library is to use the included [GitHub workflow](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/build_and_deploy_with_gh_actions.md), which builds your files and hosts them on GitHub Pages. In production mode, Uniweb monitors these files and copies them into an efficient CDN for optimal delivery.
+We use semantic versioning to manage module updates. The version number (like 1.2.3) tells us about the type of changes:
 
-Assuming you have [GitHub Actions enabled](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/build_and_deploy_with_gh_actions.md), every time you commit changes to the `main` branch of your repository, a new build will be generated and hosted within about a minute and a half.
+-   **Major**: The first number (1.x.x) indicates major versions with breaking changes
+-   **Minor**: The middle number (x.2.x) represents new features that won't break existing code
+-   **Path**: The last number (x.x.3) represents bug fixes and small non-breaking changes
 
-You can work on your repository on a web browser with [the github.dev web-based editor](https://github.com/github/dev), or work on a local clone on your computer. 
+New builds are created automatically in response to commits that include libraries with higher version numbers than those of the last build. This means that you can trigger a new build by increasing the version number of your library in its `package.json` file, and then committing your changes.
 
-**⚠ A quick note on best practices:** To avoid affecting existing websites that use your libraries, it's a good idea to create a separate development branch (like `develop`) for your regular commits. When you're ready to release a new version, simply merge your development branch into `main`. [Learn more](/guide/important.md)
+There are [version and push scripts](docs/scripts.md) to increase the version number of a module and commit the changes. For example,
 
-## 💻 Local development
+```sh
+yarn push:minor
+```
 
-While committing to the main branch is great for deploying new versions, it's not the most practical approach during development and testing. Luckily, there's a much better way to develop locally and see your changes instantly!
+will increase the second number of the version, commit the change, and push it. If you have multiple modules, this command will list them and let you select the target one.
 
-The included server project offers a simple yet powerful solution for serving local files over the internet using a web server and a temporary Cloudflare Quick Tunnel.
+When a website loads, it periodically checks if its component library has compatible updates available:
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/) is a nifty service that securely exposes your local development server to the internet, without the need for port forwarding or firewall configuration. This makes it super easy to test and share your component library with others during development.
+-   Bug fixes (x.x.3) are automatically applied
+-   New features (x.2.x) are applied when the site is republished
+-   Major updates (1.x.x) require manual review by site administrators
+
+This version management system, combined with Uniweb's runtime architecture, means your updates can be instantly available across all authorized websites using your library - a powerful feature for maintaining and improving websites at scale.
+
+### 2. Uniweb RE (Runtime Environment)
+
+A simple and effective testing technique for new components is to work with them locally using mock data.
+
+[Uniweb RE](https://github.com/uniwebcms/uniweb-re) is a runtime environment that mimics how Uniweb powers a website and connects it with a component library. It uses local website content (headings, text, images, etc.), making it easy to test how your components handle different content scenarios. It provides:
+
+-   A testing ground with structured mock data
+-   A runtime host for federated component modules
+-   A way to verify component behavior before connecting to a live site
+
+You can learn how to add pages and components to your test site from the [Uniweb RE Guide](https://github.com/uniwebcms/uniweb-re/docs/guide.md).
+
+#### Getting Started
+
+You will need three terminals: one to run your library's hosting server, one to watch the library for changes, and one to host your test website's server.
+
+Before starting, if you don't yet have a test website, create one under the `test` folder:
+
+```bash
+yarn new:site TestSite
+```
+
+Build your library locally and watch for changes with:
+
+1. **Terminal 1: Install packages and start web server with a tunnel**  
+   `yarn && yarn serve`
+2. **Terminal 2: Watch for code changes**  
+   `yarn watch`
+3. **Terminal 3: Run website server**  
+   `yarn serve:site`
+
+By default, `yarn serve` will host your library on port 5001, and `yarn serve:site` will host your test website on port 5002. You can select different ports with the `--port NNNN` parameter.
+
+By default, `serve:site` will host the last created website and will set up the website to use the first library it finds in your project. Since you can have multiple libraries and multiple test websites in the same repository, you may want to [learn about the commands and options](docs/cli-scripts.md) to control the pairing of sites and libraries.
+
+<!-- **⚠ Important**: If you add (or remove) **exported components** manually, you need to stop the `yarn watch` (CTRL-C) and start it again so that it loads the latest list of available components. This isn't needed if using the `yarn new:component` command. -->
+
+### 3. Local Development with Tunnel
+
+This project includes a simple yet powerful solution for serving local files over the internet using a web server and a temporary Cloudflare Quick Tunnel.
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/) is a service that securely exposes your local development server to the internet, without the need for port forwarding or firewall configuration. This makes it easy to test and share your component library with others during development.
 
 **⚠ Important**: Make sure to install the `Cloudflared` CLI and check that it's in your PATH. You can find the latest installation instructions here: [Cloudflare Tunnel Downloads](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/)
 
@@ -68,26 +200,22 @@ The included server project offers a simple yet powerful solution for serving lo
 -   **Windows**: `winget install --id Cloudflare.cloudflared`
 -   **Linux**: [Cloudflare Package Repository ↗](https://pkg.cloudflare.com/)
 
-> 🗒 Psst... you can also use a permanent tunnel URL if you prefer. For instance, you can set up a [Cloudflare named tunnel](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/) or a [Pagekite tunnel](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/pagekite.md). If you go this route, just remember to set the `TUNNEL_URL` property in your `.env.dev` file to the tunnel's URL.
+> 🗒 You can also use [VS Code Port Forwarding](https://code.visualstudio.com/docs/editor/port-forwarding), or a permanent tunnel URL if you prefer. For instance, you can set up a [Cloudflare named tunnel](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/) or a [Pagekite tunnel](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/pagekite.md). If you go this route, just remember to set the `TUNNEL_URL` property in your `.env.dev` file to the tunnel's URL.
 
-## 🛠️ Build Locally
+#### Getting Started
 
-This project uses [Node.js 18](https://nodejs.org/en/download/package-manager) with [Yarn 4.1](https://yarnpkg.com/) as package manager. If you already have Node.js, Yarn, and a code editor like VS Code installed, you're good to go! If not, don't sweat it – just [configure the development toolchain](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/dev_toolchain.md) first.
+You will need two terminals: one to run your library's hosting server, and one to watch the library for changes.
 
-If you are a VS Code user, you're in luck! There's a handy "Start Dev Environment" task configured under `.vscode/tasks.json`. You can run it using the Command Palette or the keyboard shortcut (`Ctrl+Shift+B` or `Cmd+Shift+B` on macOS).
+1. **Terminal 1: Install packages and start web server with a tunnel**  
+   `yarn && yarn serve --tunnel`
+2. **Terminal 2: Watch for code changes**  
+   `yarn watch`
 
-If you need, or prefer, to start the scripts manually, no worries! Just open up 2 different terminals and run:
-
-1. **Install packages and start web server with a tunnel**<br> `yarn && yarn serve -tunnel`
-2. **Watch for code changes**<br> `yarn watch`
-
-**Note:** The web server will serve files from the `build_dev` folder. Initially, this folder will have a single file named `quick-tunnel.txt` containing the URL of the current [Cloudflare quick tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/do-more-with-tunnels/trycloudflare/) pointing to http://localhost:3005. The quick tunnel URL changes every time the server starts and looks like `https://[tunnel-sub-domain].trycloudflare.com`.
+The web server will serve files from the `build_dev` folder. Initially, this folder will have a single file named `quick-tunnel.txt` containing the URL of the current [Cloudflare quick tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/do-more-with-tunnels/trycloudflare/) pointing to http://localhost:3005. The quick tunnel URL changes every time the server starts and looks like `https://[tunnel-sub-domain].trycloudflare.com`.
 
 The watch script will build a bundle of JavaScript files in dev mode and save them to the `build_dev/[module-name]` subfolder. The default module name is `StarterLibrary`. All source files under the `src` folder are watched for changes, and the target bundles are rebuilt as needed.
 
-**⚠ Important**: If you add (or remove) components to your libraries, you need to stop the `yarn watch` (CTRL-C) and start it again so that it loads the latest list of available components.
-
-The watch script output will give you the URL to connect your test website with your dev environment.
+The watch script output will give you the URL to connect your test website with your dev environment:
 
 ```bash
 PUBLIC URL: https://[tunnel-sub-domain].com/StarterLibrary
@@ -95,318 +223,73 @@ PUBLIC URL: https://[tunnel-sub-domain].com/StarterLibrary
 
 > 🗒 Remember, when connecting a website with a module, the URL must include the module name in its path because there might be several modules hosted under the same domain.
 
-## 👷 Enabling Dev Mode on a Website
+#### 👷 Enabling Dev Mode on a Website
 
 Now that you have a temporary URL pointing to the current dev build of your library, you can use it on a website in Dev Mode.
 
 1. Create a website, or open an existing one, and turn on its **Dev Mode** via the action menu `(⋅⋅⋅)▾` of the **Website** studio
 2. Set the **Component Library URL** to the URL produced in the last step. Continue developing the components in your module and reload the website to get the latest test bundle as it changes.
 
-## 🔧 Troubleshooting Dev Mode
+Testing is just the first step in your component library's journey. Once you've verified your components work as intended, you can move on to publishing your library for production use.
 
-If you run into any issues during the build process, try these steps:
+## Publishing Your Library
 
--   Make sure you installed the `Cloudflared` CLI to create Quick Tunnels.
--   Make sure you have saved your **current tunnel URL** into the Dev Mode settings of your test website.
--   Make sure that you have the correct version for Node JS and Yarn, as defined in the `.node-version` and `.yarnrc.yml` files.
--   Remove the shared cache files created by Yarn: `yarn cache clean`.
--   Check the console output for error messages and search for solutions online.
--   If the issue persists, please [open an issue](https://github.com/uniwebcms/uniweb-module-builder/issues/new) on the GitHub repository, providing as much detail as possible about the problem.
+While you can use unregistered libraries for testing and development using the methods described above, libraries must be registered with Uniweb before they can be used in published websites.
 
-## 🚀 Deploying to production
+Publishing and registration steps:
 
-The included GitHub workflow automates the process of building your files and hosting them on GitHub Pages, simplifying the deployment of a production build. However, if you haven't already done so, it's recommended to create a separate development branch, such as `develop`, for your regular commits. This allows you to keep your `main` branch clean and stable.
+1. [Deploy and release](#1-deploy-and-release-with-github-actions) a library
+2. Register the library's URL and information in a Uniweb instance, such as [uniweb.app](https://uniweb.app)
 
-When you're ready to release a new version to production, simply merge your changes from the development branch into the `main` branch. This merge operation will automatically trigger the GitHub Actions workflow, which will build your project and host the resulting files on GitHub Pages. IMPORTANT: [follow best practices](/guide/important.md) when updating production libraries.
+### Why Registration Matters
 
-By following this branching strategy, you can maintain a clear separation between your development and production environments, ensuring that only tested and approved changes are deployed to your live site.
+Component libraries represent significant intellectual property - they're powerful, reusable assets that encapsulate both design and functionality. The clean separation between content and presentation in Uniweb means libraries are particularly valuable and need protection. Registration helps:
 
-<details>
-  <summary><strong>Learn how to create and merge branches in Git</strong></summary>
+-   Establish ownership and protect intellectual property rights
+-   Enable professional developers to monetize their work
+-   Maintain quality standards in the Uniweb ecosystem
+-   Provide accountability for library maintenance and updates
 
-```bash
-# Create a new branch named "develop"
-git checkout -b develop
+### Registration and Licensing
 
-# Make changes and commit them
-git add .
-git commit -m "Add new components and fix bugs"
+To use a library in published websites, it must be registered with the Uniweb instance where the websites are hosted (e.g., uniweb.app). Once registered, you can:
 
-# Push the changes to the remote "develop" branch
-git push -u origin develop
+-   Grant usage permissions to specific users or websites
+-   Manage your own licensing terms and compensation
+-   Control who can publish websites using your library
+-   Update your library across all authorized websites
 
-# Switch back to the "main" branch
-git checkout main
+Uniweb enforces these permissions, ensuring your library is only used by those you've authorized. While Uniweb offers standard libraries for quick no-code website creation, it also supports this marketplace of custom libraries for more ambitious projects. Organizations can commission custom libraries from professional developers or license existing ones, with clear protections for intellectual property.
 
-# Merge the changes from "develop" into "main"
-git merge develop
+For detailed information about registration, licensing, and intellectual property protection, see our [Library Registration Guide](docs/library-registration.md).
 
-# Push the updated "main" branch
-git push
-```
+## A Different Approach to Web Development
 
-  </details>
+Traditional web development forces a choice between website builders with limited flexibility and custom solutions that require rebuilding common infrastructure. Uniweb eliminates this trade-off by providing a robust core engine that handles infrastructure while giving developers complete creative freedom.
 
-## 🔗 Using your components in a website
+This architecture prevents the common pitfalls of both approaches. Website builders no longer impose technical limitations as projects grow. Custom solutions don't require months spent rebuilding standard features like multilingual support, search, or dynamic data management. Instead, developers can focus entirely on creating unique, powerful components.
 
-<!-- Now that you have a production build hosted at GitHub Pages, you are ready to use your components. To do that, open a website and click the **Edit** button to open the **Content** editor. Then click the action menu `(⋅⋅⋅)▾` and select "Configure web components...". Copy the URL of your library and paste it into the "Custom Library URL" field. If you are using GitHub Pages for hosting it, its the URL would look like `https://USER-NAME.github.io/REPO-NAME/LIBRARY-NAME/`. -->
+The runtime module system transforms your component libraries into versatile assets. Each library can power multiple websites while remaining independently maintainable and updateable, creating lasting value that extends beyond any single project.
 
-Now that you have a production build hosted at GitHub Pages, you are ready to use your components. To do that, open a website, click the action menu `(⋅⋅⋅)▾` and select "Configure web components...". Copy the URL of your library and paste it into the "Custom Library URL" field. A GitHub Pages URL normally has the form `https://USER-NAME.github.io/REPO-NAME/LIBRARY-NAME/`.
+## Understanding Component Development
 
-<!-- Now that you have a production build hosted at GitHub Pages, you are ready to use and share your components. To make this happen, create a **Web Styler** in your Uniweb so the system knows about your component library. Simply create a new **Web Styler** and set the URL of your library to `https://USER-NAME.github.io/REPO-NAME/LIBRARY-NAME/`.
+Detailed examples of how components work with content, including code samples and implementation patterns, can be found in our comprehensive guides:
 
-The last step is to connect your new **Web Styler** to a website. To do that, open a website and click the **Edit** button to open the **Webpages** editor. Then click the action menu `(⋅⋅⋅)▾` and select "Main settings...". Select your **Web Styler** under the "Web Styler" input field. -->
+1. [Understanding Components](docs/1-understanding-components.md) - How components work with the core engine
+2. [Understanding Content](docs/2-understanding-content.md) - How content works in Uniweb components
+3. [Component Development](docs/3-component-development.md) - Practical guide to building components
+4. [Configuration Guide](docs/4-component-configuration.md) - Making components configurable
+5. [Documenting for End Users](docs/5-documenting-for-endusers.md) - How to document user-facing components
+6. [Advanced Features](docs/advanced-features.md) - Complex capabilities and patterns
 
-**Note:** Uniweb will take the files from GitHub Pages and move them to a CDN. It may take a few minutes for Uniweb to detect the changes in your GitHub Pages and move the files to the CDN. Be patient and check back later if your updates are not immediately visible on your website.
+These guides provide detailed explanations and examples to help you understand and leverage Uniweb's component architecture. We recommend reading them in order, as each guide builds upon concepts introduced in previous ones.
 
-## ✨ Creating a new component
+## Support
 
-You are ready to create your first web component. Before we proceed, let's review the file structure of the `src` folder.
-
-```
-src/
-├── my-module/
-│   ├── components/
-│   │   ├── ComponentA/
-│   │   │   ├── index.jsx
-│   │   │   └── meta/
-│   │   │       ├── config.yml
-│   │   │       ├── default.png
-│   │   │       ├── preset1.jpg
-│   │   │       └── notes.md
-│   │   ├── ComponentB/
-│   │   │   └── ... (similar structure)
-│   │   └── ...
-│   ├── config.yml
-│   ├── index.css
-│   ├── index.js
-│   ├── package.json
-│   └── tailwind.config.js
-├── _shared/
-│   └── ComponentX/
-│   │   └── ... (similar structure)
-│   └── ...
-├── package.json
-└── README.md
-```
-
-This file structure shows that components are grouped into modules. Each module is an independent library of components. The libraries can share components across libraries via the folders with names that start with an underscore, such as `_shared` or `_utils`.
-
-<!-- > 🗒 Components that are meant to be exported by a library must have their own folder with a `meta` subfolder in it. Components that are only used internally can be just a single file since they don't require any metadata. -->
-
-### Using CLI Commands
-
-This project includes two CLI commands to streamline your development process:
-
-#### 1. Create a New Module
-
-```bash
-yarn new:module [options]
-```
-
-This command creates a new module with the necessary boilerplate files.
-
-Options:
-
--   `--name`: Name of the new module
--   `--description`: Brief description of the module
-
-Example:
-
-```bash
-yarn new:module --name MyAwesomeModule --description "A module for awesome components"
-```
-
-This will create a new module named "MyAwesomeModule" with the provided description.
-
-If options are not provided, the CLI will prompt you for the necessary information.
-
-#### 2. Create a New Component
-
-```bash
-yarn new:component [options]
-```
-
-This command creates a new component within a specified module. Also, just as with the previous command, if options are not provided, the CLI will prompt you for the necessary information.
-
-Options:
-
--   `--name`: Name of the new component
--   `--module`: Name of the module to add the component to (defaults to the newest subfolder name under the `src` folder)
--   `--type`: Type of component (section, block, or element)
--   `--export`: Create an exportable component
--   `--config`: Create a component with config files and export set to false
--   `--shared`: Create a component to be shared across modules (in the `_shared` folder)
--   `--description`: Brief description of the component
--   `--parameters`: Initial parameters for the component (e.g., "align:string,items:number")
-
-Example:
-
-```bash
-yarn new:component --name FeatureCard --module MyAwesomeModule --type block --export --description "A card component for displaying features" --parameters "title:string,description:string,iconName:string"
-```
-
-This will create a new exportable block component named "FeatureCard" in the "MyAwesomeModule" with the specified description and parameters.
-
-### 🥇 First component: FeatureList Section
-
-Let's implement a component that renders a feature list section. Here we will assume that the section has a title and a subtile, and a variable number of features, each with their own title and description.
-
-> 🗒 Learn more about [content rules](content-rules.md) to familiarize yourself with the data given to a component.
-
-1. Create a new component using the provided CLI command:
-
-    ```bash
-    yarn new:component --name FeatureList --export --parameters "align:enum"
-    ```
-
-2. Edit the code of the `index.js` file under the `src/StarterLibrary/components/FeatureList` folder:
-
-    ```jsx
-    import React from 'react';
-
-    export default function FeatureList(props) {
-        const { block } = props;
-        const { title, subtitle } = block.main;
-        const features = block.items;
-        const { align = 'center' } = block.getBlockProperties();
-        const headerClass = align === 'left' ? 'text-left' : 'text-center';
-
-        return (
-            <section>
-                <header className={headerClass}>
-                    <h2>{title}</h2>
-                    <p>{subtitle}</p>
-                </header>
-                <ul>
-                    {features.map((feature, index) => (
-                        <li key={index}>
-                            <h3>{feature.title}</h3>
-                            <p>{feature.description}</p>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-        );
-    }
-    ```
-
-3. Add proper enum options to the `align` parameter we defined in our CLI command. To do that, edit the configuration file `config.yml` under `src/StarterLibrary/components/FeatureList/meta` folder:
-    ```yaml
-    label: Feature List
-    description: Showcase lists of features.
-    parameters:
-        - name: align
-          label: Alignment
-          description: The content alignment
-          type: string
-          enum:
-              - { label: Center, value: center }
-              - { label: Left, value: left }
-          default: center
-    ```
-
-<!-- This command will create the component `FeatureList` under the newest module, which in this case is `StarterLibrary`. It will also add a parameter named `align` to the component, and define it as an enumeration of possible values.
-
-> Note: if you choose to create the files manually while you are in "watch", make sure to run `yarn refresh` when ready so that the list of exported components is updated. That `yarn new:component` does that for you by default. -->
-
-<!-- 1. Create a folder named `FeatureList` under `src/StarterLibrary/`
-2. Crate a file named `index.js` within the new folder
-3. Add the following code to the `index.js` file: -->
-
-<!-- ```jsx
-import React from 'react';
-
-export default function FeatureList(props) {
-    const { block } = props;
-    const { title, subtitle } = block.main;
-    const features = block.items;
-    const { align = 'center' } = block.getBlockProperties();
-    const headerClass = align === 'left' ? 'text-left' : 'text-center';
-
-    return (
-        <section>
-            <header className={headerClass}>
-                <h2>{title}</h2>
-                <p>{subtitle}</p>
-            </header>
-            <ul>
-                {features.map((feature, index) => (
-                    <li key={index}>
-                        <h3>{feature.title}</h3>
-                        <p>{feature.description}</p>
-                    </li>
-                ))}
-            </ul>
-        </section>
-    );
-}
-``` -->
-
-<!-- 4. Create a subfolder named `meta` under `FeatureList`
-5. Crate a file named `config.yml` within the `meta` subfolder
-6. Add the following properties to the `config.yml` file:
-
-```yaml
-label: Feature List
-description: A page section with a header and feature descriptions.
-parameters:
-    - name: align
-      label: Alignment
-      description: The content alignment
-      type: string
-      enum:
-          - { label: Center, value: center }
-          - { label: Left, value: left }
-      default: center
-``` -->
-
-Hooray! You've made your first component. You can now see it in action. If you are developing locally and have the watch script running, your component should already be exported and usable from a website whose Dev Mode is set to your current tunnel. If you are coding in production mode, you need to commit your changes to the `main` branch for them to go live.
-
-> **⚠ Important** If you choose to manually create the files of an exported component while you are in "watch" mode, make sure to run `yarn refresh` when ready so that the list of exported components is updated. The `new:component` command does that already.
-
-#### Sample Content
-
-Here is some sample text for you to add to a webpage and test your component. Make sure to select your component as the rendered of the page section where you add this text.
-
-```markdown
-# Product Features
-
-Discover all the amazing features offered by our product.
+-   Documentation: [docs.uniweb.dev](https://docs.uniweb.dev)
+-   Issues: [GitHub Issues](../../issues)
+-   Community: Join our [Discord](https://discord.gg/uniweb) to connect with other library developers, share ideas, and get help
 
 ---
 
-## Fast
-
-The fastest in the market
-
----
-
-## Intuitive
-
-Everyone can use it
-```
-
-That is all. Of course, there is a lot more to learn, such as adding customization properties to your component, and creating proper metadata so that non-technical users understand what to expect from it. If you are ready for that, simply head over to the [Component Library Development Guide](/intro.md).
-
-### 🦾 Component's capabilities
-
-Our example component may look simple, but since it's working together with the underlying Uniweb JS Engine, it already supports some advanced functionalities. Specifically, our new component can:
-
-1. Show internationalized content based the active language.
-2. Apply font and color themes, including light, dim, and dark variants.
-3. Fetch dynamic data from different data sources, and cache it.
-4. Display a custom background with a plain color, a two-color gradient, an image, or a video.
-
-## 🎯 Next steps
-
--   [Component Library Development Guide](/intro.md)
-    -   Learn how to develop your own React components to render the contents of a website.
--   [Content and template editing with Docufolio](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/docufolio.md)
-    -   Learn how to use Docufolio, a powerful content management tool integrated with Uniweb, to create and edit website content and templates.
--   [Web theme for websites and templates](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/webthemes.md)
-    -   Discover how to create and apply custom themes to your Uniweb websites and templates, ensuring a consistent and professional look and feel.
--   [Examples of web components](https://github.com/uniwebcms/express/tree/main/src/blocks)
-    -   Explore a collection of example web components that you can use as a starting point for your own component libraries or as inspiration for new components.
-
-Feel free to explore, experiment, and have fun creating amazing component libraries with Uniweb! If you have any questions or need help along the way, don't hesitate to reach out to the Uniweb community.
+Ready to build professional component libraries? [Get started with Uniweb](https://uniwebcms.com) →
