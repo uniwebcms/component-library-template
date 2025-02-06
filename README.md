@@ -96,15 +96,87 @@ This generates all the needed files for an exported component, including the met
 
 You can test your components using three different approaches, each suited to different development needs. All testing methods use Dev Mode, which allows you to connect unregistered libraries to websites for development purposes.
 
-1. **Production deployment:** impractical for fluid testing but needs no local setup
-2. **Local Development:** use a local mock site powered by the Uniweb Runtime Environment
-3. **Local Development with Tunnel:** a hybrid of the previous two in which you create a public tunnel to your localhost and connect a real website to your locally hosted library
+1. **Local Development:** test using a **local mock site** powered by a **simplified runtime environment**
+2. **Local Development with Tunnel:** create a **public tunnel** to your localhost and connect a **real website** to your **locally hosted library**
+3. **Production deployment:** deploy your library **without a local setup** and connect it to a **real website**
 
 Each of these approaches is explained below.
 
 **⚠ Important**: When you're ready for production, you'll need to register your library as explained in the [Publishing section](#publishing-your-library).
 
-### 1. Deploy and Release with GitHub Actions
+### 1. Uniweb RE (Runtime Environment)
+
+A simple and effective testing technique for new components is to work with them locally using mock data.
+
+[Uniweb RE](https://github.com/uniwebcms/uniweb-re) is a runtime environment that mimics how Uniweb powers a website and connects it with a component library. It uses local website content (headings, text, images, etc.), making it easy to test how your components handle different content scenarios. It provides:
+
+-   A testing ground with structured mock data
+-   A runtime host for federated component modules
+-   A way to verify component behavior before connecting to a live site
+
+You can learn how to add pages and components to your test site from the [Uniweb RE Guide](https://github.com/uniwebcms/uniweb-re/docs/guide.md).
+
+#### Getting Started
+
+You will need three terminals: one to run your library's hosting server, one to watch the library for changes, and one to host your test website's server.
+
+If you don't yet have a test website, you can create one under the `test` folder with this command:
+
+```bash
+yarn new:site TestSite
+```
+
+Next, build your library locally and watch for changes with:
+
+1. **Terminal 1: Install packages and start web server with a tunnel**  
+   `yarn && yarn serve`
+2. **Terminal 2: Watch for code changes**  
+   `yarn watch`
+3. **Terminal 3: Run website server**  
+   `yarn serve:site`
+
+By default, `yarn serve` will host your library on port 5001, and `yarn serve:site` will host your test website on port 5002. You can select different ports with the `--port NNNN` parameter.
+
+By default, `serve:site` will host the last created website and will set up the website to use the first library it finds in your project. Since you can have multiple libraries and multiple test websites in the same repository, you may want to [learn about the commands and options](docs/cli-scripts.md) to control the pairing of sites and libraries.
+
+<!-- **⚠ Important**: If you add (or remove) **exported components** manually, you need to stop the `yarn watch` (CTRL-C) and start it again so that it loads the latest list of available components. This isn't needed if using the `yarn new:component` command. -->
+
+### 2. Local Development with Tunnel
+
+This project includes a simple yet powerful solution for serving local files over the internet using a web server and a temporary Cloudflare Quick Tunnel.
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/) is a service that securely exposes your local development server to the internet, without the need for port forwarding or firewall configuration. This makes it easy to test and share your component library with others during development.
+
+**⚠ Important**: Make sure to install the `Cloudflared` CLI and check that it's in your PATH. You can find the latest installation instructions here: [Cloudflare Tunnel Downloads](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/)
+
+-   **macOS**: `brew install cloudflared`
+-   **Windows**: `winget install --id Cloudflare.cloudflared`
+-   **Linux**: [Cloudflare Package Repository ↗](https://pkg.cloudflare.com/)
+
+> 🗒 You can also use [VS Code Port Forwarding](https://code.visualstudio.com/docs/editor/port-forwarding), or a permanent tunnel URL if you prefer. For instance, you can set up a [Cloudflare named tunnel](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/) or a [Pagekite tunnel](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/pagekite.md). If you go this route, just remember to set the `TUNNEL_URL` property in your `.env.dev` file to the tunnel's URL.
+
+#### Getting Started
+
+You will need two terminals: one to run your library's hosting server, and one to watch the library for changes.
+
+1. **Terminal 1: Install packages and start web server with a tunnel**  
+   `yarn && yarn serve --tunnel`
+2. **Terminal 2: Watch for code changes**  
+   `yarn watch`
+
+The web server will serve files from the `build_dev` folder. Initially, this folder will have a single file named `quick-tunnel.txt` containing the URL of the current [Cloudflare quick tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/do-more-with-tunnels/trycloudflare/) pointing to http://localhost:3005. The quick tunnel URL changes every time the server starts and looks like `https://[tunnel-sub-domain].trycloudflare.com`.
+
+The watch script will build a bundle of JavaScript files in dev mode and save them to the `build_dev/[module-name]` subfolder. The default module name is `StarterLibrary`. All source files under the `src` folder are watched for changes, and the target bundles are rebuilt as needed.
+
+The watch script output will give you the URL to connect your test website with your dev environment:
+
+```bash
+PUBLIC URL: https://[tunnel-sub-domain].com/StarterLibrary
+```
+
+> 🗒 Remember, when connecting a website with a module, the URL must include the module name in its path because there might be several modules hosted under the same domain.
+
+### 3. Deploy and Release with GitHub Actions
 
 This is the method to deploy your library in production, but can also be used for testing. While it is the least practical testing method, it requires no local setup since it builds your modules using an included GitHub Workflow, and hosts them with GitHub Pages.
 
@@ -152,78 +224,6 @@ When a website loads, it periodically checks if its component library has compat
 -   Major updates (1.x.x) require manual review by site administrators
 
 This version management system, combined with Uniweb's runtime architecture, means your updates can be instantly available across all authorized websites using your library - a powerful feature for maintaining and improving websites at scale.
-
-### 2. Uniweb RE (Runtime Environment)
-
-A simple and effective testing technique for new components is to work with them locally using mock data.
-
-[Uniweb RE](https://github.com/uniwebcms/uniweb-re) is a runtime environment that mimics how Uniweb powers a website and connects it with a component library. It uses local website content (headings, text, images, etc.), making it easy to test how your components handle different content scenarios. It provides:
-
--   A testing ground with structured mock data
--   A runtime host for federated component modules
--   A way to verify component behavior before connecting to a live site
-
-You can learn how to add pages and components to your test site from the [Uniweb RE Guide](https://github.com/uniwebcms/uniweb-re/docs/guide.md).
-
-#### Getting Started
-
-You will need three terminals: one to run your library's hosting server, one to watch the library for changes, and one to host your test website's server.
-
-If you don't yet have a test website, you can create one under the `test` folder with this command:
-
-```bash
-yarn new:site TestSite
-```
-
-Next, build your library locally and watch for changes with:
-
-1. **Terminal 1: Install packages and start web server with a tunnel**  
-   `yarn && yarn serve`
-2. **Terminal 2: Watch for code changes**  
-   `yarn watch`
-3. **Terminal 3: Run website server**  
-   `yarn serve:site`
-
-By default, `yarn serve` will host your library on port 5001, and `yarn serve:site` will host your test website on port 5002. You can select different ports with the `--port NNNN` parameter.
-
-By default, `serve:site` will host the last created website and will set up the website to use the first library it finds in your project. Since you can have multiple libraries and multiple test websites in the same repository, you may want to [learn about the commands and options](docs/cli-scripts.md) to control the pairing of sites and libraries.
-
-<!-- **⚠ Important**: If you add (or remove) **exported components** manually, you need to stop the `yarn watch` (CTRL-C) and start it again so that it loads the latest list of available components. This isn't needed if using the `yarn new:component` command. -->
-
-### 3. Local Development with Tunnel
-
-This project includes a simple yet powerful solution for serving local files over the internet using a web server and a temporary Cloudflare Quick Tunnel.
-
-[Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/) is a service that securely exposes your local development server to the internet, without the need for port forwarding or firewall configuration. This makes it easy to test and share your component library with others during development.
-
-**⚠ Important**: Make sure to install the `Cloudflared` CLI and check that it's in your PATH. You can find the latest installation instructions here: [Cloudflare Tunnel Downloads](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/)
-
--   **macOS**: `brew install cloudflared`
--   **Windows**: `winget install --id Cloudflare.cloudflared`
--   **Linux**: [Cloudflare Package Repository ↗](https://pkg.cloudflare.com/)
-
-> 🗒 You can also use [VS Code Port Forwarding](https://code.visualstudio.com/docs/editor/port-forwarding), or a permanent tunnel URL if you prefer. For instance, you can set up a [Cloudflare named tunnel](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/) or a [Pagekite tunnel](https://github.com/uniwebcms/uniweb-module-builder/blob/main/docs/pagekite.md). If you go this route, just remember to set the `TUNNEL_URL` property in your `.env.dev` file to the tunnel's URL.
-
-#### Getting Started
-
-You will need two terminals: one to run your library's hosting server, and one to watch the library for changes.
-
-1. **Terminal 1: Install packages and start web server with a tunnel**  
-   `yarn && yarn serve --tunnel`
-2. **Terminal 2: Watch for code changes**  
-   `yarn watch`
-
-The web server will serve files from the `build_dev` folder. Initially, this folder will have a single file named `quick-tunnel.txt` containing the URL of the current [Cloudflare quick tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/do-more-with-tunnels/trycloudflare/) pointing to http://localhost:3005. The quick tunnel URL changes every time the server starts and looks like `https://[tunnel-sub-domain].trycloudflare.com`.
-
-The watch script will build a bundle of JavaScript files in dev mode and save them to the `build_dev/[module-name]` subfolder. The default module name is `StarterLibrary`. All source files under the `src` folder are watched for changes, and the target bundles are rebuilt as needed.
-
-The watch script output will give you the URL to connect your test website with your dev environment:
-
-```bash
-PUBLIC URL: https://[tunnel-sub-domain].com/StarterLibrary
-```
-
-> 🗒 Remember, when connecting a website with a module, the URL must include the module name in its path because there might be several modules hosted under the same domain.
 
 #### 👷 Enabling Dev Mode on a Website
 
