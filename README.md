@@ -292,6 +292,14 @@ These guides provide detailed explanations and examples to help you understand a
 -   Issues: [GitHub Issues](../../issues)
 -   Community: Join our [Discord](https://discord.gg/uniweb) to connect with other library developers, share ideas, and get help
 
+## License
+
+This starter repository is licensed under GPL-3.0-or-later.
+
+You are free to use and modify this repository, but if you distribute it (as a template or software package), you must also release your modifications under the same license.
+
+Note: Websites created using this starter are NOT considered distributions and do not need to be licensed under GPL.
+
 ---
 
 Ready to build professional component libraries? [Get started with Uniweb](https://uniwebcms.com) →
