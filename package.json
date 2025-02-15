@@ -2,8 +2,9 @@
     "name": "website-components-template",
     "version": "2.1.0",
     "packageManager": "yarn@4.1.0",
-    "private": true,
+    "private": false,
     "license": "GPL-3.0-or-later",
+    "author": "Proximify Inc.",
     "workspaces": [
         "src/*",
         "builder"
