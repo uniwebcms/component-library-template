@@ -1,3 +1,20 @@
+## ⚠️ Deprecated
+
+This repository is part of an earlier iteration of the Uniweb framework and is no longer maintained.
+
+**The current version is at [github.com/uniweb](https://github.com/uniweb):**
+- CLI & quickstart: [github.com/uniweb/cli](https://github.com/uniweb/cli)
+- Documentation: [github.com/uniweb/docs](https://github.com/uniweb/docs)
+- npm packages: `uniweb`, `@uniweb/*`
+
+```bash
+  pnpm create uniweb my-site
+```
+
+---
+
+The original README follows for historical reference.
+
 # Uniweb Component Library Starter
 
 Welcome to the world of [Uniweb](https://uniwebcms.com) component libraries! If you're looking to create dynamic, reusable web components for your Uniweb websites, you've come to the right place. This starter template provides everything you need to create, build, deploy, and test your libraries.
